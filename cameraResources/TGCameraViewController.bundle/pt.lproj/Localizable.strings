@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  APCameraViewController
+
+  Created by Bruno Furtado on 27/05/15.
+  Copyright (c) 2015 Tudo Gostoso Internet. All rights reserved.
+*/
+
+"APCameraViewController-Title" = "Tire fotos";
+"APCameraViewController-Subtitle" = "Permita o acesso à sua câmera";
+"APCameraViewController-Step1" = "1. Abra os Ajustes do seu dispositivo";
+"APCameraViewController-Step2" = "2. Acesse a Privacidade";
+"APCameraViewController-Step3" = "3. Acesse a Câmera";
+"APCameraViewController-Step4" = "4. Ative";

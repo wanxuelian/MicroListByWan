@@ -1,0 +1,16 @@
+//
+//  CommitShopCell.h
+//  MicroList
+//
+//  Created by sks on 15/11/9.
+//  Copyright (c) 2015年 黄相杰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CommitShopCell : UITableViewCell
+
+
+@property (nonatomic, strong)UIButton *buttonCommit;
+
+@end

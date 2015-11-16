@@ -1,0 +1,6 @@
+framework module HiPhotoFramework {
+  umbrella header "HiPhotoFramework.h"
+
+  export *
+  module * { export * }
+}

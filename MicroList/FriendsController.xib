@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendsController">
+            <connections>
+                <outlet property="btn1" destination="Qdp-2C-mzv" id="I2S-cj-crT"/>
+                <outlet property="btn2" destination="yEw-jY-FDb" id="oyL-sT-4YJ"/>
+                <outlet property="btn3" destination="YIU-kM-DeC" id="24K-tr-msC"/>
+                <outlet property="btn4" destination="cW7-VQ-4wY" id="K0v-ME-abN"/>
+                <outlet property="btn5" destination="aEu-4J-tmE" id="22z-cX-75T"/>
+                <outlet property="btn6" destination="DlE-hh-al1" id="dU2-ID-riK"/>
+                <outlet property="btn7" destination="doE-Jr-7UY" id="yXI-PY-Lej"/>
+                <outlet property="btn8" destination="erq-Yc-Qph" id="L7h-PC-Kod"/>
+                <outlet property="btn9" destination="PVW-yB-Eij" id="pNV-SW-73P"/>
+                <outlet property="myGive" destination="MYq-pd-N3V" id="kaC-0n-OZJ"/>
+                <outlet property="myGiveScrollerView" destination="Qst-lx-La3" id="nyn-cH-2CB"/>
+                <outlet property="showScrollerView" destination="8oz-Jy-ZKq" id="Dpk-fa-mEG"/>
+                <outlet property="showView" destination="Oiw-OX-o2R" id="5KM-55-2vV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wbk-q4-eFc">
+                    <rect key="frame" x="8" y="64" width="359" height="128"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27X-V1-Foj">
+                            <rect key="frame" x="13" y="22" width="89" height="84"/>
+                            <color key="backgroundColor" red="1" green="0.99165171713786959" blue="0.37461998654618578" alpha="1" colorSpace="calibratedRGB"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V5-UJ-KdO">
+                            <rect key="frame" x="140" y="22" width="173" height="21"/>
+                            <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="关注数" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1p-4T-Fdr">
+                            <rect key="frame" x="140" y="53" width="173" height="21"/>
+                            <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="地区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-oK-RJ2">
+                            <rect key="frame" x="140" y="90" width="173" height="21"/>
+                            <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.9738596907" green="0.2329074545" blue="0.15734408699999999" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-FO-oXL">
+                    <rect key="frame" x="0.0" y="191" width="375" height="83"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="个人介绍：" translatesAutoresizingMaskIntoConstraints="NO" id="5Ze-k2-dXD">
+                            <rect key="frame" x="8" y="8" width="359" height="59"/>
+                            <color key="backgroundColor" red="0.9738596907" green="0.2329074545" blue="0.15734408699999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oiw-OX-o2R">
+                    <rect key="frame" x="8" y="266" width="358" height="82"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="晒榜：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LvH-3W-goH">
+                            <rect key="frame" x="20" y="27" width="51" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-Jy-ZKq">
+                            <rect key="frame" x="66" y="0.0" width="292" height="82"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEw-jY-FDb">
+                                    <rect key="frame" x="208" y="10" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIU-kM-DeC">
+                                    <rect key="frame" x="124" y="8" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdp-2C-mzv">
+                                    <rect key="frame" x="37" y="8" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <connections>
+                                <outlet property="delegate" destination="i5M-Pr-FkT" id="zXz-4D-UD5"/>
+                            </connections>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.9738596907" green="0.2329074545" blue="0.15734408699999999" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYq-pd-N3V">
+                    <rect key="frame" x="8" y="356" width="358" height="174"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qst-lx-La3">
+                            <rect key="frame" x="95" y="8" width="250" height="158"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW7-VQ-4wY">
+                                    <rect key="frame" x="8" y="8" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doE-Jr-7UY">
+                                    <rect key="frame" x="94" y="83" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erq-Yc-Qph">
+                                    <rect key="frame" x="8" y="83" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlE-hh-al1">
+                                    <rect key="frame" x="179" y="8" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVW-yB-Eij">
+                                    <rect key="frame" x="94" y="8" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEu-4J-tmE">
+                                    <rect key="frame" x="179" y="83" width="63" height="61"/>
+                                    <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <connections>
+                                <outlet property="delegate" destination="i5M-Pr-FkT" id="d2A-fp-bk6"/>
+                            </connections>
+                        </scrollView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我的推荐：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPm-3H-nZT">
+                            <rect key="frame" x="16" y="21" width="87" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.9738596907" green="0.2329074545" blue="0.15734408699999999" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuK-Ic-Lwt">
+                    <rect key="frame" x="8" y="538" width="359" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.01125392947" blue="0.016005038690000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="发送聊天">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chat:" destination="-1" eventType="touchUpInside" id="2a8-jC-Ku8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="279.5" y="-475.5"/>
+        </view>
+    </objects>
+</document>
