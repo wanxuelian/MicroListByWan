@@ -112,8 +112,10 @@
 
 
 - (IBAction)chat:(UIButton *)sender {
+//    判断是否已登录，如果登录直接跳转
     
-    ChatViewController * chat = [[ChatViewController alloc]initWithChatter:@"18552123120" isGroup:NO];
+    
+    ChatViewController * chat = [[ChatViewController alloc]initWithChatter:@"15271519185" isGroup:NO];
     
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
     
