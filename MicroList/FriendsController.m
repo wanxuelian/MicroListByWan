@@ -114,12 +114,16 @@
 - (IBAction)chat:(UIButton *)sender {
 //    判断是否已登录，如果登录直接跳转
     
+    if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
+        ChatViewController * chat = [[ChatViewController alloc]initWithChatter:@"15271519185" isGroup:NO];
+        
+        UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
+        
+        [self presentViewController:nav animated:YES completion:nil];
+    }
+    ;
     
-    ChatViewController * chat = [[ChatViewController alloc]initWithChatter:@"15271519185" isGroup:NO];
     
-    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
-    
-    [self presentViewController:nav animated:YES completion:nil];
     
 }
 @end
