@@ -29,8 +29,6 @@
 		0468BF701BE6FA410047A167 /* MygiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0468BF6E1BE6FA410047A167 /* MygiveCell.xib */; };
 		0468BF741BE7065B0047A167 /* MygiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0468BF721BE7065B0047A167 /* MygiveController.m */; };
 		0468BF751BE7065B0047A167 /* MygiveController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0468BF731BE7065B0047A167 /* MygiveController.xib */; };
-		0468BFE41BE754D50047A167 /* libEaseMobClientSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0468BFE01BE754D50047A167 /* libEaseMobClientSDK.a */; };
-		0468BFE51BE754D50047A167 /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0468BFE11BE754D50047A167 /* libEaseMobClientSDKLite.a */; };
 		0468BFE61BE754D50047A167 /* EaseMob.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0468BFE31BE754D50047A167 /* EaseMob.bundle */; };
 		0468BFE81BE754FA0047A167 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0468BFE71BE754FA0047A167 /* MobileCoreServices.framework */; };
 		0468BFEA1BE755030047A167 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0468BFE91BE755030047A167 /* CFNetwork.framework */; };
@@ -47,6 +45,8 @@
 		04702C811BF82E830039AC3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04702C801BF82E830039AC3B /* CoreGraphics.framework */; };
 		04702C841BF82ED20039AC3B /* NSString+MessagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04702C831BF82ED20039AC3B /* NSString+MessagesView.m */; };
 		04702C861BF82FC30039AC3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04702C851BF82FC30039AC3B /* UIKit.framework */; };
+		048B0F3B1BFAFB5000C9A1F0 /* libEaseMobClientSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048B0F391BFAFB5000C9A1F0 /* libEaseMobClientSDK.a */; };
+		048B0F3C1BFAFB5000C9A1F0 /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048B0F3A1BFAFB5000C9A1F0 /* libEaseMobClientSDKLite.a */; };
 		049FC3E61BE8848C002558A8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FC3E51BE8848C002558A8 /* BaseViewController.m */; };
 		049FC4DF1BE8917B002558A8 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FC4DB1BE8917B002558A8 /* account.png */; };
 		049FC4E01BE8917B002558A8 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FC4DC1BE8917B002558A8 /* account@2x.png */; };
@@ -815,8 +815,6 @@
 		0468BFDB1BE754D50047A167 /* EMNetworkMonitorDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNetworkMonitorDefs.h; sourceTree = "<group>"; };
 		0468BFDD1BE754D50047A167 /* EMError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMError.h; sourceTree = "<group>"; };
 		0468BFDE1BE754D50047A167 /* EMErrorDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMErrorDefs.h; sourceTree = "<group>"; };
-		0468BFE01BE754D50047A167 /* libEaseMobClientSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDK.a; sourceTree = "<group>"; };
-		0468BFE11BE754D50047A167 /* libEaseMobClientSDKLite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDKLite.a; sourceTree = "<group>"; };
 		0468BFE31BE754D50047A167 /* EaseMob.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EaseMob.bundle; sourceTree = "<group>"; };
 		0468BFE71BE754FA0047A167 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0468BFE91BE755030047A167 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -834,6 +832,8 @@
 		04702C821BF82ED20039AC3B /* NSString+MessagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MessagesView.h"; sourceTree = "<group>"; };
 		04702C831BF82ED20039AC3B /* NSString+MessagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MessagesView.m"; sourceTree = "<group>"; };
 		04702C851BF82FC30039AC3B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		048B0F391BFAFB5000C9A1F0 /* libEaseMobClientSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDK.a; sourceTree = "<group>"; };
+		048B0F3A1BFAFB5000C9A1F0 /* libEaseMobClientSDKLite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDKLite.a; sourceTree = "<group>"; };
 		049FC3E41BE8848C002558A8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		049FC3E51BE8848C002558A8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		049FC4DB1BE8917B002558A8 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
@@ -1742,18 +1742,18 @@
 				4CC5BED91BFAC26E009AF412 /* libopencore-amrwb.a in Frameworks */,
 				04702C791BF82E060039AC3B /* AudioToolbox.framework in Frameworks */,
 				0468BFF61BE7557B0047A167 /* libxml2.dylib in Frameworks */,
+				048B0F3B1BFAFB5000C9A1F0 /* libEaseMobClientSDK.a in Frameworks */,
 				0468BFF41BE7556F0047A167 /* libresolv.dylib in Frameworks */,
 				049FCCCE1BF31C40002558A8 /* HiPhotoFramework.framework in Frameworks */,
 				0468BFF21BE755640047A167 /* libiconv.dylib in Frameworks */,
 				0468BFF01BE7555B0047A167 /* libz.dylib in Frameworks */,
 				0468BFEE1BE755490047A167 /* libstdc++.6.0.9.dylib in Frameworks */,
 				0468BFEC1BE7552F0047A167 /* libsqlite3.dylib in Frameworks */,
+				048B0F3C1BFAFB5000C9A1F0 /* libEaseMobClientSDKLite.a in Frameworks */,
 				045748391BF99AF50058223F /* Parse.framework in Frameworks */,
 				0468BFEA1BE755030047A167 /* CFNetwork.framework in Frameworks */,
 				0468BFE81BE754FA0047A167 /* MobileCoreServices.framework in Frameworks */,
 				045748381BF99AF50058223F /* Bolts.framework in Frameworks */,
-				0468BFE51BE754D50047A167 /* libEaseMobClientSDKLite.a in Frameworks */,
-				0468BFE41BE754D50047A167 /* libEaseMobClientSDK.a in Frameworks */,
 				045748451BF99B040058223F /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2040,8 +2040,8 @@
 		0468BF761BE754D50047A167 /* EaseMobSDK */ = {
 			isa = PBXGroup;
 			children = (
+				048B0F381BFAFB5000C9A1F0 /* lib */,
 				0468BF771BE754D50047A167 /* include */,
-				0468BFDF1BE754D50047A167 /* lib */,
 				0468BFE21BE754D50047A167 /* resources */,
 			);
 			path = EaseMobSDK;
@@ -2290,21 +2290,21 @@
 			path = ErrorManager;
 			sourceTree = "<group>";
 		};
-		0468BFDF1BE754D50047A167 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				0468BFE01BE754D50047A167 /* libEaseMobClientSDK.a */,
-				0468BFE11BE754D50047A167 /* libEaseMobClientSDKLite.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
 		0468BFE21BE754D50047A167 /* resources */ = {
 			isa = PBXGroup;
 			children = (
 				0468BFE31BE754D50047A167 /* EaseMob.bundle */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		048B0F381BFAFB5000C9A1F0 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				048B0F391BFAFB5000C9A1F0 /* libEaseMobClientSDK.a */,
+				048B0F3A1BFAFB5000C9A1F0 /* libEaseMobClientSDKLite.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		049FC3E31BE88466002558A8 /* Base */ = {

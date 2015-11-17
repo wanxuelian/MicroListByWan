@@ -16,6 +16,7 @@
     UIPickerView *pickView;
     NSMutableArray *mutArr;
     NSMutableArray *towArr;
+    UIButton *button;
 }
 @end
 
@@ -30,15 +31,22 @@
     
     [self getData];
     
+    
+    
+    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *headPath = [userDefault objectForKey:@"headPath"];
     
+    if (_headPath != nil) {
+        
+        NSString *image = [NSString stringWithFormat:@"http://%@%@",kLoginServer,headPath];
+        NSLog(@"image:%@",image);
+        NSURL *url = [NSURL URLWithString:image];
+        [self.headPath sd_setImageWithURL:url];
+        
+    }
     
-    NSString *image = headPath;
-    NSURL *url = [NSURL URLWithString:image];
-    [self.headPath sd_setImageWithURL:url];
     
-
 }
 
 
@@ -64,7 +72,7 @@
 - (void)getData{
     
     
-    NSLog(@"*********************************请求用户资料***************************************");
+    //    NSLog(@"*********************************请求用户资料***************************************");
     /*
      NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
      NSTimeInterval a=[dat timeIntervalSince1970];  //精确到秒
@@ -72,11 +80,11 @@
      */
     
     BaseJsonData * data = [[BaseJsonData alloc]init];
-   
+    
     
     NSString *url = [NSString stringWithFormat:@"http://%@/user/dataEdit/",kLoginServer];
     
-//    NSLog(@"请求的地址了： %@",url);
+    //    NSLog(@"请求的地址了： %@",url);
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
@@ -94,36 +102,24 @@
         for (NSDictionary *data in dat) {
             
             self.nickName.text = data[@"nickName"];
-//            self.sex.text = data[@"sex"];
+            //            self.sex.text = data[@"sex"];
             self.area.text = data[@"area"];
             self.signature.text = data[@"signature"];
             
             
             NSString *number = [NSString stringWithFormat:@"%@", data[@"sex"]];
             
-//           NSInteger *sex = [number integerValue];
-            
             if ([number isEqualToString:@"1"]) {
                 
                 self.sex.text = @"男";
             }else if ([number isEqualToString:@"2"]){
-            
+                
                 self.sex.text = @"女";
             }
             
-
+            
             
         }
-        
-        
-//        for (NSDictionary *dic in data) {
-//
-//                self.nickName.text = dic[@"data"][@"nickName"];
-//                self.sex.text = dic[@"data"][@"sex"];
-//                self.area.text = dic[@"data"][@"area"];
-//                self.signature.text = dic[@"data"][@"signature"];
-//
-//        }
         
     }];
     
@@ -137,7 +133,7 @@
 - (void)submitData{
     
     
-    NSLog(@"*********************************请求用户资料***************************************");
+    //    NSLog(@"*********************************请求用户资料***************************************");
     
     
     BaseJsonData * data = [[BaseJsonData alloc]init];
@@ -149,7 +145,7 @@
     
     NSString *url = [NSString stringWithFormat:@"http://%@/user/dataEdit/",kLoginServer];
     
-    NSLog(@"请求的地址了： %@",url);
+    //    NSLog(@"请求的地址了： %@",url);
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
@@ -162,22 +158,24 @@
     if ([_sex.text isEqualToString:@"男"]) {
         params[@"sex"] = @"1";
     }else if ([_sex.text isEqualToString:@"女"]){
-    
+        
         params[@"sex"] = @"2";
     }
     
-//    params[@"sex"] = @"1";
+    //    params[@"sex"] = @"1";
     params[@"area"] = _area.text;
     params[@"signature"] = _signature.text;
     
     [data POSTData:url and:params and:^(id dict) {
         
-        NSLog(@"提交返回： %@",dict);
+        //        NSLog(@"提交返回： %@",dict);
         
         NSString *code = dict[@"code"];
         
         if ([code isEqualToString:@"1"]) {
             
+            [userDefault setObject:_nickName.text forKey:@"nickName"];
+            [userDefault synchronize];
             [BaseAlertView AlertView:@"提交成功"];
             
             
@@ -196,14 +194,14 @@
     NSString *key = [userDefaults objectForKey:@"key"];
     
     
-    NSString *urlstaring = [NSString stringWithFormat:@"http://%@/user/headUp?key=g23das1sd21dsf121key=g23das1sd21dsf121",kLoginServer];
+    NSString *urlstaring = [NSString stringWithFormat:@"http://%@/user/headUp?key=%@",kLoginServer,key];
     
     UIImage *asset = self.headPath.image;
     NSData *data1 = UIImageJPEGRepresentation(asset, 0.2);
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//这个有时必须设置
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    //    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//这个有时必须设置
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
     NSMutableDictionary *parame = [NSMutableDictionary dictionary];
     parame[@"key"] = key;
@@ -211,7 +209,7 @@
     
     AFHTTPRequestOperation *operation = [manager POST:urlstaring parameters:parame constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
-//        NSLog(@"***********正在请求  请求地址：%@*******************",urlstaring);
+        //        NSLog(@"***********正在请求  请求地址：%@*******************",urlstaring);
         [formData appendPartWithFileData:data1 name:@"file" fileName:@"ddd.png" mimeType:@"image/jpeg"];
         
         
@@ -226,18 +224,18 @@
             
             NSString *str = dic[@"headPath"];
             
-           [userDefaults setObject:str forKey:@"headPath"];
+            [userDefaults setObject:str forKey:@"headPath"];
             
             //及时刷新
             [userDefaults synchronize];
-        
+            
         }
         
         NSString *code = responseObject[@"code"];
         if ([code isEqualToString:@"1" ]) {
             
-            [self AlertView:@"图片上传成功"];
-           
+            //            [self AlertView:@"图片上传成功"];
+            
             
         }else if ([code isEqualToString:@"2" ]){
             
@@ -255,8 +253,8 @@
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                
-            NSLog(@"***********请求失败**********%@",error);
+        
+        NSLog(@"***********请求失败**********%@",error);
     }];
     
     
@@ -288,7 +286,7 @@
     imagePicker.allowsEditing = YES;
     //进入到相册页面
     [self presentViewController:imagePicker animated:YES completion:nil];
-
+    
     
     
 }
@@ -325,31 +323,31 @@
     //创建弹出框
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择性别" message:nil delegate:self cancelButtonTitle:@"男" otherButtonTitles:@"女" ,nil];
     
-//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    //    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     alert.tag = 101;
     [alert show];
-   
+    
 }
 
 - (IBAction)areaButton:(UIButton *)sender {
     
     //创建弹出框
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入昵称" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消" ,nil];
-//    
-//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    alert.tag = 102;
-//    [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入地区" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消" ,nil];
+    
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.tag = 102;
+    [alert show];
     
     //开启一个挡板
-//    [MBProgressHUD showMessage:@"正在加载..."];
+    //    [MBProgressHUD showMessage:@"正在加载..."];
     
-   MBProgressHUD *hub = [[MBProgressHUD alloc]init];
-    [hub show:YES];
+    //   MBProgressHUD *hub = [[MBProgressHUD alloc]init];
+    //    [hub show:YES];
+    //
+    //
+    //    [self _loadPickView];
     
     
-    [self _loadPickView];
-    
-   
 }
 
 - (IBAction)signatureButton:(UIButton *)sender {
@@ -360,7 +358,7 @@
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     alert.tag = 103;
     [alert show];
-
+    
 }
 
 
@@ -369,10 +367,10 @@
     
     if (buttonIndex == 0) {
         
-      UITextField *  _file = [alertView textFieldAtIndex:0];
+        UITextField *  _file = [alertView textFieldAtIndex:0];
         NSLog(@"%@",_file.text);
         
-    
+        
         switch (alertView.tag) {
             case 100:
                 
@@ -402,7 +400,7 @@
             default:
                 break;
         }
-
+        
         
         
         
@@ -421,7 +419,7 @@
 
 
 - (void)_loadPickView{
-
+    
     pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 200, 375, 360)];
     pickView.backgroundColor = [UIColor yellowColor];
     
@@ -430,7 +428,7 @@
     
     [self.view addSubview:pickView];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(100, 430, 175, 40);
     button.backgroundColor = [UIColor lightGrayColor];
     [button setTitle:@"确定" forState:UIControlStateNormal];
@@ -442,15 +440,18 @@
     NSString *path = [[NSBundle mainBundle]pathForResource:@"cityes.plist" ofType:nil];
     cityArr = [NSArray arrayWithContentsOfFile:path];
     
-
+    
 }
 
 //城市选择确定按钮
 - (void)cityAction:(UIButton *)button{
-
-    [MBProgressHUD hideHUD];
     
-
+    //    [MBProgressHUD hideHUD];
+    [pickView removeFromSuperview];
+    
+    //    [button removeFromSuperview];
+    
+    
 }
 
 
