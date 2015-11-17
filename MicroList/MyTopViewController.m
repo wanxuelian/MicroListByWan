@@ -85,6 +85,10 @@
     FirstCell *cell = [[FirstCell alloc]init];
     [cell.userPhoto sd_setImageWithURL:url];
     
+    
+ 
+    
+    
 }
 /*
 //- (void)notificationAction:(NSNotification *)notification{
@@ -106,11 +110,7 @@
     
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
-//    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-//    NSTimeInterval a=[dat timeIntervalSince1970];  //精确到秒
-//    NSString *timeString = [NSString stringWithFormat:@"%f|%@|%@", a,_userphone,_uid]; //转为字符型
-//    NSString *encryptedData = [AESCrypt encrypt:timeString password:timeString];//加密
-    
+ 
     //获取UserDefault
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
 //    NSString *name = [userDefault objectForKey:@"username"];
@@ -184,7 +184,7 @@
     
 */
  }
-
+/*
 - (void)getPhotoData{
 
     NSString *urlstaring = @"http://dev-hello-baby.com/api/upload";
@@ -218,7 +218,7 @@
     
 }
 
-
+*/
 
 
 
@@ -307,10 +307,26 @@
 //        
 //        
 //        cell.user.text = selectModel.username;
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSString *headPath = [userDefault objectForKey:@"headPath"];
+        NSString *nickName = [userDefault objectForKey: @"nickName"];
         
+        NSLog(@"nickName:%@",nickName);
         
-        cell.model = _array[indexPath.row];
-        cell.user.text = _nickName;
+        if (cell.userPhoto != nil) {
+            
+            NSString *image = [NSString stringWithFormat:@"http://%@%@",kLoginServer,headPath];
+            NSLog(@"image:%@",image);
+            NSURL *url = [NSURL URLWithString:image];
+            [cell.userPhoto sd_setImageWithURL:url];
+            
+        }
+        cell.user.text = nickName;
+        
+
+        
+//        cell.model = _array[indexPath.row];
+//        cell.user.text = _nickName;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor yellowColor];
