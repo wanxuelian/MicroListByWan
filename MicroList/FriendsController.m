@@ -113,7 +113,7 @@
 
 - (IBAction)chat:(UIButton *)sender {
     
-    ChatViewController * chat = [[ChatViewController alloc]init];
+    ChatViewController * chat = [[ChatViewController alloc]initWithChatter:@"18552123120" isGroup:NO];
     
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
     

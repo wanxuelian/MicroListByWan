@@ -321,6 +321,9 @@
     NSString * usernameStr = _userName.text;
     NSString * passwordStr = _passWord.text;
     
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
+    
+    
     NSString * safeString = [self saltMD5:passwordStr];
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
@@ -331,7 +334,7 @@
     
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     params[@"mobile"] = usernameStr;
-    params[@"password"] = safeString;
+    params[@"password"] = passwordStr;
     
     
     
@@ -361,6 +364,7 @@
             
             
             [self dismissViewControllerAnimated:YES completion:nil];
+            
             
             
         }else if ([code isEqualToString:@"2" ]){

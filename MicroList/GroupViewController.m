@@ -8,7 +8,7 @@
 
 #import "GroupViewController.h"
 #import "MessageModel.h"
-#import "MassageViewCell.h"
+//#import "MassageViewCell.h"
 #import "EaseMob.h"
 @interface GroupViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -121,14 +121,14 @@
     _arrModel = [NSMutableArray arrayWithCapacity:_data.count];
     
     for (NSDictionary *dic in _data) {
-        MessageModel *model = [[MessageModel alloc] init];
-        
-        model.content = dic[@"content"];
-        model.icon = dic[@"icon"];
-        model.time = dic[@"time"];
-        model.isSelf = [dic[@"self"] boolValue];
-        
-        [_arrModel addObject:model];
+//        MessageModel *model = [[MessageModel alloc] init];
+//        
+//        model.content = dic[@"content"];
+//        model.icon = dic[@"icon"];
+//        model.time = dic[@"time"];
+//        model.isSelf = [dic[@"self"] boolValue];
+//        
+//        [_arrModel addObject:model];
     }
 }
 
@@ -151,20 +151,20 @@
     static NSString *identifier = @"myCell";
     
     
-    MassageViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (cell == nil) {
-        
-        cell = [[MassageViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
-        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-        UIView *bgView = [[UIView alloc] initWithFrame:cell.bounds];
-        bgView.backgroundColor = [UIColor clearColor];
-        cell.selectedBackgroundView = bgView;
-    }
-    
-    cell.model = _arrModel[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//
+//    if (cell == nil) {
+//        
+//        cell = [[MassageViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//        
+//        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        
+//        UIView *bgView = [[UIView alloc] initWithFrame:cell.bounds];
+//        bgView.backgroundColor = [UIColor clearColor];
+//        cell.selectedBackgroundView = bgView;
+//    }
+//    
+//    cell.model = _arrModel[indexPath.row];
     
     return cell;
 }
@@ -288,10 +288,10 @@
         //2.创建model
         
         MessageModel *model = [[MessageModel alloc] init];
-        model.content = content;
-        model.time = @"";
-        model.icon = @"icon01.jpg";
-        model.isSelf = YES;
+//        model.content = content;
+//        model.time = @"";
+//        model.icon = @"icon01.jpg";
+//        model.isSelf = YES;
         
         //3.将模型加入到数组中
         

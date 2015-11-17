@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B3C95D0D-7385-4E30-A37F-8159F0867507</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MicroList</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1C00278CD4064E2A63F3DBD118BCC8DB70E2BB17</key>
+		<string>https://github.com/je37493149/MicroListByWan.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MicroList.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1C00278CD4064E2A63F3DBD118BCC8DB70E2BB17</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/je37493149/MicroListByWan.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1C00278CD4064E2A63F3DBD118BCC8DB70E2BB17</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1C00278CD4064E2A63F3DBD118BCC8DB70E2BB17</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MicroListByWan</string>
+		</dict>
+	</array>
+</dict>
+</plist>

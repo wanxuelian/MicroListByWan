@@ -114,10 +114,10 @@
     //获取UserDefault
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
 //    NSString *name = [userDefault objectForKey:@"username"];
-//    NSString *key = [userDefault objectForKey:@"key"];
+    NSString *key = [userDefault objectForKey:@"key"];
     
     
-    NSString *key = @"qcl901028";
+//    NSString *key = @"qcl901028";
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"key"] = key;
     params[@"type"] = @"2";
