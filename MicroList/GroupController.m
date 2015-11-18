@@ -10,6 +10,8 @@
 #import "TopCoilTableViewCell.h"
 #import "GroupNewsViewController.h"
 #import "GroupListModel.h"
+#import "GroupListViewController.h"
+#import "CreateGroupViewController.h"
 @interface GroupController ()<UITableViewDelegate, UITableViewDataSource>
 {
 
@@ -32,24 +34,36 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 //    [self.view addSubview:GroupBar];
 
     CGRect rect = [[UIScreen mainScreen] bounds];
-    UITableView *tableGroup = [[UITableView alloc] initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height) style:UITableViewStylePlain];
+    UITableView *tableGroup = [[UITableView alloc] initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped];
     tableGroup.delegate = self;
     tableGroup.dataSource = self;
     [self.view addSubview:tableGroup];
     
     
     UIButton *rightBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBut setTitle:@"添加好友" forState:UIControlStateNormal];
+    [rightBut setTitle:@"加入群组" forState:UIControlStateNormal];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"添加好友" style:UIBarButtonItemStyleDone target:self action:@selector(rightButtonAction:)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"添加群组" style:UIBarButtonItemStyleDone target:self action:@selector(rightButtonAction:)];
     
     self.navigationItem.rightBarButtonItem = rightItem;
     
-
+    
+    
+    UIView *view = [[UIView alloc]init];
+    
+    UIButton *chatButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    chatButton.frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
+    chatButton.backgroundColor = [UIColor colorWithRed:0.874 green:0.857 blue:0.876 alpha:1.000];
+    [chatButton setTitle:@"新建群聊" forState:UIControlStateNormal];
+    [chatButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [view addSubview:chatButton];
+   
+//    tableGroup.tableFooterView = view;
     
     
     
-    [self getData2];
+//    [self getData2];
     
     
     
@@ -57,7 +71,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 - (void)rightButtonAction:(UIButton *)button{
     //创建弹出框
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"创建群组" message:@"输入群组账号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消" ,nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"加入群组" message:@"输入群组账号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消" ,nil];
     
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     
@@ -67,7 +81,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 
 
-//好友列表请求
+//群组列表请求
 - (void)getData2{
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
@@ -131,19 +145,29 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
     
 }
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
-}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GroupNewsViewController *groupNewContr = [[GroupNewsViewController alloc] init];
-    [self.navigationController pushViewController:groupNewContr animated:YES];
-}
 
 #pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    
+    
+//    if (section ==0) {
+//        return 2;
+//    }else if (section == 2){
+//    
+//        return 1;
+//    }
+//    
+//    return 3;
+    
+    
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,30 +175,54 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     if (cell == nil) {
         cell = [[TopCoilTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         
-        
     }
+   
+ 
     return cell;
 }
+
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 110;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GroupNewsViewController *groupNewContr = [[GroupNewsViewController alloc] init];
+    [self.navigationController pushViewController:groupNewContr animated:YES];
+}
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
-    
+//    if (section == 0) {
+//        return @"为你推荐";
+//    }
     return @"为你推荐";
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//
+//
+//    return 50.0f;
+//}
+
+
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//
+//        return view;
+//}
+
+- (void)buttonAction:(UIButton *)button{
+    
+//    CreateGroupViewController *creatGroup =[[CreateGroupViewController alloc]init];
+//    [self.navigationController pushViewController:creatGroup animated:YES];
+    
+    GroupNewsViewController *news = [[GroupNewsViewController alloc]init];
+    [self.navigationController pushViewController:news animated:YES];
+
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
