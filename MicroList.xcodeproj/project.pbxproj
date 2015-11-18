@@ -64,6 +64,28 @@
 		048B0F6B1BFB4EAD00C9A1F0 /* RealtimeSearchUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F6A1BFB4EAD00C9A1F0 /* RealtimeSearchUtil.m */; };
 		048B0F6E1BFB4EE100C9A1F0 /* EMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F6D1BFB4EE100C9A1F0 /* EMTextView.m */; };
 		048B0F741BFC34F100C9A1F0 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F731BFC34F100C9A1F0 /* RegisterViewController.xib */; };
+		048B0F771BFC4AE200C9A1F0 /* CameraHappyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F761BFC4AE200C9A1F0 /* CameraHappyController.m */; };
+		048B0F7D1BFC4BA700C9A1F0 /* TopGTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F7C1BFC4BA700C9A1F0 /* TopGTypeModel.m */; };
+		048B0F801BFC4BB600C9A1F0 /* photoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F7F1BFC4BB600C9A1F0 /* photoModel.m */; };
+		048B0F831BFC4BC000C9A1F0 /* PrintObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F821BFC4BC000C9A1F0 /* PrintObject.m */; };
+		048B0F861BFC4BCE00C9A1F0 /* PhotoSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F851BFC4BCE00C9A1F0 /* PhotoSelect.m */; };
+		048B0F931BFC5BAF00C9A1F0 /* camaers0.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F881BFC5BAF00C9A1F0 /* camaers0.png */; };
+		048B0F941BFC5BAF00C9A1F0 /* camaers1.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F891BFC5BAF00C9A1F0 /* camaers1.png */; };
+		048B0F951BFC5BAF00C9A1F0 /* camaers2.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F8A1BFC5BAF00C9A1F0 /* camaers2.png */; };
+		048B0F961BFC5BAF00C9A1F0 /* camaers3.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F8B1BFC5BAF00C9A1F0 /* camaers3.png */; };
+		048B0F971BFC5BAF00C9A1F0 /* camaers4.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F8C1BFC5BAF00C9A1F0 /* camaers4.png */; };
+		048B0F981BFC5BAF00C9A1F0 /* camaers5.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F8D1BFC5BAF00C9A1F0 /* camaers5.png */; };
+		048B0F991BFC5BAF00C9A1F0 /* camaers6.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F8E1BFC5BAF00C9A1F0 /* camaers6.png */; };
+		048B0F9A1BFC5BAF00C9A1F0 /* camaers7.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F8F1BFC5BAF00C9A1F0 /* camaers7.png */; };
+		048B0F9B1BFC5BAF00C9A1F0 /* camaers8.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F901BFC5BAF00C9A1F0 /* camaers8.png */; };
+		048B0F9C1BFC5BAF00C9A1F0 /* camaers9.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F911BFC5BAF00C9A1F0 /* camaers9.png */; };
+		048B0F9D1BFC5BAF00C9A1F0 /* camaers9(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F921BFC5BAF00C9A1F0 /* camaers9(1).png */; };
+		048B0FA01BFC5BCF00C9A1F0 /* 相册photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F9E1BFC5BCF00C9A1F0 /* 相册photo.png */; };
+		048B0FA11BFC5BCF00C9A1F0 /* 相机photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F9F1BFC5BCF00C9A1F0 /* 相机photo.png */; };
+		048B0FA31BFC5C5100C9A1F0 /* icon_image_yes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0FA21BFC5C5100C9A1F0 /* icon_image_yes@3x.png */; };
+		048B0FA51BFC5C5800C9A1F0 /* icon_image_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */; };
+		048B0FA71BFC5C5F00C9A1F0 /* icon_image_no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */; };
+		048B0FA91BFC5C6500C9A1F0 /* icon_image_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */; };
 		049FC3E61BE8848C002558A8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FC3E51BE8848C002558A8 /* BaseViewController.m */; };
 		049FC4DF1BE8917B002558A8 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FC4DB1BE8917B002558A8 /* account.png */; };
 		049FC4E01BE8917B002558A8 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FC4DC1BE8917B002558A8 /* account@2x.png */; };
@@ -137,7 +159,6 @@
 		049FCBD81BF2ED36002558A8 /* ChattingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCBD61BF2ED36002558A8 /* ChattingViewController.m */; };
 		049FCBD91BF2ED36002558A8 /* ChattingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049FCBD71BF2ED36002558A8 /* ChattingViewController.xib */; };
 		049FCBDC1BF30ABE002558A8 /* BaseAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCBDB1BF30ABE002558A8 /* BaseAlertView.m */; };
-		049FCBE41BF3155A002558A8 /* CameraHappyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCBDF1BF3155A002558A8 /* CameraHappyController.m */; };
 		049FCBE51BF3155A002558A8 /* CameraPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCBE11BF3155A002558A8 /* CameraPhotoController.m */; };
 		049FCBE61BF3155A002558A8 /* CamerasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCBE31BF3155A002558A8 /* CamerasViewController.m */; };
 		049FCBFA1BF315A0002558A8 /* MJArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCBE81BF315A0002558A8 /* MJArgument.m */; };
@@ -884,6 +905,33 @@
 		048B0F6C1BFB4EE100C9A1F0 /* EMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTextView.h; sourceTree = "<group>"; };
 		048B0F6D1BFB4EE100C9A1F0 /* EMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextView.m; sourceTree = "<group>"; };
 		048B0F731BFC34F100C9A1F0 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		048B0F751BFC4AE200C9A1F0 /* CameraHappyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraHappyController.h; sourceTree = "<group>"; };
+		048B0F761BFC4AE200C9A1F0 /* CameraHappyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraHappyController.m; sourceTree = "<group>"; };
+		048B0F7B1BFC4BA700C9A1F0 /* TopGTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopGTypeModel.h; sourceTree = "<group>"; };
+		048B0F7C1BFC4BA700C9A1F0 /* TopGTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopGTypeModel.m; sourceTree = "<group>"; };
+		048B0F7E1BFC4BB600C9A1F0 /* photoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = photoModel.h; sourceTree = "<group>"; };
+		048B0F7F1BFC4BB600C9A1F0 /* photoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = photoModel.m; sourceTree = "<group>"; };
+		048B0F811BFC4BC000C9A1F0 /* PrintObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintObject.h; sourceTree = "<group>"; };
+		048B0F821BFC4BC000C9A1F0 /* PrintObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintObject.m; sourceTree = "<group>"; };
+		048B0F841BFC4BCE00C9A1F0 /* PhotoSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSelect.h; sourceTree = "<group>"; };
+		048B0F851BFC4BCE00C9A1F0 /* PhotoSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSelect.m; sourceTree = "<group>"; };
+		048B0F881BFC5BAF00C9A1F0 /* camaers0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers0.png; sourceTree = "<group>"; };
+		048B0F891BFC5BAF00C9A1F0 /* camaers1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers1.png; sourceTree = "<group>"; };
+		048B0F8A1BFC5BAF00C9A1F0 /* camaers2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers2.png; sourceTree = "<group>"; };
+		048B0F8B1BFC5BAF00C9A1F0 /* camaers3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers3.png; sourceTree = "<group>"; };
+		048B0F8C1BFC5BAF00C9A1F0 /* camaers4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers4.png; sourceTree = "<group>"; };
+		048B0F8D1BFC5BAF00C9A1F0 /* camaers5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers5.png; sourceTree = "<group>"; };
+		048B0F8E1BFC5BAF00C9A1F0 /* camaers6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers6.png; sourceTree = "<group>"; };
+		048B0F8F1BFC5BAF00C9A1F0 /* camaers7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers7.png; sourceTree = "<group>"; };
+		048B0F901BFC5BAF00C9A1F0 /* camaers8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers8.png; sourceTree = "<group>"; };
+		048B0F911BFC5BAF00C9A1F0 /* camaers9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camaers9.png; sourceTree = "<group>"; };
+		048B0F921BFC5BAF00C9A1F0 /* camaers9(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camaers9(1).png"; sourceTree = "<group>"; };
+		048B0F9E1BFC5BCF00C9A1F0 /* 相册photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册photo.png"; sourceTree = "<group>"; };
+		048B0F9F1BFC5BCF00C9A1F0 /* 相机photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相机photo.png"; sourceTree = "<group>"; };
+		048B0FA21BFC5C5100C9A1F0 /* icon_image_yes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_yes@3x.png"; sourceTree = "<group>"; };
+		048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_yes@2x.png"; sourceTree = "<group>"; };
+		048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_no@3x.png"; sourceTree = "<group>"; };
+		048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_no@2x.png"; sourceTree = "<group>"; };
 		049FC3E41BE8848C002558A8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		049FC3E51BE8848C002558A8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		049FC4DB1BE8917B002558A8 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
@@ -1002,8 +1050,6 @@
 		049FCBD71BF2ED36002558A8 /* ChattingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChattingViewController.xib; sourceTree = "<group>"; };
 		049FCBDA1BF30ABE002558A8 /* BaseAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAlertView.h; sourceTree = "<group>"; };
 		049FCBDB1BF30ABE002558A8 /* BaseAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAlertView.m; sourceTree = "<group>"; };
-		049FCBDE1BF3155A002558A8 /* CameraHappyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraHappyController.h; sourceTree = "<group>"; };
-		049FCBDF1BF3155A002558A8 /* CameraHappyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraHappyController.m; sourceTree = "<group>"; };
 		049FCBE01BF3155A002558A8 /* CameraPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPhotoController.h; sourceTree = "<group>"; };
 		049FCBE11BF3155A002558A8 /* CameraPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPhotoController.m; sourceTree = "<group>"; };
 		049FCBE21BF3155A002558A8 /* CamerasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CamerasViewController.h; sourceTree = "<group>"; };
@@ -1862,12 +1908,15 @@
 			children = (
 				1B6324341BE5A13B00348561 /* PhotoViewController.h */,
 				1B6324351BE5A13B00348561 /* PhotoViewController.m */,
-				049FCBDE1BF3155A002558A8 /* CameraHappyController.h */,
-				049FCBDF1BF3155A002558A8 /* CameraHappyController.m */,
 				049FCBE01BF3155A002558A8 /* CameraPhotoController.h */,
 				049FCBE11BF3155A002558A8 /* CameraPhotoController.m */,
 				049FCBE21BF3155A002558A8 /* CamerasViewController.h */,
 				049FCBE31BF3155A002558A8 /* CamerasViewController.m */,
+				048B0F751BFC4AE200C9A1F0 /* CameraHappyController.h */,
+				048B0F761BFC4AE200C9A1F0 /* CameraHappyController.m */,
+				048B0F871BFC4C1E00C9A1F0 /* photo */,
+				048B0F7A1BFC4B8200C9A1F0 /* Model */,
+				048B0F781BFC4B7000C9A1F0 /* View */,
 				049FCCCD1BF31BA0002558A8 /* APTagCon */,
 				049FCC0B1BF3163B002558A8 /* APTextTagModel */,
 				049FCC071BF3161A002558A8 /* APAudioTagModel */,
@@ -2403,6 +2452,35 @@
 				048B0F5E1BFB4DE500C9A1F0 /* EMRemarkImageView.m */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		048B0F781BFC4B7000C9A1F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				048B0F841BFC4BCE00C9A1F0 /* PhotoSelect.h */,
+				048B0F851BFC4BCE00C9A1F0 /* PhotoSelect.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		048B0F7A1BFC4B8200C9A1F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				048B0F7B1BFC4BA700C9A1F0 /* TopGTypeModel.h */,
+				048B0F7C1BFC4BA700C9A1F0 /* TopGTypeModel.m */,
+				048B0F7E1BFC4BB600C9A1F0 /* photoModel.h */,
+				048B0F7F1BFC4BB600C9A1F0 /* photoModel.m */,
+				048B0F811BFC4BC000C9A1F0 /* PrintObject.h */,
+				048B0F821BFC4BC000C9A1F0 /* PrintObject.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		048B0F871BFC4C1E00C9A1F0 /* photo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = photo;
 			sourceTree = "<group>";
 		};
 		049FC3E31BE88466002558A8 /* Base */ = {
@@ -4433,6 +4511,23 @@
 		E238B43B1BCF708600441BB5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */,
+				048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */,
+				048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */,
+				048B0FA21BFC5C5100C9A1F0 /* icon_image_yes@3x.png */,
+				048B0F9E1BFC5BCF00C9A1F0 /* 相册photo.png */,
+				048B0F9F1BFC5BCF00C9A1F0 /* 相机photo.png */,
+				048B0F881BFC5BAF00C9A1F0 /* camaers0.png */,
+				048B0F891BFC5BAF00C9A1F0 /* camaers1.png */,
+				048B0F8A1BFC5BAF00C9A1F0 /* camaers2.png */,
+				048B0F8B1BFC5BAF00C9A1F0 /* camaers3.png */,
+				048B0F8C1BFC5BAF00C9A1F0 /* camaers4.png */,
+				048B0F8D1BFC5BAF00C9A1F0 /* camaers5.png */,
+				048B0F8E1BFC5BAF00C9A1F0 /* camaers6.png */,
+				048B0F8F1BFC5BAF00C9A1F0 /* camaers7.png */,
+				048B0F901BFC5BAF00C9A1F0 /* camaers8.png */,
+				048B0F911BFC5BAF00C9A1F0 /* camaers9.png */,
+				048B0F921BFC5BAF00C9A1F0 /* camaers9(1).png */,
 				049FCB351BEC7BEE002558A8 /* messages.plist */,
 				E2340CC51BD9E3C3000FF32D /* image */,
 				E2380C411BD0EFB2009DCC46 /* Food.plist */,
@@ -4619,12 +4714,14 @@
 				4CE6BA931BFAD44400C2C2D2 /* chat_sender_audio_playing_001.png in Resources */,
 				049FCC7A1BF317B7002558A8 /* CameraEffectDefault.png in Resources */,
 				4CE6BA161BFAD44400C2C2D2 /* VoiceSearchFeedback004.png in Resources */,
+				048B0F9D1BFC5BAF00C9A1F0 /* camaers9(1).png in Resources */,
 				4CE6BA9C1BFAD44400C2C2D2 /* chat_sender_bg@2x.png in Resources */,
 				1B7ECC6F1BE4C17F002960F4 /* picture4.png in Resources */,
 				4CE6BAA31BFAD44400C2C2D2 /* delete@2x.png in Resources */,
 				4CE6BAAD1BFAD44400C2C2D2 /* groupPrivateHeader@2x.png in Resources */,
 				4CE6BA7A1BFAD44400C2C2D2 /* chatBar_more_cameraSelected.png in Resources */,
 				4CE6BA201BFAD44400C2C2D2 /* VoiceSearchFeedback009.png in Resources */,
+				048B0F971BFC5BAF00C9A1F0 /* camaers4.png in Resources */,
 				4CE6BA1D1BFAD44400C2C2D2 /* VoiceSearchFeedback007@2x.png in Resources */,
 				1B9E9F681BE4F7C4001EF61A /* avarer.png in Resources */,
 				4CE6BA0B1BFAD44400C2C2D2 /* 57.png in Resources */,
@@ -4716,6 +4813,7 @@
 				4CE6BA591BFAD44400C2C2D2 /* chatBar_face@2x.png in Resources */,
 				049FCC871BF317B7002558A8 /* CameraFilter@2x.png in Resources */,
 				049FCC731BF317B7002558A8 /* Contents.json in Resources */,
+				048B0FA91BFC5C6500C9A1F0 /* icon_image_no@2x.png in Resources */,
 				4CE6BA191BFAD44400C2C2D2 /* VoiceSearchFeedback005@2x.png in Resources */,
 				4CE6BA611BFAD44400C2C2D2 /* chatBar_more@2x.png in Resources */,
 				1B7ECC331BE4C176002960F4 /* arderIcon10.png in Resources */,
@@ -4790,6 +4888,7 @@
 				4CE6BA341BFAD44400C2C2D2 /* VoiceSearchFeedback019.png in Resources */,
 				049FCCE81BF31DCF002558A8 /* camera_shoot@2x.png in Resources */,
 				1B7ECC761BE4C17F002960F4 /* 组 11.png in Resources */,
+				048B0FA31BFC5C5100C9A1F0 /* icon_image_yes@3x.png in Resources */,
 				049FCCE61BF31DCF002558A8 /* camera_cancel@2x.png in Resources */,
 				1B7ECC681BE4C17F002960F4 /* picture1.png in Resources */,
 				4CE6BA991BFAD44400C2C2D2 /* chat_sender_audio_playing_full.png in Resources */,
@@ -4806,6 +4905,7 @@
 				049FCCF71BF324E6002558A8 /* ChatingFriendCell.xib in Resources */,
 				4CE6BA501BFAD44400C2C2D2 /* chat_location_detail_disclosureHL.png in Resources */,
 				049FCC101BF31786002558A8 /* Resoures.bundle in Resources */,
+				048B0FA51BFC5C5800C9A1F0 /* icon_image_yes@2x.png in Resources */,
 				4CE6BA5D1BFAD44400C2C2D2 /* chatBar_keyboard@2x.png in Resources */,
 				049FCCDF1BF31DCF002558A8 /* camera_album.png in Resources */,
 				4CE6BA8F1BFAD44400C2C2D2 /* chat_receiver_bg.png in Resources */,
@@ -4836,10 +4936,13 @@
 				E2AC24F41BD63B29003D2755 /* down_dark.png in Resources */,
 				4CE6BA471BFAD44400C2C2D2 /* chatBar_more_face@2x.png in Resources */,
 				4CE6BA091BFAD44400C2C2D2 /* 120.png in Resources */,
+				048B0FA71BFC5C5F00C9A1F0 /* icon_image_no@3x.png in Resources */,
 				4CE6BA621BFAD44400C2C2D2 /* chatBar_moreSelected.png in Resources */,
 				049FCB271BEC73AA002558A8 /* chat_bottom_voice_press.png in Resources */,
 				049FCBCD1BF1DF8E002558A8 /* LICENSE in Resources */,
 				1B7ECC6C1BE4C17F002960F4 /* picture13.png in Resources */,
+				048B0F9A1BFC5BAF00C9A1F0 /* camaers7.png in Resources */,
+				048B0F961BFC5BAF00C9A1F0 /* camaers3.png in Resources */,
 				4CE6BA171BFAD44400C2C2D2 /* VoiceSearchFeedback004@2x.png in Resources */,
 				049FCC821BF317B7002558A8 /* CameraEffectVignette.png in Resources */,
 				E23EAD8E1BD4BFD50015D3CC /* ShopGoodsCell.xib in Resources */,
@@ -4856,6 +4959,7 @@
 				4CE6BA871BFAD44400C2C2D2 /* chat_receiver_audio_playing001.png in Resources */,
 				4CE6BAB61BFAD44400C2C2D2 /* tabbar_contacts@2x.png in Resources */,
 				049FCC791BF317B7002558A8 /* Contents.json in Resources */,
+				048B0FA11BFC5BCF00C9A1F0 /* 相机photo.png in Resources */,
 				4CE6BA351BFAD44400C2C2D2 /* VoiceSearchFeedback019@2x.png in Resources */,
 				4CE6BA211BFAD44400C2C2D2 /* VoiceSearchFeedback009@2x.png in Resources */,
 				4CE6BA231BFAD44400C2C2D2 /* VoiceSearchFeedback010@2x.png in Resources */,
@@ -4882,6 +4986,7 @@
 				4CE6BA5C1BFAD44400C2C2D2 /* chatBar_keyboard.png in Resources */,
 				1B7ECC771BE4C17F002960F4 /* girlAvater.png in Resources */,
 				1B7ECC321BE4C176002960F4 /* movieIcon1.png in Resources */,
+				048B0F981BFC5BAF00C9A1F0 /* camaers5.png in Resources */,
 				E23EAD891BD49ED60015D3CC /* MyCommentTableViewCell.xib in Resources */,
 				4CE6BA421BFAD44400C2C2D2 /* chatBar_more_card.png in Resources */,
 				049FCC6B1BF317B7002558A8 /* Contents.json in Resources */,
@@ -4894,6 +4999,7 @@
 				049FCC9A1BF317B7002558A8 /* CameraRoll.png in Resources */,
 				4CE6BA881BFAD44400C2C2D2 /* chat_receiver_audio_playing001@2x.png in Resources */,
 				049FCC921BF317B7002558A8 /* CameraFlashOn.png in Resources */,
+				048B0FA01BFC5BCF00C9A1F0 /* 相册photo.png in Resources */,
 				4CE6BA1C1BFAD44400C2C2D2 /* VoiceSearchFeedback007.png in Resources */,
 				049FCC9E1BF317B7002558A8 /* CameraShot.png in Resources */,
 				1B7ECC6D1BE4C17F002960F4 /* picture2.png in Resources */,
@@ -4902,6 +5008,7 @@
 				4CE6BA2B1BFAD44400C2C2D2 /* VoiceSearchFeedback014@2x.png in Resources */,
 				049FCC991BF317B7002558A8 /* Contents.json in Resources */,
 				0457482B1BF99AD20058223F /* sr_refresh@2X.png in Resources */,
+				048B0F9C1BFC5BAF00C9A1F0 /* camaers9.png in Resources */,
 				4CE6BAB81BFAD44400C2C2D2 /* tabbar_contactsHL@2x.png in Resources */,
 				4CE6BA9A1BFAD44400C2C2D2 /* chat_sender_audio_playing_full@2x.png in Resources */,
 				4CE6BA771BFAD44400C2C2D2 /* chatBar_colorMore_videoSelected@2x.png in Resources */,
@@ -4910,6 +5017,7 @@
 				4CE6BAA01BFAD44400C2C2D2 /* password@2x.png in Resources */,
 				4CE6BA801BFAD44400C2C2D2 /* chatBar_more_photo.png in Resources */,
 				4CE6BA701BFAD44400C2C2D2 /* chatBar_colorMore_location@2x.png in Resources */,
+				048B0F941BFC5BAF00C9A1F0 /* camaers1.png in Resources */,
 				4CE6BA581BFAD44400C2C2D2 /* chatBar_face.png in Resources */,
 				049FCC751BF317B7002558A8 /* Contents.json in Resources */,
 				4CE6BA401BFAD44400C2C2D2 /* callBg@2x.png in Resources */,
@@ -4936,6 +5044,7 @@
 				4CE6BA8E1BFAD44400C2C2D2 /* chat_receiver_audio_playing_full@2x.png in Resources */,
 				4CE6BA6E1BFAD44400C2C2D2 /* chatBar_colorMore_camera@2x.png in Resources */,
 				4CC5BE721BFABB3C009AF412 /* MWPhotoBrowser.bundle in Resources */,
+				048B0F951BFC5BAF00C9A1F0 /* camaers2.png in Resources */,
 				4CE6BA0D1BFAD44400C2C2D2 /* 80.png in Resources */,
 				049FCCA01BF317B7002558A8 /* CameraShot@3x.png in Resources */,
 				049FCB2D1BEC73AA002558A8 /* Icon@2x.png in Resources */,
@@ -4949,6 +5058,7 @@
 				1B7ECC741BE4C17F002960F4 /* picture9.png in Resources */,
 				4CE6BA7F1BFAD44400C2C2D2 /* chatBar_more_locationSelected@2x.png in Resources */,
 				4CE6BA4D1BFAD44400C2C2D2 /* chat_location_annotation_someone@2x.png in Resources */,
+				048B0F931BFC5BAF00C9A1F0 /* camaers0.png in Resources */,
 				049FCC6A1BF317B7002558A8 /* CameraBack@3x.png in Resources */,
 				4CE6BAAE1BFAD44400C2C2D2 /* groupPublicHeader@2x.png in Resources */,
 				1B7ECC381BE4C176002960F4 /* figreIcon5.png in Resources */,
@@ -4963,6 +5073,7 @@
 				049FCB281BEC73AA002558A8 /* chatfrom_bg_normal.png in Resources */,
 				1B7ECC5D1BE4C17F002960F4 /* icon10.png in Resources */,
 				049FCCA51BF317B7002558A8 /* Contents.json in Resources */,
+				048B0F991BFC5BAF00C9A1F0 /* camaers6.png in Resources */,
 				4CE6BAB21BFAD44400C2C2D2 /* tabbar_chats@2x.png in Resources */,
 				1B7ECC341BE4C176002960F4 /* icon11.png in Resources */,
 				4CE6BA3C1BFAD44400C2C2D2 /* call_silence.png in Resources */,
@@ -4981,6 +5092,7 @@
 				049FCC881BF317B7002558A8 /* CameraFilter@3x.png in Resources */,
 				1B7ECC611BE4C17F002960F4 /* icon3.png in Resources */,
 				4CE6BA271BFAD44400C2C2D2 /* VoiceSearchFeedback012@2x.png in Resources */,
+				048B0F9B1BFC5BAF00C9A1F0 /* camaers8.png in Resources */,
 				049FCCE51BF31DCF002558A8 /* camera_cancel.png in Resources */,
 				049FCC841BF317B7002558A8 /* CameraEffectVignette@3x.png in Resources */,
 				4CE6BA4F1BFAD44400C2C2D2 /* chat_location_detail_disclosure@2x.png in Resources */,
@@ -5084,6 +5196,7 @@
 				E23EAD8D1BD4BFD50015D3CC /* ShopGoodsCell.m in Sources */,
 				4CC5BDE41BFABAF7009AF412 /* EMChatImageBubbleView.m in Sources */,
 				1B5568641BEAFC5B00DA55B9 /* CommentModel.m in Sources */,
+				048B0F801BFC4BB600C9A1F0 /* photoModel.m in Sources */,
 				4CC5BE6B1BFABB3C009AF412 /* PSTCollectionViewItemKey.m in Sources */,
 				4CC5BE4F1BFABB3C009AF412 /* MWPhoto.m in Sources */,
 				E2B7AFBE1BD7644700FB8CA9 /* DCPathButton.m in Sources */,
@@ -5103,6 +5216,7 @@
 				048B0F531BFB4D7300C9A1F0 /* ContactSelectionViewController.m in Sources */,
 				4CE6B9371BFACDBC00C2C2D2 /* EMRotbotChatViewCell.m in Sources */,
 				E238B4B21BCF9F4200441BB5 /* DymnaicCell.m in Sources */,
+				048B0F861BFC4BCE00C9A1F0 /* PhotoSelect.m in Sources */,
 				049FCBD01BF1DF8E002558A8 /* NSString+Base64.m in Sources */,
 				049FCCC71BF31B2A002558A8 /* UIImage+Resize.m in Sources */,
 				1B9E9F911BE52F23001EF61A /* FunTransViewController.m in Sources */,
@@ -5151,6 +5265,7 @@
 				049FCBCF1BF1DF8E002558A8 /* NSData+CommonCrypto.m in Sources */,
 				E238B4661BCF730B00441BB5 /* MainsViewController.m in Sources */,
 				4CC5BE5B1BFABB3C009AF412 /* EMSDWebImagePrefetcher.m in Sources */,
+				048B0F771BFC4AE200C9A1F0 /* CameraHappyController.m in Sources */,
 				4CC5BE6C1BFABB3C009AF412 /* PSTCollectionViewLayout.m in Sources */,
 				048B0F681BFB4E7B00C9A1F0 /* EMSearchDisplayController.m in Sources */,
 				4CC5BE521BFABB3C009AF412 /* MWTapDetectingView.m in Sources */,
@@ -5253,6 +5368,7 @@
 				4CC5BE651BFABB3C009AF412 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				4CC5BDE71BFABAF7009AF412 /* EMChatVideoBubbleView.m in Sources */,
 				4CC5BDE61BFABAF7009AF412 /* EMChatTextBubbleView.m in Sources */,
+				048B0F7D1BFC4BA700C9A1F0 /* TopGTypeModel.m in Sources */,
 				049FC50C1BE9CBF5002558A8 /* AFURLSessionManager.m in Sources */,
 				E22E4A341BD2264100C82032 /* PhotoDetailViewController.m in Sources */,
 				049FD12F1BF47022002558A8 /* SelectViewViewController.m in Sources */,
@@ -5261,9 +5377,9 @@
 				049FC50B1BE9CBF5002558A8 /* AFURLResponseSerialization.m in Sources */,
 				1B7ECC141BE47B7E002960F4 /* CooseTableViewCell.m in Sources */,
 				1B9E9F771BE4FCD1001EF61A /* FigureMainViewController.m in Sources */,
-				049FCBE41BF3155A002558A8 /* CameraHappyController.m in Sources */,
 				E234F63B1BD9D7B2001964DA /* RootViewController.m in Sources */,
 				4CC5BE661BFABB3C009AF412 /* PSTCollectionView.m in Sources */,
+				048B0F831BFC4BC000C9A1F0 /* PrintObject.m in Sources */,
 				049FCBFD1BF315A0002558A8 /* MJMethod.m in Sources */,
 				1B7ECC131BE47B7E002960F4 /* MyBaskTableViewCell.m in Sources */,
 				1BBD736E1BDDD37100EFA7C0 /* BaskTableViewCell.m in Sources */,

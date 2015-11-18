@@ -123,8 +123,8 @@
     if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
         
         EMGroup *group = [[EMGroup alloc]init];
-        ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:@"111"/*group.groupId*/ isGroup:YES];
-        chatController.title = @"111"/*group.groupSubject*/;
+        ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:group.groupId isGroup:YES];
+        chatController.title = group.groupSubject;
         [self.navigationController pushViewController:chatController animated:YES];
         
     }
