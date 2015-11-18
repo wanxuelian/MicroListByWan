@@ -55,16 +55,8 @@
     [albunB setTitle:@"相册" forState:UIControlStateNormal];
     [albunB addTarget:self action:@selector(albunContr) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:albunB];*/
-    
-    
-   
-    
-    
-    
-    
-    // Do any additional setup after loading the view.
-
+    [self.view addSubview:albunB];
+    */
 }
 
     

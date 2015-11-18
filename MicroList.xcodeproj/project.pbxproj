@@ -86,6 +86,7 @@
 		048B0FA51BFC5C5800C9A1F0 /* icon_image_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */; };
 		048B0FA71BFC5C5F00C9A1F0 /* icon_image_no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */; };
 		048B0FA91BFC5C6500C9A1F0 /* icon_image_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */; };
+		048B0FAC1BFC6E7300C9A1F0 /* APTagviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0FAB1BFC6E7300C9A1F0 /* APTagviewController.m */; };
 		049FC3E61BE8848C002558A8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FC3E51BE8848C002558A8 /* BaseViewController.m */; };
 		049FC4DF1BE8917B002558A8 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FC4DB1BE8917B002558A8 /* account.png */; };
 		049FC4E01BE8917B002558A8 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FC4DC1BE8917B002558A8 /* account@2x.png */; };
@@ -249,7 +250,6 @@
 		049FCCC71BF31B2A002558A8 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCCC01BF31B2A002558A8 /* UIImage+Resize.m */; };
 		049FCCC81BF31B2A002558A8 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCCC21BF31B2A002558A8 /* UIImage+RoundedCorner.m */; };
 		049FCCC91BF31B2A002558A8 /* UIImage+SplitImageIntoTwoParts.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCCC41BF31B2A002558A8 /* UIImage+SplitImageIntoTwoParts.m */; };
-		049FCCCC1BF31B9C002558A8 /* APTagviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FCCCB1BF31B9C002558A8 /* APTagviewController.m */; };
 		049FCCCE1BF31C40002558A8 /* HiPhotoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049FCCAA1BF3180C002558A8 /* HiPhotoFramework.framework */; };
 		049FCCCF1BF31C40002558A8 /* HiPhotoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049FCCAA1BF3180C002558A8 /* HiPhotoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		049FCCDD1BF31DCF002558A8 /* btn_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FCCD11BF31DCF002558A8 /* btn_back.png */; };
@@ -932,6 +932,8 @@
 		048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_yes@2x.png"; sourceTree = "<group>"; };
 		048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_no@3x.png"; sourceTree = "<group>"; };
 		048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_no@2x.png"; sourceTree = "<group>"; };
+		048B0FAA1BFC6E7300C9A1F0 /* APTagviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTagviewController.h; sourceTree = "<group>"; };
+		048B0FAB1BFC6E7300C9A1F0 /* APTagviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APTagviewController.m; sourceTree = "<group>"; };
 		049FC3E41BE8848C002558A8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		049FC3E51BE8848C002558A8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		049FC4DB1BE8917B002558A8 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
@@ -1166,8 +1168,6 @@
 		049FCCC21BF31B2A002558A8 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		049FCCC31BF31B2A002558A8 /* UIImage+SplitImageIntoTwoParts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SplitImageIntoTwoParts.h"; sourceTree = "<group>"; };
 		049FCCC41BF31B2A002558A8 /* UIImage+SplitImageIntoTwoParts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SplitImageIntoTwoParts.m"; sourceTree = "<group>"; };
-		049FCCCA1BF31B9C002558A8 /* APTagviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTagviewController.h; sourceTree = "<group>"; };
-		049FCCCB1BF31B9C002558A8 /* APTagviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APTagviewController.m; sourceTree = "<group>"; };
 		049FCCD11BF31DCF002558A8 /* btn_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back.png; sourceTree = "<group>"; };
 		049FCCD21BF31DCF002558A8 /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
 		049FCCD31BF31DCF002558A8 /* camera_album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_album.png; sourceTree = "<group>"; };
@@ -3343,8 +3343,8 @@
 		049FCCCD1BF31BA0002558A8 /* APTagCon */ = {
 			isa = PBXGroup;
 			children = (
-				049FCCCA1BF31B9C002558A8 /* APTagviewController.h */,
-				049FCCCB1BF31B9C002558A8 /* APTagviewController.m */,
+				048B0FAA1BFC6E7300C9A1F0 /* APTagviewController.h */,
+				048B0FAB1BFC6E7300C9A1F0 /* APTagviewController.m */,
 			);
 			name = APTagCon;
 			sourceTree = "<group>";
@@ -5149,7 +5149,6 @@
 				049FCB801BF07CC6002558A8 /* SelectModel.m in Sources */,
 				E238B4411BCF708600441BB5 /* AppDelegate.m in Sources */,
 				049FC5041BE9CBF5002558A8 /* AFHTTPRequestOperation.m in Sources */,
-				049FCCCC1BF31B9C002558A8 /* APTagviewController.m in Sources */,
 				4CC5BDED1BFABAF7009AF412 /* MessageReadManager.m in Sources */,
 				049FCBAC1BF07FB0002558A8 /* UIButton+WebCache.m in Sources */,
 				049FC5091BE9CBF5002558A8 /* AFURLConnectionOperation.m in Sources */,
@@ -5251,6 +5250,7 @@
 				4CC5BE511BFABB3C009AF412 /* MWTapDetectingImageView.m in Sources */,
 				4CC5BE4E1BFABB3C009AF412 /* MWGridViewController.m in Sources */,
 				049FD1331BF5A373002558A8 /* NowShowController.m in Sources */,
+				048B0FAC1BFC6E7300C9A1F0 /* APTagviewController.m in Sources */,
 				049FCBA91BF07FB0002558A8 /* SDWebImageDownloaderOperation.m in Sources */,
 				049FD13A1BF5D0F3002558A8 /* ShopHouseController.m in Sources */,
 				4CC5BED71BFAC26E009AF412 /* EMVoiceConverter.mm in Sources */,
