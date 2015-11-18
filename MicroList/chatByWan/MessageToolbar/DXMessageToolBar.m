@@ -286,8 +286,8 @@
     [self.styleChangeButton setImage:[UIImage imageNamed:@"chatBar_keyboard"] forState:UIControlStateSelected];
     [self.styleChangeButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.styleChangeButton.tag = 0;
-    allButtonWidth += CGRectGetMaxX(self.styleChangeButton.frame);
-    textViewLeftMargin += CGRectGetMaxX(self.styleChangeButton.frame);
+//    allButtonWidth += CGRectGetMaxX(self.styleChangeButton.frame);
+//    textViewLeftMargin += CGRectGetMaxX(self.styleChangeButton.frame);
     
     //更多
     self.moreButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) - kHorizontalPadding - kInputTextViewMinHeight, kVerticalPadding, kInputTextViewMinHeight, kInputTextViewMinHeight)];
@@ -360,7 +360,7 @@
         self.recordView = [[DXRecordView alloc] initWithFrame:CGRectMake(90, 130, 140, 140)];
     }
     
-    [self.toolbarView addSubview:self.styleChangeButton];
+//    [self.toolbarView addSubview:self.styleChangeButton];
     [self.toolbarView addSubview:self.moreButton];
     [self.toolbarView addSubview:self.faceButton];
     [self.toolbarView addSubview:self.inputTextView];

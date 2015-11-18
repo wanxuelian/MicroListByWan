@@ -95,14 +95,7 @@
     
     
     BaseJsonData * data = [[BaseJsonData alloc]init];
-    
-//    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-//    NSTimeInterval a=[dat timeIntervalSince1970];  //精确到秒
-    
-    
-//    NSString *name = [userDefault objectForKey:@"username"];
-//    NSString *uid = [userDefault objectForKey:@"uid"];
-//    NSString *timeString = [NSString stringWithFormat:@"%f|%@|%@", a,name,uid]; //转为字符型
+       
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
