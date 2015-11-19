@@ -108,7 +108,7 @@
 {
     return _conversationType != eConversationTypeChat;
 }
-
+/*
 - (void)saveChatroom:(EMChatroom *)chatroom
 {
     NSString *chatroomName = chatroom.chatroomSubject ? chatroom.chatroomSubject : @"";
@@ -152,7 +152,7 @@
         }
     }];
 }
-
+*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -201,10 +201,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callOutWithChatter" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callControllerClose" object:nil];
     
-    if (_conversationType == eConversationTypeChatRoom)
-    {
-        [self joinChatroom:_chatter];
-    }
+//    if (_conversationType == eConversationTypeChatRoom)
+//    {
+//        [self joinChatroom:_chatter];
+//    }
 }
 
 - (void)handleCallNotification:(NSNotification *)notification

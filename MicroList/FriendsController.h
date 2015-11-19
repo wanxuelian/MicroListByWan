@@ -32,8 +32,21 @@
 @property (retain, nonatomic) IBOutlet UIButton *btn8;
 @property (retain, nonatomic) IBOutlet UIButton *btn9;
 
-@property(nonatomic,copy)NSString *fdata;
+@property(nonatomic,copy)NSString *cid;
 
+@property (weak, nonatomic) IBOutlet UIImageView *headPath;
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+@property (weak, nonatomic) IBOutlet UILabel *area;
+@property (weak, nonatomic) IBOutlet UITextView *signature;
+
+
+/*
+@property(nonatomic,copy)NSString *headPath;
+@property(nonatomic,copy)NSString *nickName;
+@property(nonatomic,copy)NSString *area;
+@property(nonatomic,copy)NSString *sex;
+@property(nonatomic,copy)NSString *signature;
+*/
 - (IBAction)chat:(UIButton *)sender;
 
 

@@ -35,7 +35,52 @@
 //加载网络数据
 - (void)getData{
 
-
+    BaseJsonData * data = [[BaseJsonData alloc]init];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
+    
+    
+    //请求好友列表
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"key"] = key;
+    param[@"cid"] = _cid;
+    NSString *url = [NSString stringWithFormat:@"http://%@/userRelation/friendData",kLoginServer];
+    
+    [data POSTData:url and:param and:^(id dic) {
+        
+        NSString *code = dic[@"code"];
+        if ([code isEqualToString:@"1"]) {
+            
+            
+            NSLog(@"请求好友列表成功");
+            
+            NSMutableArray *dict = dic[@"data"];
+            
+//            FriendListModel *model = [[FriendListModel alloc]init];
+            
+            for (NSDictionary *di in dict) {
+                
+                self.nickName = di[@"nickName"];
+                self.headPath = di[@"headPath"];
+                self.area = di[@"area"];
+//                self.sex = di[@"sex"];
+                self.signature = di[@"signature"];
+            }
+            
+            
+            NSLog(@"dict:%@",dict);
+            
+            
+        }else if ([code isEqualToString:@"2"]){
+            
+            [BaseAlertView AlertView:@"网络错误，好友列表请求失败"];
+            
+        }
+        
+        
+    }];
+    
 
 
 }
@@ -45,7 +90,7 @@
 //他的晒榜和我的推荐
 - (void)_creatSubView{
 
-    
+    /*
     [_btn1 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [_btn2 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [_btn3 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -57,7 +102,7 @@
     [_btn7 addTarget:self action:@selector(butAct:) forControlEvents:UIControlEventTouchUpInside];
     [_btn8 addTarget:self action:@selector(butAct:) forControlEvents:UIControlEventTouchUpInside];
     [_btn9 addTarget:self action:@selector(butAct:) forControlEvents:UIControlEventTouchUpInside];
-    
+    */
     
     _showScrollerView.contentSize = CGSizeMake(500, 82);
     _showScrollerView.showsHorizontalScrollIndicator = NO;
@@ -115,7 +160,7 @@
 //    判断是否已登录，如果登录直接跳转
     
     if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
-        ChatViewController * chat = [[ChatViewController alloc]initWithChatter:@"15271519185" isGroup:NO];
+        ChatViewController * chat = [[ChatViewController alloc]initWithChatter:_cid isGroup:NO];
         
         UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
         

@@ -248,6 +248,20 @@
             
         }
         
+        NSString *uid = responseObject[@"data"];
+        
+        
+        //环信注册
+        [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uid password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+            if (!error) {
+                NSLog(@"注册成功");
+            }
+        } onQueue:nil];
+        
+        
+
+        
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -257,15 +271,7 @@
     }];
     
     
-    //环信注册
-    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:usernameStr password:passwordStr withCompletion:^(NSString *username, NSString *password, EMError *error) {
-        if (!error) {
-            NSLog(@"注册成功");
-        }
-    } onQueue:nil];
     
-    
-
     
     
     
@@ -324,7 +330,7 @@
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
     
     
-    NSString * safeString = [self saltMD5:passwordStr];
+//    NSString * safeString = [self saltMD5:passwordStr];
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
@@ -358,6 +364,8 @@
             [userDefaults setObject:usernameStr forKey:@"username"];
             [userDefaults setObject:passwordStr forKey:@"password"];
             [userDefaults setObject:key forKey:@"key"];
+            
+            NSLog(@"************************************%@,***%@",usernameStr,key);
             //及时刷新
             [userDefaults synchronize];
             

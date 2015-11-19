@@ -17,6 +17,7 @@
 @property(nonatomic,copy)NSMutableArray *array;
 @property(nonatomic,copy)NSMutableArray *data;
 
+@property(nonatomic,copy)NSMutableArray *cidArray;
 
 @end
 
@@ -26,6 +27,10 @@
     [super viewDidLoad];
 
     self.title = @"好友";
+    
+    //是否有好友请求
+    [self getData3];
+    
     
     //获取好友列表
     [self getData2];
@@ -102,7 +107,7 @@
     //请求添加好友
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"key"] = key;
-    params[@"cid"] = _file.text;
+    params[@"mobile"] = _file.text;
     
     NSString *url = [NSString stringWithFormat:@"http://%@/userRelation/requestFriends",kLoginServer];
     
@@ -168,6 +173,10 @@
 //                model.fdata = di[@"fdata"];
                 model.cid = di[@"cid"];
                 [_data addObject:model];
+                
+                _cidArray = di[@"cid"];
+                
+                
             }
             
             
@@ -186,6 +195,65 @@
 
 }
 
+//接受好友的实时网络请求
+- (void)getData3{
+ 
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
+    
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"key"] = key;
+//    params[@"cid"] = _file.text;
+    
+    NSString *url = [NSString stringWithFormat:@"http://%@/message/messageList",kLoginServer];
+    
+    NSLog(@"请求接口********%@",url);
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];//这个有时必须设置
+   
+    [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"******************************请求成功************************** ：%@",responseObject);
+        
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+        NSLog(@"*******************************请求失败*************************  error : %@", error);
+        
+    }];
+    
+/*
+//    [data POSTData:url and:params and:^(id dict) {
+//        
+//        NSLog(@"************************是否有好友请求：%@",dict);
+//        
+//        
+//        
+//        
+//        NSString *code = dict[@"code"];
+//        if ([code isEqualToString:@"1" ]) {
+//            
+//            [self AlertView:@"请求成功"];
+//            
+//            
+//        }else if ([code isEqualToString:@"2" ]){
+//            
+//            [self AlertView:@"服务器错误"];
+//            
+//            
+//        }
+//        
+//    }];
+ */
+
+}
+
+
 
 
 #pragma mark -- UITableView DataSource
@@ -193,7 +261,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //    return  _data.count;
     
-    return 20;
+    return 5;
     
 }
 
@@ -252,23 +320,16 @@
     FriendsController *friend = [[FriendsController alloc]init];
     
     
+    //拿到好友cid 传到用户资料页面
+    
+    
+    friend.cid = _cidArray[indexPath.row];
+    
+    
     UINavigationController *selectedController = [[UINavigationController alloc] initWithRootViewController:friend];
     
     [self presentViewController:selectedController animated:YES completion:nil];
-
-    
-    //拿到好友fdata 传到用户资料页面
-    NSMutableArray *array = [NSMutableArray array];;
-    for (FriendListModel *model in _data) {
-        
-//        NSString *fdata = model.fdata;
-        
-//        [array addObject:fdata];
-        
-    }
-    
-    
-    
+   
 }
 
 

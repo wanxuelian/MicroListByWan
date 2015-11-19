@@ -13,6 +13,7 @@
 #import "ChattingViewController.h"
 #import "BaseJsonData.h"
 #import "BaseAlertView.h"
+#import "GroupListViewController.h"
 @interface TopRingViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain)NSArray *topArray;
@@ -41,7 +42,7 @@
     
 }
 
-
+//好友消息数返回
 - (void)getData{
 
     BaseJsonData * data = [[BaseJsonData alloc]init];
@@ -126,7 +127,7 @@
     }else if (indexPath.row == 1){
     
         GroupController *select = [[GroupController alloc]init];
-        
+//        GroupListViewController *select = [[GroupListViewController alloc]init];
         UINavigationController *selectedController = [[UINavigationController alloc] initWithRootViewController:select];
         
         [self presentViewController:selectedController animated:YES completion:nil];
