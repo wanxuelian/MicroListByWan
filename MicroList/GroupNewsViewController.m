@@ -10,6 +10,7 @@
 #import "GroupNumberTableViewCell.h"
 #import "GroupMemberTableViewCell.h"
 #import "GroupContrTableViewCell.h"
+#import "GroupImageTableViewCell.h"
 #import "GroupChatTableCell.h"
 #import "GroupViewController.h"
 #import "ChatViewController.h"
@@ -113,8 +114,13 @@
     
     if (indexPath.row == 0) {
         [tableView registerNib:[UINib nibWithNibName:@"GroupImageTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupImageTableViewCell"];
-        GroupNumberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupImageTableViewCell" forIndexPath:indexPath];
+        GroupImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupImageTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = NO;
+        
+        
+        NSURL *url = [NSURL URLWithString:self.headPath];
+        
+        [cell.headPath sd_setImageWithURL:url];
         
         return cell;
         
@@ -123,26 +129,33 @@
         GroupNumberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupNumberTableViewCell" forIndexPath:indexPath];;
         cell.selectionStyle = NO;
         
+        cell.groupid.text = self.gid;
+        
         return cell;
+        
     }else if(indexPath.row == 2) {
         [tableView registerNib:[UINib nibWithNibName:@"GroupMemberTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupMemberTableViewCell"];
         GroupMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupMemberTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = NO;
+        
+        cell.nickName.text = self.nickName;
+        
         return cell;
     }
     
         [tableView registerNib:[UINib nibWithNibName:@"GroupContrTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupContrTableViewCell"];
         GroupContrTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupContrTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = NO;
+    
+        cell.groupNote.text = self.groupNote;
         return cell;
-        
-
     
 }
 
 
 #pragma mark -UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.row == 0) {
         return 200;
     }else if (indexPath.row == 1) {

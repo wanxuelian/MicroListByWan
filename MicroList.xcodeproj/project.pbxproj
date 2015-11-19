@@ -2921,6 +2921,9 @@
 				1B3EE0421BE5A913004C201F /* GroupContrTableViewCell.xib */,
 				049FCB5D1BEF288A002558A8 /* GroupChatTableCell.h */,
 				049FCB5E1BEF288A002558A8 /* GroupChatTableCell.m */,
+				1B3EE0551BE5AAD7004C201F /* GroupImageTableViewCell.h */,
+				1B3EE0561BE5AAD7004C201F /* GroupImageTableViewCell.m */,
+				1B3EE0571BE5AAD7004C201F /* GroupImageTableViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -4462,9 +4465,6 @@
 			isa = PBXGroup;
 			children = (
 				049FC4EE1BE9C5E5002558A8 /* 个人对个人聊天的cell' */,
-				1B3EE0551BE5AAD7004C201F /* GroupImageTableViewCell.h */,
-				1B3EE0561BE5AAD7004C201F /* GroupImageTableViewCell.m */,
-				1B3EE0571BE5AAD7004C201F /* GroupImageTableViewCell.xib */,
 				1B7ECC051BE47B38002960F4 /* 个人 */,
 			);
 			name = View;
