@@ -17,6 +17,8 @@
 
     NSMutableArray *_data;
 }
+@property(nonatomic,copy)UITextField *file;
+
 @end
 
 
@@ -29,9 +31,6 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     NSLog(@"群组");
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(leftButtonAction:)];
     self.navigationItem.leftBarButtonItem = barItem;
-
-//    UISearchBar *GroupBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, 375, 35)];
-//    [self.view addSubview:GroupBar];
 
     CGRect rect = [[UIScreen mainScreen] bounds];
     UITableView *tableGroup = [[UITableView alloc] initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped];
@@ -63,7 +62,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
     
     
-//    [self getData2];
+    [self getData2];
     
     
     
@@ -79,10 +78,31 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        
+        _file = [alertView textFieldAtIndex:0];
+        NSLog(@"%@",_file.text);
+        
+        
+        //申请入群的网络请求
+        [self getData3];
+        
+        
+    }else if (buttonIndex == 1){
+        
+        NSLog(@"弹出失败");
+    }
+    //......
+}
+
+
 
 
 //群组列表请求
 - (void)getData2{
+    
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -93,7 +113,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"key"] = key;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/userRelation/grouplist",kLoginServer];
+    NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
     
     [data POSTData:url and:param and:^(id dic) {
         
@@ -105,7 +125,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
             
             NSLog(@"请求好友列表成功");
             
-            NSMutableDictionary *dict = dic[@"data"];
+            NSMutableArray *dict = dic[@"data"];
             
             GroupListModel *model = [[GroupListModel alloc]init];
             
@@ -135,6 +155,45 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
 }
 
+//申请入群的网络请求
+- (void)getData3{
+
+    BaseJsonData * data = [[BaseJsonData alloc]init];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
+    
+    
+    //请求好友列表
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"key"] = key;
+    param[@"gid"] = _file.text;
+    
+    NSString *url = [NSString stringWithFormat:@"http://%@/group/addVerify",kLoginServer];
+    
+    [data POSTData:url and:param and:^(id dic) {
+        
+        NSLog(@"加群的返回：%@",dic);
+        
+        NSString *code = dic[@"code"];
+        if ([code isEqualToString:@"1"]) {
+            
+            
+            NSLog(@"请求入群成功");
+            
+            
+        }else if ([code isEqualToString:@"2"]){
+            
+            [BaseAlertView AlertView:@"网络错误，请求入群失败"];
+            
+        }
+        
+        
+    }];
+
+
+}
+
 
 
 #pragma mark -- Button Action
@@ -148,26 +207,11 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 
 #pragma mark - UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-
-
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    
-//    if (section ==0) {
-//        return 2;
-//    }else if (section == 2){
-//    
-//        return 1;
-//    }
-//    
-//    return 3;
-    
-    
-    return 4;
+  
+//    _data.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -177,7 +221,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
         
     }
    
- 
+//    cell.groupListModel = _data[indexPath.row];
     return cell;
 }
 
@@ -195,24 +239,11 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
-//    if (section == 0) {
-//        return @"为你推荐";
-//    }
-    return @"为你推荐";
+
+    return @"我的群组";
     
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//
-//
-//    return 50.0f;
-//}
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//
-//        return view;
-//}
 
 - (void)buttonAction:(UIButton *)button{
     

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendsController">
             <connections>
+                <outlet property="area" destination="aqb-oK-RJ2" id="Qz8-G6-Idq"/>
                 <outlet property="btn1" destination="Qdp-2C-mzv" id="I2S-cj-crT"/>
                 <outlet property="btn2" destination="yEw-jY-FDb" id="oyL-sT-4YJ"/>
                 <outlet property="btn3" destination="YIU-kM-DeC" id="24K-tr-msC"/>
@@ -15,10 +17,13 @@
                 <outlet property="btn7" destination="doE-Jr-7UY" id="yXI-PY-Lej"/>
                 <outlet property="btn8" destination="erq-Yc-Qph" id="L7h-PC-Kod"/>
                 <outlet property="btn9" destination="PVW-yB-Eij" id="pNV-SW-73P"/>
+                <outlet property="headPath" destination="27X-V1-Foj" id="GH7-9p-5EI"/>
                 <outlet property="myGive" destination="MYq-pd-N3V" id="kaC-0n-OZJ"/>
                 <outlet property="myGiveScrollerView" destination="Qst-lx-La3" id="nyn-cH-2CB"/>
+                <outlet property="nickName" destination="2V5-UJ-KdO" id="u2I-2b-U67"/>
                 <outlet property="showScrollerView" destination="8oz-Jy-ZKq" id="Dpk-fa-mEG"/>
                 <outlet property="showView" destination="Oiw-OX-o2R" id="5KM-55-2vV"/>
+                <outlet property="signature" destination="5Ze-k2-dXD" id="9kQ-cD-5eu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,21 +40,14 @@
                             <color key="backgroundColor" red="1" green="0.99165171713786959" blue="0.37461998654618578" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V5-UJ-KdO">
-                            <rect key="frame" x="140" y="22" width="173" height="21"/>
-                            <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="关注数" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1p-4T-Fdr">
-                            <rect key="frame" x="140" y="53" width="173" height="21"/>
+                            <rect key="frame" x="110" y="36" width="173" height="21"/>
                             <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="地区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-oK-RJ2">
-                            <rect key="frame" x="140" y="90" width="173" height="21"/>
+                            <rect key="frame" x="110" y="74" width="173" height="21"/>
                             <color key="backgroundColor" red="1" green="0.9916517171" blue="0.3746199865" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,7 +183,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="279.5" y="-475.5"/>
+            <point key="canvasLocation" x="82.5" y="-468.5"/>
         </view>
     </objects>
 </document>

@@ -10,4 +10,12 @@
 
 @interface GroupNewsViewController : UIViewController
 
+@property(nonatomic,copy)NSString *gType;
+@property(nonatomic,copy)NSString *groupName;
+@property(nonatomic,copy)NSString *groupNote;
+@property(nonatomic,copy)NSString *gid;
+@property(nonatomic,copy)NSString *headPath;
+@property(nonatomic,copy)NSString *nickName;
+
+
 @end

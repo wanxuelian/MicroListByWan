@@ -35,7 +35,70 @@
     messageTable.delegate = self;
     messageTable.dataSource = self;
     [self.view addSubview:messageTable];
+    
+    [self getData];
+    
  }
+
+
+//群资料查看
+- (void)getData{
+    
+    BaseJsonData * data = [[BaseJsonData alloc]init];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
+    
+    
+    //请求好友列表
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"key"] = key;
+    
+    NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
+    
+    [data POSTData:url and:param and:^(id dic) {
+        
+        NSLog(@"群组列表：%@",dic);
+        
+        NSString *code = dic[@"code"];
+        if ([code isEqualToString:@"1"]) {
+            
+            
+            NSLog(@"请求好友列表成功");
+            
+            NSMutableArray *dict = dic[@"data"];
+            
+//            GroupListModel *model = [[GroupListModel alloc]init];
+            
+            for (NSDictionary *di in dict) {
+                
+                self.nickName = di[@"nickName"];
+                self.headPath = di[@"headPath"];
+                self.gid = di[@"gid"];
+                self.groupName = di[@"groupName"];
+                self.gType = di[@"gType"];
+                self.groupNote = di[@"groupNote"];
+//
+//                [_data addObject:model];
+            }
+            
+         
+        }else if ([code isEqualToString:@"2"]){
+            
+            [BaseAlertView AlertView:@"网络错误，好友列表请求失败"];
+            
+        }
+        
+        
+    }];
+
+
+
+}
+
+
+
+
 
 
 #pragma mark - UITableViewDataSource
@@ -119,7 +182,7 @@
 
 
 - (void)buttonAction:(UIButton *)button{
-    
+    /*
     if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
         
         EMGroup *group = [[EMGroup alloc]init];
@@ -128,7 +191,14 @@
         [self.navigationController pushViewController:chatController animated:YES];
         
     }
-
+ */
+    
+    
+    GroupViewController *group = [[GroupViewController alloc]init];
+    [self.navigationController pushViewController:group animated:YES];
+    
+    
+    
 }
 
 
@@ -145,7 +215,7 @@
 //
 //
 //}
-//
+
 
 
 @end

@@ -42,7 +42,7 @@
     
 }
 
-
+//好友消息数返回
 - (void)getData{
 
     BaseJsonData * data = [[BaseJsonData alloc]init];

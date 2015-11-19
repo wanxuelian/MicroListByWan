@@ -52,7 +52,7 @@
     
 }
 
-//#pragma mark -- Button Action
+#pragma mark -- Button Action
 //- (void)leftButtonAction:(UIButton *)button{
 //    
 //    [self dismissViewControllerAnimated:YES completion:nil];
@@ -64,17 +64,17 @@
 
 
 
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    
-    //将tableview滚动到最后一个单元格
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_arrModel.count - 1 inSection:0];
-    
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//    
+//    [super viewWillAppear:animated];
+//    
+//    //将tableview滚动到最后一个单元格
+//    
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_arrModel.count - 1 inSection:0];
+//    
+//    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    
+//}
 
 
 -(void)viewWillDisappear:(BOOL)animated{
