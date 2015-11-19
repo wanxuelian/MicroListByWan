@@ -70,12 +70,25 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 - (void)rightButtonAction:(UIButton *)button{
     //创建弹出框
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"群组选择" message:nil delegate:self cancelButtonTitle:@"加入群组" otherButtonTitles:@"新建群组" ,nil];
+    
+    alert.tag = 101;
+    [alert show];
+    
+}
+
+
+- (void)joinGroup{
+
+    //创建弹出框
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"加入群组" message:@"输入群组账号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消" ,nil];
     
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    
+    alert.tag = 102;
     [alert show];
-    
+
+
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -85,14 +98,57 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
         _file = [alertView textFieldAtIndex:0];
         NSLog(@"%@",_file.text);
         
+        switch (alertView.tag) {
+                
+            case 101:
+            {
+                //加入群组
+                [self joinGroup];
+
+                break;
+            }
+            case 102:
+                
+            {
+                //申请入群的网络请求
+                [self getData3];
+                
+                
+                break;
+            }
+                
+            default:
+                break;
+        }
+
         
-        //申请入群的网络请求
-        [self getData3];
         
         
+              
     }else if (buttonIndex == 1){
         
-        NSLog(@"弹出失败");
+        switch (alertView.tag) {
+                
+            case 101:
+            {
+                //创建群组
+                [self creatGroup];
+                
+                break;
+            }
+            case 102:
+                
+            {
+               
+                NSLog(@"取消加入群群组");
+                break;
+            }
+                
+            default:
+                break;
+        }
+
+        
     }
     //......
 }
@@ -190,6 +246,13 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
         
         
     }];
+
+
+}
+
+
+//创建群组
+- (void)creatGroup{
 
 
 }

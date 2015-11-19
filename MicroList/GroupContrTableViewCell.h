@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GroupContrTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UITextView *groupNote;
 
 @end

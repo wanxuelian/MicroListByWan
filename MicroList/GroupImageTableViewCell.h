@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GroupImageTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *headPath;
 
 @end
