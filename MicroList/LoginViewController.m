@@ -324,7 +324,7 @@
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
     
     
-    NSString * safeString = [self saltMD5:passwordStr];
+//    NSString * safeString = [self saltMD5:passwordStr];
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];

@@ -47,11 +47,7 @@
 
 
 - (void)POSTData:(NSString *)urlStr and:(NSDictionary *)params and:(ReturnBlock)block{
-/*
-//    NSString * usernameStr = _userName.text;
-//    NSString * passwordStr = _passWord.text;
-//    NSString * safeString = [self saltMD5:passwordStr];
- */
+
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json",@"text/json", @"text/plain", @"text/html",nil];
@@ -59,13 +55,7 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
      manager.responseSerializer = [AFJSONResponseSerializer serializer];//这个有时必须设置
     NSString * string = urlStr;
- /*
-//    NSMutableDictionary * params = [NSMutableDictionary dictionary];
-//    params[@"mobile"] = usernameStr;
-//    params[@"password"] = safeString;
- */
-    
-    
+ 
     [manager POST:string parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         

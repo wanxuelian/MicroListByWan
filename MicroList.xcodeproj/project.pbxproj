@@ -63,7 +63,6 @@
 		048B0F681BFB4E7B00C9A1F0 /* EMSearchDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F671BFB4E7B00C9A1F0 /* EMSearchDisplayController.m */; };
 		048B0F6B1BFB4EAD00C9A1F0 /* RealtimeSearchUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F6A1BFB4EAD00C9A1F0 /* RealtimeSearchUtil.m */; };
 		048B0F6E1BFB4EE100C9A1F0 /* EMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F6D1BFB4EE100C9A1F0 /* EMTextView.m */; };
-		048B0F741BFC34F100C9A1F0 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048B0F731BFC34F100C9A1F0 /* RegisterViewController.xib */; };
 		048B0F771BFC4AE200C9A1F0 /* CameraHappyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F761BFC4AE200C9A1F0 /* CameraHappyController.m */; };
 		048B0F7D1BFC4BA700C9A1F0 /* TopGTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F7C1BFC4BA700C9A1F0 /* TopGTypeModel.m */; };
 		048B0F801BFC4BB600C9A1F0 /* photoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B0F7F1BFC4BB600C9A1F0 /* photoModel.m */; };
@@ -904,7 +903,6 @@
 		048B0F6A1BFB4EAD00C9A1F0 /* RealtimeSearchUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealtimeSearchUtil.m; sourceTree = "<group>"; };
 		048B0F6C1BFB4EE100C9A1F0 /* EMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTextView.h; sourceTree = "<group>"; };
 		048B0F6D1BFB4EE100C9A1F0 /* EMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextView.m; sourceTree = "<group>"; };
-		048B0F731BFC34F100C9A1F0 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		048B0F751BFC4AE200C9A1F0 /* CameraHappyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraHappyController.h; sourceTree = "<group>"; };
 		048B0F761BFC4AE200C9A1F0 /* CameraHappyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraHappyController.m; sourceTree = "<group>"; };
 		048B0F7B1BFC4BA700C9A1F0 /* TopGTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopGTypeModel.h; sourceTree = "<group>"; };
@@ -4419,6 +4417,24 @@
 		E2340CC51BD9E3C3000FF32D /* image */ = {
 			isa = PBXGroup;
 			children = (
+				048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */,
+				048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */,
+				048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */,
+				048B0FA21BFC5C5100C9A1F0 /* icon_image_yes@3x.png */,
+				048B0F9E1BFC5BCF00C9A1F0 /* 相册photo.png */,
+				048B0F9F1BFC5BCF00C9A1F0 /* 相机photo.png */,
+				048B0F881BFC5BAF00C9A1F0 /* camaers0.png */,
+				048B0F891BFC5BAF00C9A1F0 /* camaers1.png */,
+				048B0F8A1BFC5BAF00C9A1F0 /* camaers2.png */,
+				048B0F8B1BFC5BAF00C9A1F0 /* camaers3.png */,
+				048B0F8C1BFC5BAF00C9A1F0 /* camaers4.png */,
+				048B0F8D1BFC5BAF00C9A1F0 /* camaers5.png */,
+				048B0F8E1BFC5BAF00C9A1F0 /* camaers6.png */,
+				048B0F8F1BFC5BAF00C9A1F0 /* camaers7.png */,
+				048B0F901BFC5BAF00C9A1F0 /* camaers8.png */,
+				048B0F911BFC5BAF00C9A1F0 /* camaers9.png */,
+				048B0F921BFC5BAF00C9A1F0 /* camaers9(1).png */,
+				049FCB351BEC7BEE002558A8 /* messages.plist */,
 				049FD1501BF62ADE002558A8 /* cityes.plist */,
 				049FCCE91BF31DD6002558A8 /* 相机 */,
 				049FC4DA1BE8917B002558A8 /* Login */,
@@ -4496,7 +4512,6 @@
 				4CE6B93E1BFAD44300C2C2D2 /* Resources */,
 				4CC5BE871BFAC02F009AF412 /* CateGory */,
 				049FC3E31BE88466002558A8 /* Base */,
-				048B0F731BFC34F100C9A1F0 /* RegisterViewController.xib */,
 				E2380C1F1BD0BF14009DCC46 /* Classe */,
 				E2380C221BD0BF58009DCC46 /* View */,
 				E238B4451BCF708600441BB5 /* Main.storyboard */,
@@ -4511,24 +4526,6 @@
 		E238B43B1BCF708600441BB5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */,
-				048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */,
-				048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */,
-				048B0FA21BFC5C5100C9A1F0 /* icon_image_yes@3x.png */,
-				048B0F9E1BFC5BCF00C9A1F0 /* 相册photo.png */,
-				048B0F9F1BFC5BCF00C9A1F0 /* 相机photo.png */,
-				048B0F881BFC5BAF00C9A1F0 /* camaers0.png */,
-				048B0F891BFC5BAF00C9A1F0 /* camaers1.png */,
-				048B0F8A1BFC5BAF00C9A1F0 /* camaers2.png */,
-				048B0F8B1BFC5BAF00C9A1F0 /* camaers3.png */,
-				048B0F8C1BFC5BAF00C9A1F0 /* camaers4.png */,
-				048B0F8D1BFC5BAF00C9A1F0 /* camaers5.png */,
-				048B0F8E1BFC5BAF00C9A1F0 /* camaers6.png */,
-				048B0F8F1BFC5BAF00C9A1F0 /* camaers7.png */,
-				048B0F901BFC5BAF00C9A1F0 /* camaers8.png */,
-				048B0F911BFC5BAF00C9A1F0 /* camaers9.png */,
-				048B0F921BFC5BAF00C9A1F0 /* camaers9(1).png */,
-				049FCB351BEC7BEE002558A8 /* messages.plist */,
 				E2340CC51BD9E3C3000FF32D /* image */,
 				E2380C411BD0EFB2009DCC46 /* Food.plist */,
 				E224C4201BD7CFC2005A572F /* City.plist */,
@@ -4808,7 +4805,6 @@
 				4CE6BA761BFAD44400C2C2D2 /* chatBar_colorMore_videoCallSelected@2x.png in Resources */,
 				1B3EE0591BE5AAD7004C201F /* GroupImageTableViewCell.xib in Resources */,
 				4CE6BA461BFAD44400C2C2D2 /* chatBar_more_face.png in Resources */,
-				048B0F741BFC34F100C9A1F0 /* RegisterViewController.xib in Resources */,
 				1B9E9F821BE50FBD001EF61A /* pictImage1.png in Resources */,
 				4CE6BA591BFAD44400C2C2D2 /* chatBar_face@2x.png in Resources */,
 				049FCC871BF317B7002558A8 /* CameraFilter@2x.png in Resources */,
