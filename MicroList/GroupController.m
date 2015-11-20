@@ -12,6 +12,7 @@
 #import "GroupListModel.h"
 #import "GroupListViewController.h"
 #import "CreateGroupViewController.h"
+#import "CreatGroupViewController.h"
 @interface GroupController ()<UITableViewDelegate, UITableViewDataSource>
 {
 
@@ -183,20 +184,20 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
             
             NSMutableArray *dict = dic[@"data"];
             
-            GroupListModel *model = [[GroupListModel alloc]init];
-            
-            for (NSDictionary *di in dict) {
+            if (dict != nil) {
+                GroupListModel *model = [[GroupListModel alloc]init];
                 
-                model.nickName = di[@"nickName"];
-                model.headPath = di[@"headPath"];
-                model.gid = di[@"gid"];
-                model.groupName = di[@"groupName"];
+                for (NSDictionary *di in dict) {
+                    
+                    model.nickName = di[@"nickName"];
+                    model.headPath = di[@"headPath"];
+                    model.gid = di[@"gid"];
+                    model.groupName = di[@"groupName"];
+                    
+                    [_data addObject:model];
+                }
                 
-                [_data addObject:model];
             }
-            
-            
-            NSLog(@"dict:%@",dict);
             
             
         }else if ([code isEqualToString:@"2"]){
@@ -253,8 +254,24 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 //创建群组
 - (void)creatGroup{
+    
+//    CreateGroupViewController *creatGroup = [[CreateGroupViewController alloc]init];
+    CreatGroupViewController *creatGroup = [[CreatGroupViewController alloc]init];
+    [self.navigationController pushViewController:creatGroup animated:YES];
+    
 
-
+//    EMGroupStyleSetting *groupStyleSetting = [[EMGroupStyleSetting alloc] init];
+//    groupStyleSetting.groupMaxUsersCount = 500; // 创建500人的群，如果不设置，默认是200人。
+//    groupStyleSetting.groupStyle = eGroupStyle_PublicOpenJoin; // 创建不同类型的群组，这里需要才传入不同的类型
+//    [[EaseMob sharedInstance].chatManager asyncCreateGroupWithSubject:@"群组名称"description:@"群组描述" invitees:@[@"6001",@"6002"] initialWelcomeMessage:@"邀请您加入群组" styleSetting:groupStyleSetting completion:^(EMGroup *group, EMError *error) {
+//        
+//        
+//        if(!error){
+//              NSLog(@"创建成功 -- %@",group);
+//         }
+//        
+//    } onQueue:nil];
+ 
 }
 
 

@@ -20,6 +20,7 @@
 {
 
     BOOL isAutoLogin;
+    NSString *uid;
 }
 @end
 
@@ -248,7 +249,7 @@
             
         }
         
-        NSString *uid = responseObject[@"data"];
+        uid = responseObject[@"data"];
         
         
         //环信注册
@@ -327,7 +328,18 @@
     NSString * usernameStr = _userName.text;
     NSString * passwordStr = _passWord.text;
     
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
+//    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
+//    // 设置自动登录
+//    [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+    
+    
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+        if (!error) {
+            // 设置自动登录
+            [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+        }
+    } onQueue:nil];
+
     
     
 //    NSString * safeString = [self saltMD5:passwordStr];
