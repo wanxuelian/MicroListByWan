@@ -162,6 +162,7 @@
     if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
         ChatViewController * chat = [[ChatViewController alloc]initWithChatter:_cid isGroup:NO];
         
+        
         UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
         
         [self presentViewController:nav animated:YES completion:nil];
