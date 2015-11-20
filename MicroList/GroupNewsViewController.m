@@ -10,52 +10,102 @@
 #import "GroupNumberTableViewCell.h"
 #import "GroupMemberTableViewCell.h"
 #import "GroupContrTableViewCell.h"
+#import "GroupImageTableViewCell.h"
 #import "GroupChatTableCell.h"
 #import "GroupViewController.h"
+#import "ChatViewController.h"
 @interface GroupNewsViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *dataSource;
 
 @end
 
 @implementation GroupNewsViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     CGRect rect = [[UIScreen mainScreen] bounds];
-    UITableView *messageTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+//    UITableView *messageTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+    
+    _dataSource = [NSMutableArray array];
+    
+    UITableView *messageTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height) style:UITableViewStylePlain];
+    
     messageTable.delegate = self;
     messageTable.dataSource = self;
     [self.view addSubview:messageTable];
     
+    [self getData];
+    
+ }
+
+
+//群资料查看
+- (void)getData{
+    
+    BaseJsonData * data = [[BaseJsonData alloc]init];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
     
     
-    // Do any additional setup after loading the view.
+    //请求好友列表
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"key"] = key;
+    
+    NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
+    
+    [data POSTData:url and:param and:^(id dic) {
+        
+        NSLog(@"群组列表：%@",dic);
+        
+        NSString *code = dic[@"code"];
+        if ([code isEqualToString:@"1"]) {
+            
+            
+            NSLog(@"请求好友列表成功");
+            
+            NSMutableArray *dict = dic[@"data"];
+            
+//            GroupListModel *model = [[GroupListModel alloc]init];
+            
+            for (NSDictionary *di in dict) {
+                
+                self.nickName = di[@"nickName"];
+                self.headPath = di[@"headPath"];
+                self.gid = di[@"gid"];
+                self.groupName = di[@"groupName"];
+                self.gType = di[@"gType"];
+                self.groupNote = di[@"groupNote"];
+//
+//                [_data addObject:model];
+            }
+            
+         
+        }else if ([code isEqualToString:@"2"]){
+            
+            [BaseAlertView AlertView:@"网络错误，好友列表请求失败"];
+            
+        }
+        
+        
+    }];
+
+
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-#pragma mark -UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 200;
-    }else if (indexPath.row == 1) {
-        return 50;
-    }else if (indexPath.row == 2) {
-        return 85;
-    }else if (indexPath.row == 3){
-        return 85;
-    }else {
-        return 40;
-    }
-}
+
+
 
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    
+    return 4;
 }
 
 
@@ -64,61 +114,121 @@
     
     if (indexPath.row == 0) {
         [tableView registerNib:[UINib nibWithNibName:@"GroupImageTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupImageTableViewCell"];
-        GroupNumberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupImageTableViewCell" forIndexPath:indexPath];
+        GroupImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupImageTableViewCell" forIndexPath:indexPath];
+        cell.selectionStyle = NO;
+        
+        
+        NSURL *url = [NSURL URLWithString:self.headPath];
+        
+        [cell.headPath sd_setImageWithURL:url];
         
         return cell;
-        //        [tableView registerNib:[UINib nibWithNibName:@"GroupImageTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupImageTableViewCell"];
-        //        GroupImageTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"GroupImageTableViewCell" owner:self options:nil]lastObject];
-        //        return cell;
+        
     }else if (indexPath.row == 1) {
         [tableView registerNib:[UINib nibWithNibName:@"GroupNumberTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupNumberTableViewCell"];
         GroupNumberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupNumberTableViewCell" forIndexPath:indexPath];;
+        cell.selectionStyle = NO;
+        
+        cell.groupid.text = self.gid;
         
         return cell;
+        
     }else if(indexPath.row == 2) {
         [tableView registerNib:[UINib nibWithNibName:@"GroupMemberTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupMemberTableViewCell"];
         GroupMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupMemberTableViewCell" forIndexPath:indexPath];
-        return cell;
-    }else if (indexPath.row == 3){
-        [tableView registerNib:[UINib nibWithNibName:@"GroupContrTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupContrTableViewCell"];
-        GroupContrTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupContrTableViewCell" forIndexPath:indexPath];
-        return cell;
+        cell.selectionStyle = NO;
         
-    }else {
-            GroupChatTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupChatTableCell"];
-            if (cell == nil) {
-                cell = [[GroupChatTableCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GroupChatTableCell"];
-                
-            }
+        cell.nickName.text = self.nickName;
+        
         return cell;
     }
-
+    
+        [tableView registerNib:[UINib nibWithNibName:@"GroupContrTableViewCell" bundle:nil] forCellReuseIdentifier:@"GroupContrTableViewCell"];
+        GroupContrTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupContrTableViewCell" forIndexPath:indexPath];
+        cell.selectionStyle = NO;
+    
+        cell.groupNote.text = self.groupNote;
+        return cell;
     
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    if (indexPath.section == 4) {
-        
-        GroupViewController *group = [[GroupViewController alloc]init];
-        [self.navigationController pushViewController:group animated:YES];
-        
+#pragma mark -UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        return 200;
+    }else if (indexPath.row == 1) {
+        return 50;
+    }else if (indexPath.row == 2) {
+        return 85;
+    }else {
+        return 85;
         
     }
+    
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+
+    return 85;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+
+
+    UIView *View = [[UIView alloc]init];
+    
+    UIButton *chatButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    chatButton.frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
+    chatButton.backgroundColor = [UIColor colorWithRed:0.874 green:0.857 blue:0.876 alpha:1.000];
+    [chatButton setTitle:@"发送消息" forState:UIControlStateNormal];
+    [chatButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [View addSubview:chatButton];
+    
+    return View;
 
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)buttonAction:(UIButton *)button{
+    /*
+    if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
+        
+        EMGroup *group = [[EMGroup alloc]init];
+        ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:group.groupId isGroup:YES];
+        chatController.title = group.groupSubject;
+        [self.navigationController pushViewController:chatController animated:YES];
+        
+    }
+ */
+    
+    
+    GroupViewController *group = [[GroupViewController alloc]init];
+    [self.navigationController pushViewController:group animated:YES];
+    
+    
+    
 }
-*/
+
+
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    if (indexPath.section == 4) {
+//        
+//        GroupViewController *group = [[GroupViewController alloc]init];
+//        [self.navigationController pushViewController:group animated:YES];
+//        
+//        
+//    }
+//
+//
+//}
+
+
 
 @end

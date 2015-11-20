@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GroupMemberTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
 
 @end

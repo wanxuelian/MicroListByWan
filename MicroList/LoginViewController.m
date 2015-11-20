@@ -236,6 +236,20 @@
 //            [[NSNotificationCenter defaultCenter]postNotificationName:@"notification" object:nil userInfo:dic];
             
          */
+            
+            
+            NSDictionary *dic = responseObject[@"data"];
+            
+            NSString *uid = [dic objectForKey:@"uid"];
+            //环信注册
+            [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uid password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+                if (!error) {
+                    NSLog(@"注册成功");
+                }
+            } onQueue:nil];
+            
+            
+            
         }else if ([code isEqualToString:@"2" ]){
             
             [self AlertView:@"手机号码格式错误，请重新输入"];
@@ -249,6 +263,12 @@
         }
         
         
+        
+        
+
+        
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         
@@ -257,15 +277,7 @@
     }];
     
     
-    //环信注册
-    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:usernameStr password:passwordStr withCompletion:^(NSString *username, NSString *password, EMError *error) {
-        if (!error) {
-            NSLog(@"注册成功");
-        }
-    } onQueue:nil];
     
-    
-
     
     
     
@@ -321,10 +333,10 @@
     NSString * usernameStr = _userName.text;
     NSString * passwordStr = _passWord.text;
     
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
+//    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:@"123123"];
     
     
-    NSString * safeString = [self saltMD5:passwordStr];
+//    NSString * safeString = [self saltMD5:passwordStr];
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
@@ -358,6 +370,8 @@
             [userDefaults setObject:usernameStr forKey:@"username"];
             [userDefaults setObject:passwordStr forKey:@"password"];
             [userDefaults setObject:key forKey:@"key"];
+            
+            NSLog(@"************************************%@,***%@",usernameStr,key);
             //及时刷新
             [userDefaults synchronize];
             

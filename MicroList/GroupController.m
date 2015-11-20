@@ -10,11 +10,15 @@
 #import "TopCoilTableViewCell.h"
 #import "GroupNewsViewController.h"
 #import "GroupListModel.h"
+#import "GroupListViewController.h"
+#import "CreateGroupViewController.h"
 @interface GroupController ()<UITableViewDelegate, UITableViewDataSource>
 {
 
     NSMutableArray *_data;
 }
+@property(nonatomic,copy)UITextField *file;
+
 @end
 
 
@@ -28,24 +32,33 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(leftButtonAction:)];
     self.navigationItem.leftBarButtonItem = barItem;
 
-//    UISearchBar *GroupBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, 375, 35)];
-//    [self.view addSubview:GroupBar];
-
     CGRect rect = [[UIScreen mainScreen] bounds];
-    UITableView *tableGroup = [[UITableView alloc] initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height) style:UITableViewStylePlain];
+    UITableView *tableGroup = [[UITableView alloc] initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped];
     tableGroup.delegate = self;
     tableGroup.dataSource = self;
     [self.view addSubview:tableGroup];
     
     
     UIButton *rightBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBut setTitle:@"添加好友" forState:UIControlStateNormal];
+    [rightBut setTitle:@"加入群组" forState:UIControlStateNormal];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"添加好友" style:UIBarButtonItemStyleDone target:self action:@selector(rightButtonAction:)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"添加群组" style:UIBarButtonItemStyleDone target:self action:@selector(rightButtonAction:)];
     
     self.navigationItem.rightBarButtonItem = rightItem;
     
-
+    
+    
+    UIView *view = [[UIView alloc]init];
+    
+    UIButton *chatButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    chatButton.frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
+    chatButton.backgroundColor = [UIColor colorWithRed:0.874 green:0.857 blue:0.876 alpha:1.000];
+    [chatButton setTitle:@"新建群聊" forState:UIControlStateNormal];
+    [chatButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [view addSubview:chatButton];
+   
+//    tableGroup.tableFooterView = view;
     
     
     
@@ -57,18 +70,95 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 - (void)rightButtonAction:(UIButton *)button{
     //创建弹出框
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"创建群组" message:@"输入群组账号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消" ,nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"群组选择" message:nil delegate:self cancelButtonTitle:@"加入群组" otherButtonTitles:@"新建群组" ,nil];
     
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    
+    alert.tag = 101;
     [alert show];
     
 }
 
 
+- (void)joinGroup{
 
-//好友列表请求
+    //创建弹出框
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"加入群组" message:@"输入群组账号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消" ,nil];
+    
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.tag = 102;
+    [alert show];
+
+
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        
+        _file = [alertView textFieldAtIndex:0];
+        NSLog(@"%@",_file.text);
+        
+        switch (alertView.tag) {
+                
+            case 101:
+            {
+                //加入群组
+                [self joinGroup];
+
+                break;
+            }
+            case 102:
+                
+            {
+                //申请入群的网络请求
+                [self getData3];
+                
+                
+                break;
+            }
+                
+            default:
+                break;
+        }
+
+        
+        
+        
+              
+    }else if (buttonIndex == 1){
+        
+        switch (alertView.tag) {
+                
+            case 101:
+            {
+                //创建群组
+                [self creatGroup];
+                
+                break;
+            }
+            case 102:
+                
+            {
+               
+                NSLog(@"取消加入群群组");
+                break;
+            }
+                
+            default:
+                break;
+        }
+
+        
+    }
+    //......
+}
+
+
+
+
+//群组列表请求
 - (void)getData2{
+    
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -79,7 +169,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"key"] = key;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/userRelation/grouplist",kLoginServer];
+    NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
     
     [data POSTData:url and:param and:^(id dic) {
         
@@ -91,7 +181,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
             
             NSLog(@"请求好友列表成功");
             
-            NSMutableDictionary *dict = dic[@"data"];
+            NSMutableArray *dict = dic[@"data"];
             
             GroupListModel *model = [[GroupListModel alloc]init];
             
@@ -121,6 +211,52 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
 }
 
+//申请入群的网络请求
+- (void)getData3{
+
+    BaseJsonData * data = [[BaseJsonData alloc]init];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
+    
+    
+    //请求好友列表
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"key"] = key;
+    param[@"gid"] = _file.text;
+    
+    NSString *url = [NSString stringWithFormat:@"http://%@/group/addVerify",kLoginServer];
+    
+    [data POSTData:url and:param and:^(id dic) {
+        
+        NSLog(@"加群的返回：%@",dic);
+        
+        NSString *code = dic[@"code"];
+        if ([code isEqualToString:@"1"]) {
+            
+            
+            NSLog(@"请求入群成功");
+            
+            
+        }else if ([code isEqualToString:@"2"]){
+            
+            [BaseAlertView AlertView:@"网络错误，请求入群失败"];
+            
+        }
+        
+        
+    }];
+
+
+}
+
+
+//创建群组
+- (void)creatGroup{
+
+
+}
+
 
 
 #pragma mark -- Button Action
@@ -131,19 +267,14 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
     
 }
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
-}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GroupNewsViewController *groupNewContr = [[GroupNewsViewController alloc] init];
-    [self.navigationController pushViewController:groupNewContr animated:YES];
-}
 
 #pragma mark - UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+  
+//    _data.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,30 +282,41 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     if (cell == nil) {
         cell = [[TopCoilTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         
-        
     }
+   
+//    cell.groupListModel = _data[indexPath.row];
     return cell;
 }
+
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 110;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GroupNewsViewController *groupNewContr = [[GroupNewsViewController alloc] init];
+    [self.navigationController pushViewController:groupNewContr animated:YES];
+}
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
+
+    return @"我的群组";
     
-    return @"为你推荐";
+}
+
+
+- (void)buttonAction:(UIButton *)button{
     
+//    CreateGroupViewController *creatGroup =[[CreateGroupViewController alloc]init];
+//    [self.navigationController pushViewController:creatGroup animated:YES];
+    
+    GroupNewsViewController *news = [[GroupNewsViewController alloc]init];
+    [self.navigationController pushViewController:news animated:YES];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
