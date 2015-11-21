@@ -8,11 +8,12 @@
 
 #import "CreatGroupViewController.h"
 
-@interface CreatGroupViewController ()
+@interface CreatGroupViewController ()<UIImagePickerControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
 
     UITextField *groupName;
     UITextView *groupNote;
+    UIImageView *headPath;
 }
 @end
 
@@ -36,7 +37,7 @@
     label1.text = @"群组名:";
     [self.view addSubview:label1];
     
-    groupName = [[UITextField alloc]initWithFrame:CGRectMake(124, 74, 200, 30)];
+    groupName = [[UITextField alloc]initWithFrame:CGRectMake(110, 74, 200, 30)];
     groupName.backgroundColor = [UIColor lightGrayColor];
     [groupName becomeFirstResponder];
     [self.view addSubview:groupName];
@@ -49,6 +50,24 @@
     [groupNote becomeFirstResponder];
     groupNote.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:groupNote];
+    
+    UILabel *label3 = [[UILabel alloc]initWithFrame:CGRectMake(10, 224, 100, 30)];
+    label3.text = @"群头像:";
+    [self.view addSubview:label3];
+    
+    headPath = [[UIImageView alloc]init];
+    headPath.frame = CGRectMake(110, 224, 80, 80);
+    headPath.backgroundColor = [UIColor lightGrayColor];
+    headPath.userInteractionEnabled=YES;
+    
+    UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(headPathAction:)];
+    [headPath addGestureRecognizer:tapGesturRecognizer];
+    
+    
+    [self.view addSubview:headPath];
+    
+    
+    
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -136,6 +155,43 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     
     //创建自己群组
     [self createSelfGroup];
+}
+
+
+- (void)headPathAction:(UIButton *)button{
+
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    //选择资源类型，有3种类型
+    //1.SavedPhotosAlbum
+    
+    //2.camrea
+    //3.PhotoLibrary
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    //设置代理，要遵守两个协议 UIImagePickerControllerDelegate , UINavigationControllerDelegate
+    imagePicker.delegate = self;
+    //跳转模式4种
+    imagePicker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //是否允许对图片进行编辑 , 改为NO，则选择图片时不能进行放缩, 显然默认为NO
+    imagePicker.allowsEditing = YES;
+    //进入到相册页面
+    [self presentViewController:imagePicker animated:YES completion:nil];
+
+
+}
+
+//选择图片
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //    UIImagePickerControllerOriginalImage   //原图片
+    //    UIImagePickerControllerEditedImage    //编辑后的图片
+    
+    //把图片添加到imageView上进行显示
+    headPath.image = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    NSLog(@"拿到的图片名字。。。。。。。。。 %@",[info objectForKey:UIImagePickerControllerEditedImage]);
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 
