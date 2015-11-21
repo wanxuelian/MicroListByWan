@@ -22,7 +22,7 @@
     [self setNav];
     
     
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"microlist#microlist" apnsCertName:@"Test"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"liguilong#je37493149" apnsCertName:@"Test"];
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     

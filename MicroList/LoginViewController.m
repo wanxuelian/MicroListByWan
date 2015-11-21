@@ -237,6 +237,20 @@
 //            [[NSNotificationCenter defaultCenter]postNotificationName:@"notification" object:nil userInfo:dic];
             
          */
+            
+            
+            NSDictionary *dic = responseObject[@"data"];
+            
+            NSString *uid = [dic objectForKey:@"uid"];
+            //环信注册
+            [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uid password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+                if (!error) {
+                    NSLog(@"注册成功");
+                }
+            } onQueue:nil];
+            
+            
+            
         }else if ([code isEqualToString:@"2" ]){
             
             [self AlertView:@"手机号码格式错误，请重新输入"];
@@ -249,6 +263,7 @@
             
         }
         
+
         NSDictionary *da = responseObject[@"data"];
         
         uid = [[da objectForKey:@"uid"]description];
@@ -268,9 +283,7 @@
             NSLog(@"error %@",error);
             
         } onQueue:nil];
-        
-        
-        
+      
         
         
         
@@ -338,7 +351,6 @@
     
     NSString * usernameStr = _userName.text;
     NSString * passwordStr = _passWord.text;
-    
 //    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
 //    // 设置自动登录
 //    [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
@@ -351,8 +363,9 @@
         }
     } onQueue:nil];
 
-    
-    
+
+//    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:@"123123"];
+   
 //    NSString * safeString = [self saltMD5:passwordStr];
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];

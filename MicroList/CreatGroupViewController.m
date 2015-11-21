@@ -46,7 +46,7 @@
     label2.text = @"群描述:";
     [self.view addSubview:label2];
     
-    groupNote = [[UITextView alloc]initWithFrame:CGRectMake(110, 124, 200, 50)];
+    groupNote = [[UITextView alloc]initWithFrame:CGRectMake(110, 124, 200, 60)];
     [groupNote becomeFirstResponder];
     groupNote.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:groupNote];
@@ -55,19 +55,15 @@
     label3.text = @"群头像:";
     [self.view addSubview:label3];
     
+    
+    
     headPath = [[UIImageView alloc]init];
     headPath.frame = CGRectMake(110, 224, 80, 80);
     headPath.backgroundColor = [UIColor lightGrayColor];
     headPath.userInteractionEnabled=YES;
-    
     UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(headPathAction:)];
     [headPath addGestureRecognizer:tapGesturRecognizer];
-    
-    
     [self.view addSubview:headPath];
-    
-    
-    
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -103,6 +99,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
 
 }
 
+//创建自己群组
 - (void)createSelfGroup{
 
     BaseJsonData * data = [[BaseJsonData alloc]init];
@@ -194,14 +191,6 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     
 }
 
-
-
-
-- (void)asyncFetchGroupInfo:(NSString *)groupId{
-
-    NSLog(@"群id为：%@",groupId);
-
-}
 
 
 
