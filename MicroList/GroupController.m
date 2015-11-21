@@ -78,7 +78,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
 }
 
-
+//加入群组
 - (void)joinGroup{
 
     //创建弹出框

@@ -161,7 +161,7 @@
          dispatch_async(dispatch_get_main_queue(), ^{
          
          
-         //刷新
+         //刷新   
          });
          */
         
@@ -249,18 +249,28 @@
             
         }
         
-        uid = responseObject[@"data"];
+        NSDictionary *da = responseObject[@"data"];
         
+        uid = [[da objectForKey:@"uid"]description];
+        
+        
+        
+        
+        NSLog(@"uid***********%@",uid);
         
         //环信注册
         [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uid password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
             if (!error) {
                 NSLog(@"注册成功");
             }
+            
+            
+            NSLog(@"error %@",error);
+            
         } onQueue:nil];
         
         
-
+        
         
         
         
@@ -273,7 +283,8 @@
     
     
     
-    
+ 
+
     
     
     

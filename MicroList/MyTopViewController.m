@@ -36,12 +36,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+   
+    
+    //获取UserDefault
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
+    if (key != nil) {
+        
+//        LoginViewController *login = [[LoginViewController alloc]init];
+//        
+//        UINavigationController *selectedController = [[UINavigationController alloc] initWithRootViewController:login];
+//        [self presentViewController:selectedController animated:YES completion:nil];
+        
+        //请求网络数据
+        [self getData];
+
+        
+    }else {
+    
+        LoginViewController *login = [[LoginViewController alloc]init];
+        
+        UINavigationController *selectedController = [[UINavigationController alloc] initWithRootViewController:login];
+        [self presentViewController:selectedController animated:YES completion:nil];
+        
+        
+        
+    
+    
+    }
+
+    
+    
     
     self.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"个人中心" image:nil tag:406];
  
     
-    //请求网络数据
-    [self getData];
     
     //加载数据
     _setDic = @{@"one"    : @[@""],
@@ -55,18 +84,6 @@
     [self _creatTableView];
     
     
-    //获取UserDefault
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *name = [userDefault objectForKey:@"username"];
-    if (name == nil) {
-        
-        LoginViewController *login = [[LoginViewController alloc]init];
-        
-        UINavigationController *selectedController = [[UINavigationController alloc] initWithRootViewController:login];
-        [self presentViewController:selectedController animated:YES completion:nil];
-        
-    }
-   
    /*
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
