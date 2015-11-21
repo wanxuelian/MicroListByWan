@@ -284,13 +284,12 @@
 		049FD14E1BF62888002558A8 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 049FD14A1BF62888002558A8 /* MBProgressHUD.bundle */; };
 		049FD14F1BF62888002558A8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 049FD14C1BF62888002558A8 /* MBProgressHUD.m */; };
 		049FD1511BF62ADE002558A8 /* cityes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049FD1501BF62ADE002558A8 /* cityes.plist */; };
-		04AC8BCB1BFF4D8900D57EA4 /* GroupMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC8BC91BFF4D8900D57EA4 /* GroupMoreViewController.m */; };
-		04AC8BCC1BFF4D8900D57EA4 /* GroupMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AC8BCA1BFF4D8900D57EA4 /* GroupMoreViewController.xib */; };
 		04AC8BD11C000ED500D57EA4 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC8BCF1C000ED500D57EA4 /* GTMBase64.m */; };
 		04AC8BD41C000F2100D57EA4 /* NowShowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC8BD31C000F2100D57EA4 /* NowShowController.m */; };
 		04AC8BDA1C000F9B00D57EA4 /* APImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC8BD71C000F9B00D57EA4 /* APImgModel.m */; };
 		04AC8BDB1C000F9B00D57EA4 /* NowShowDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC8BD91C000F9B00D57EA4 /* NowShowDataModel.m */; };
 		04AC8BDE1C00101800D57EA4 /* DymnaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC8BDD1C00101800D57EA4 /* DymnaicCell.m */; };
+		04AC8BE01C004AE900D57EA4 /* headPath.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04AC8BDF1C004AE900D57EA4 /* headPath.jpg */; };
 		04BA30761BDF3BAE005D623B /* MyproCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BA30751BDF3BAE005D623B /* MyproCell.m */; };
 		04BA307C1BDF56BA005D623B /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BA307B1BDF56BA005D623B /* ChooseViewController.m */; };
 		1B1B6DCC1BDCB79B0029F479 /* BotumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B6DCB1BDCB79B0029F479 /* BotumView.m */; };
@@ -1222,9 +1221,6 @@
 		049FD14B1BF62888002558A8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		049FD14C1BF62888002558A8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		049FD1501BF62ADE002558A8 /* cityes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityes.plist; sourceTree = "<group>"; };
-		04AC8BC81BFF4D8900D57EA4 /* GroupMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMoreViewController.h; sourceTree = "<group>"; };
-		04AC8BC91BFF4D8900D57EA4 /* GroupMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMoreViewController.m; sourceTree = "<group>"; };
-		04AC8BCA1BFF4D8900D57EA4 /* GroupMoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupMoreViewController.xib; sourceTree = "<group>"; };
 		04AC8BCE1C000ED500D57EA4 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		04AC8BCF1C000ED500D57EA4 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		04AC8BD01C000ED500D57EA4 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -1236,6 +1232,7 @@
 		04AC8BD91C000F9B00D57EA4 /* NowShowDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowShowDataModel.m; sourceTree = "<group>"; };
 		04AC8BDC1C00101800D57EA4 /* DymnaicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DymnaicCell.h; sourceTree = "<group>"; };
 		04AC8BDD1C00101800D57EA4 /* DymnaicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DymnaicCell.m; sourceTree = "<group>"; };
+		04AC8BDF1C004AE900D57EA4 /* headPath.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headPath.jpg; sourceTree = "<group>"; };
 		04BA30741BDF3BAE005D623B /* MyproCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyproCell.h; sourceTree = "<group>"; };
 		04BA30751BDF3BAE005D623B /* MyproCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyproCell.m; sourceTree = "<group>"; };
 		04BA307A1BDF56BA005D623B /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
@@ -2149,9 +2146,6 @@
 				4CC5BE7A1BFABE90009AF412 /* GroupController.m */,
 				4CC5BE7B1BFABE90009AF412 /* GroupNewsViewController.h */,
 				4CC5BE7C1BFABE90009AF412 /* GroupNewsViewController.m */,
-				04AC8BC81BFF4D8900D57EA4 /* GroupMoreViewController.h */,
-				04AC8BC91BFF4D8900D57EA4 /* GroupMoreViewController.m */,
-				04AC8BCA1BFF4D8900D57EA4 /* GroupMoreViewController.xib */,
 				4CC5BE7D1BFABE90009AF412 /* GroupViewController.h */,
 				4CC5BE7E1BFABE90009AF412 /* GroupViewController.m */,
 				4CC5BE7F1BFABE90009AF412 /* GroupViewController.xib */,
@@ -4468,6 +4462,7 @@
 		E2340CC51BD9E3C3000FF32D /* image */ = {
 			isa = PBXGroup;
 			children = (
+				04AC8BDF1C004AE900D57EA4 /* headPath.jpg */,
 				048B0FA81BFC5C6500C9A1F0 /* icon_image_no@2x.png */,
 				048B0FA61BFC5C5F00C9A1F0 /* icon_image_no@3x.png */,
 				048B0FA41BFC5C5800C9A1F0 /* icon_image_yes@2x.png */,
@@ -4896,6 +4891,7 @@
 				049FD1301BF47022002558A8 /* SelectViewViewController.xib in Resources */,
 				049FCC901BF317B7002558A8 /* CameraFlashOff@3x.png in Resources */,
 				4CE6BAA11BFAD44400C2C2D2 /* add@2x.png in Resources */,
+				04AC8BE01C004AE900D57EA4 /* headPath.jpg in Resources */,
 				049FCC7F1BF317B7002558A8 /* CameraEffectSature@2x.png in Resources */,
 				049FCCE01BF31DCF002558A8 /* camera_album@2x.png in Resources */,
 				4CE6BA321BFAD44400C2C2D2 /* VoiceSearchFeedback018.png in Resources */,
@@ -5014,7 +5010,6 @@
 				4CE6BA2E1BFAD44400C2C2D2 /* VoiceSearchFeedback016.png in Resources */,
 				4CE6BA9D1BFAD44400C2C2D2 /* account.png in Resources */,
 				049FCC941BF317B7002558A8 /* CameraFlashOn@3x.png in Resources */,
-				04AC8BCC1BFF4D8900D57EA4 /* GroupMoreViewController.xib in Resources */,
 				1B7ECC721BE4C17F002960F4 /* picture7.png in Resources */,
 				4CE6BA7C1BFAD44400C2C2D2 /* chatBar_more_location.png in Resources */,
 				4CE6BA8B1BFAD44400C2C2D2 /* chat_receiver_audio_playing003.png in Resources */,
@@ -5354,7 +5349,6 @@
 				049FCBA31BF07FB0002558A8 /* MKAnnotationView+WebCache.m in Sources */,
 				1B3EE0581BE5AAD7004C201F /* GroupImageTableViewCell.m in Sources */,
 				4CC5BE5C1BFABB3C009AF412 /* MKAnnotationView+EMWebCache.m in Sources */,
-				04AC8BCB1BFF4D8900D57EA4 /* GroupMoreViewController.m in Sources */,
 				4CC5BE6F1BFABB3C009AF412 /* PSTGridLayoutItem.m in Sources */,
 				1B9E9F8E1BE52BAD001EF61A /* ShopTransViewController.m in Sources */,
 				1B7ECC111BE47B7E002960F4 /* PresentTableViewCell.m in Sources */,

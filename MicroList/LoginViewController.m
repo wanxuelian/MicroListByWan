@@ -295,12 +295,6 @@
     }];
     
     
-    
- 
-
-    
-    
-    
 }
 
 
@@ -382,7 +376,7 @@
     
     [manager POST:string parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-//       NSLog(@"返回的登录数据： %@",responseObject);
+       NSLog(@"返回的登录数据： %@",responseObject);
         
         NSString * code = responseObject[@"code"];
         
@@ -391,6 +385,8 @@
         if ([code isEqualToString:@"1" ]) {
             
             [self AlertView:@"登录成功"];
+            
+        
             
             NSString * key = responseObject[@"data"][@"key"];
             

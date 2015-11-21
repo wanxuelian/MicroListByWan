@@ -87,7 +87,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     
     
         if(!error){
-             NSLog(@"创建成功 -- %@",group);
+             NSLog(@"环信群组创建成功 -- %@",group);
             
             [self.navigationController popViewControllerAnimated:YES];
             
@@ -113,7 +113,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     param[@"groupName"] = groupName.text;
     param[@"groupNote"] = groupNote.text;
     param[@"gType"] = @"1";
-    
+
     NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
     
     [data POSTData:url and:param and:^(id dic) {

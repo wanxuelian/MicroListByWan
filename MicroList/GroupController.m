@@ -300,7 +300,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
         cell = [[TopCoilTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         
     }
-   
+    
 //    cell.groupListModel = _data[indexPath.row];
     return cell;
 }

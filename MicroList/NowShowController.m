@@ -45,6 +45,18 @@ static NSString *cellIdentife = @"sunDymnaicCell";
 
 @implementation NowShowController
 
+-(void)viewDidAppear:(BOOL)animated {//来触发视图完全显示在屏幕上之后的行为
+    
+    if (self.arrayData.count == 0) {
+        self.tableSun.tableFooterView = [[UIView alloc] init];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有添加好友" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        
+        [alert show];
+    }
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
