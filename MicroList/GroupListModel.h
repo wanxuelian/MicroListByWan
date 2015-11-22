@@ -10,9 +10,17 @@
 
 @interface GroupListModel : NSObject
 
-@property(nonatomic,copy)NSString *gid;//群ID
-@property(nonatomic,copy)NSString *groupName;//群组名
-@property(nonatomic,copy)NSString *headPath;//头像地址
-@property(nonatomic,copy)NSString *nickName;//用户别名
+@property (nonatomic,copy) NSString *gid;//群ID
+@property (nonatomic,copy) NSString *groupName;//群组名
+@property (nonatomic,copy) NSString *headPath;//头像地址
+@property (nonatomic,copy) NSString *nickName;//用户别名
+
+@property (nonatomic,copy) NSString *hid;//环信群组id
+
+@property (nonatomic,copy) NSString *gType;
+
+@property (nonatomic,copy) NSString *groupNote;
+
+
 
 @end

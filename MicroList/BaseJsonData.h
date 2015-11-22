@@ -16,4 +16,6 @@ typedef void(^ReturnBlock)(id);
 - (void)GETData:(NSString *)urlStr and:(NSDictionary *)params and:(ReturnBlock)block;
 - (void)POSTData:(NSString *)urlStr and:(NSDictionary *)params and:(ReturnBlock)block;
 
+
+
 @end

@@ -10,6 +10,8 @@
 #import "ShowFriendController.h"
 #import "MygiveController.h"
 #import "ChatViewController.h"
+#import "AppDef.h"
+
 @interface FriendsController ()
 
 @end
@@ -159,14 +161,21 @@
 - (IBAction)chat:(UIButton *)sender {
 //    判断是否已登录，如果登录直接跳转
     
-    if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
-        ChatViewController * chat = [[ChatViewController alloc]initWithChatter:_cid isGroup:NO];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *uid = [userDefaults objectForKey:HXKey];
+    
+    if (![[EaseMob sharedInstance].chatManager isLoggedIn]) {
         
-        UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
+        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword];
         
-        [self presentViewController:nav animated:YES completion:nil];
-    }
-    ;
+    };
+    
+    ChatViewController * chat = [[ChatViewController alloc]initWithChatter:UserId isGroup:NO];
+    
+    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:chat];
+    
+    [self presentViewController:nav animated:YES completion:nil];
     
     
     

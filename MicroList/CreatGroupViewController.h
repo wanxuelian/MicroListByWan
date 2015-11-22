@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreatGroupViewController : UIViewController
+@interface CreatGroupViewController : UIViewController<UIImagePickerControllerDelegate , UINavigationControllerDelegate>
 
+@property (nonatomic,strong) UIImage *image;
 @end

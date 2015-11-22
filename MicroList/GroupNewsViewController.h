@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GroupListModel.h"
 @interface GroupNewsViewController : UIViewController
 
-@property(nonatomic,copy)NSString *gType;
-@property(nonatomic,copy)NSString *groupName;
-@property(nonatomic,copy)NSString *groupNote;
-@property(nonatomic,copy)NSString *gid;
-@property(nonatomic,copy)NSString *headPath;
-@property(nonatomic,copy)NSString *nickName;
+@property (nonatomic,strong) GroupListModel *group;
 
+
+-(GroupNewsViewController *) initWithGroupModel:(GroupListModel *) group;
 
 @end

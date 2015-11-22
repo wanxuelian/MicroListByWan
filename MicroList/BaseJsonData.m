@@ -52,7 +52,7 @@
     
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json",@"text/json", @"text/plain", @"text/html",nil];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html",@"image/jpeg", @"image/*",nil];
      manager.responseSerializer = [AFJSONResponseSerializer serializer];//这个有时必须设置
     NSString * string = urlStr;
  

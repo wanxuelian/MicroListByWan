@@ -13,6 +13,9 @@
 #import "GroupListViewController.h"
 #import "CreateGroupViewController.h"
 #import "CreatGroupViewController.h"
+#import "ShangPuTableViewCell.h"
+#import "ShangPuFrame.h"
+
 @interface GroupController ()<UITableViewDelegate, UITableViewDataSource>
 {
 
@@ -34,10 +37,10 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     self.navigationItem.leftBarButtonItem = barItem;
 
     CGRect rect = [[UIScreen mainScreen] bounds];
-    UITableView *tableGroup = [[UITableView alloc] initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped];
-    tableGroup.delegate = self;
-    tableGroup.dataSource = self;
-    [self.view addSubview:tableGroup];
+    _tableGroup = [[UITableView alloc] initWithFrame:CGRectMake(0,0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped];
+    _tableGroup.delegate = self;
+    _tableGroup.dataSource = self;
+    [self.view addSubview:_tableGroup];
     
     
     UIButton *rightBut = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -174,32 +177,33 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
     [data POSTData:url and:param and:^(id dic) {
         
-        NSLog(@"群组列表：%@",dic);
+
         
         NSString *code = dic[@"code"];
         if ([code isEqualToString:@"1"]) {
             
-            
-            NSLog(@"请求好友列表成功");
+            _data = [NSMutableArray array];
+            NSLog(@"请求群组列表成功");
             
             NSMutableArray *dict = dic[@"data"];
             
             if (dict != nil) {
-                GroupListModel *model = [[GroupListModel alloc]init];
+                
                 
                 for (NSDictionary *di in dict) {
-                    
+                    GroupListModel *model = [[GroupListModel alloc]init];
                     model.nickName = di[@"nickName"];
                     model.headPath = di[@"headPath"];
                     model.gid = di[@"gid"];
                     model.groupName = di[@"groupName"];
+                    model.hid = di[@"hid"];
                     
                     [_data addObject:model];
                 }
                 
             }
             
-            
+            [_tableGroup reloadData];
         }else if ([code isEqualToString:@"2"]){
             
             [BaseAlertView AlertView:@"网络错误，好友列表请求失败"];
@@ -255,22 +259,12 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 //创建群组
 - (void)creatGroup{
     
-//    CreateGroupViewController *creatGroup = [[CreateGroupViewController alloc]init];
+
     CreatGroupViewController *creatGroup = [[CreatGroupViewController alloc]init];
     [self.navigationController pushViewController:creatGroup animated:YES];
     
 
-//    EMGroupStyleSetting *groupStyleSetting = [[EMGroupStyleSetting alloc] init];
-//    groupStyleSetting.groupMaxUsersCount = 500; // 创建500人的群，如果不设置，默认是200人。
-//    groupStyleSetting.groupStyle = eGroupStyle_PublicOpenJoin; // 创建不同类型的群组，这里需要才传入不同的类型
-//    [[EaseMob sharedInstance].chatManager asyncCreateGroupWithSubject:@"群组名称"description:@"群组描述" invitees:@[@"6001",@"6002"] initialWelcomeMessage:@"邀请您加入群组" styleSetting:groupStyleSetting completion:^(EMGroup *group, EMError *error) {
-//        
-//        
-//        if(!error){
-//              NSLog(@"创建成功 -- %@",group);
-//         }
-//        
-//    } onQueue:nil];
+
  
 }
 
@@ -290,29 +284,41 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
-//    _data.count;
-    return 1;
+    return  _data.count;
+//    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TopCoilTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *CellIdentifier = @"Cell";
+    ShangPuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[TopCoilTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        
+        cell = [[ShangPuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-   
-//    cell.groupListModel = _data[indexPath.row];
+    GroupListModel *model = [_data objectAtIndex:indexPath.row];
+    
+    ShangPuFrame *frame = [[ShangPuFrame alloc]init];
+    frame.shangPu = model;
+    cell.shangPuFrame = frame;
+    
     return cell;
 }
 
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 110;
+    
+    GroupListModel *model = [_data objectAtIndex:indexPath.row];
+    ShangPuFrame *shangPuFrame = [[ShangPuFrame alloc]init];
+    
+    shangPuFrame.shangPu = model;
+    return shangPuFrame.cellHight;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GroupNewsViewController *groupNewContr = [[GroupNewsViewController alloc] init];
+    
+    GroupNewsViewController *groupNewContr = [[GroupNewsViewController alloc] initWithGroupModel:[_data objectAtIndex:indexPath.row]];
+    
     [self.navigationController pushViewController:groupNewContr animated:YES];
 }
 

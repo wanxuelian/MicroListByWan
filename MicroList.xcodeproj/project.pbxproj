@@ -388,6 +388,8 @@
 		1BD338BE1BEA081D00DB6577 /* TopFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD338BC1BEA081D00DB6577 /* TopFriendViewController.m */; };
 		1BD338C21BEA0EE400DB6577 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD338C11BEA0EE400DB6577 /* CommentTableViewController.m */; };
 		1BD338C61BEA498800DB6577 /* CommentTransCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD338C51BEA498800DB6577 /* CommentTransCell.m */; };
+		4C5BCCFA1C01DA150068BA5A /* ShangPuFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BCCF61C01DA150068BA5A /* ShangPuFrame.m */; };
+		4C5BCCFB1C01DA150068BA5A /* ShangPuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BCCF81C01DA150068BA5A /* ShangPuTableViewCell.m */; };
 		4CC5BD971BFAB5CC009AF412 /* THProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5BD961BFAB5CC009AF412 /* THProgressView.m */; };
 		4CC5BDB21BFAB9D0009AF412 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5BDAD1BFAB9D0009AF412 /* ChatViewController.m */; };
 		4CC5BDB41BFAB9D0009AF412 /* ChatSendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5BDB11BFAB9D0009AF412 /* ChatSendHelper.m */; };
@@ -1379,6 +1381,11 @@
 		1BD338C11BEA0EE400DB6577 /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewController.m; sourceTree = "<group>"; };
 		1BD338C41BEA498800DB6577 /* CommentTransCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTransCell.h; sourceTree = "<group>"; };
 		1BD338C51BEA498800DB6577 /* CommentTransCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTransCell.m; sourceTree = "<group>"; };
+		4C5BCCF51C01DA150068BA5A /* ShangPuFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShangPuFrame.h; sourceTree = "<group>"; };
+		4C5BCCF61C01DA150068BA5A /* ShangPuFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShangPuFrame.m; sourceTree = "<group>"; };
+		4C5BCCF71C01DA150068BA5A /* ShangPuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShangPuTableViewCell.h; sourceTree = "<group>"; };
+		4C5BCCF81C01DA150068BA5A /* ShangPuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShangPuTableViewCell.m; sourceTree = "<group>"; };
+		4C9CA0FF1C00295D00C61F60 /* AppDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDef.h; sourceTree = "<group>"; };
 		4CC5BD951BFAB5CC009AF412 /* THProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THProgressView.h; sourceTree = "<group>"; };
 		4CC5BD961BFAB5CC009AF412 /* THProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THProgressView.m; sourceTree = "<group>"; };
 		4CC5BDAC1BFAB9D0009AF412 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -2072,6 +2079,7 @@
 		0455BFD91BE3646A0049DEB1 /* 群组 */ = {
 			isa = PBXGroup;
 			children = (
+				4C5BCCF21C01DA050068BA5A /* groupListCell */,
 				048B0F3D1BFB4D7300C9A1F0 /* ChatGroup */,
 				045748471BF9A9B00058223F /* Controller */,
 				045748461BF9A9A50058223F /* Model */,
@@ -2514,6 +2522,7 @@
 				049FCB6D1BF05089002558A8 /* Model */,
 				E238B43F1BCF708600441BB5 /* AppDelegate.h */,
 				E238B4401BCF708600441BB5 /* AppDelegate.m */,
+				4C9CA0FF1C00295D00C61F60 /* AppDef.h */,
 				049FCBB31BF086EA002558A8 /* BaseJsonData.h */,
 				049FCBB41BF086EA002558A8 /* BaseJsonData.m */,
 				E234F6391BD9D7B2001964DA /* RootViewController.h */,
@@ -3750,6 +3759,17 @@
 				1B5568691BEBA6FB00DA55B9 /* CommentHeaderView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		4C5BCCF21C01DA050068BA5A /* groupListCell */ = {
+			isa = PBXGroup;
+			children = (
+				4C5BCCF51C01DA150068BA5A /* ShangPuFrame.h */,
+				4C5BCCF61C01DA150068BA5A /* ShangPuFrame.m */,
+				4C5BCCF71C01DA150068BA5A /* ShangPuTableViewCell.h */,
+				4C5BCCF81C01DA150068BA5A /* ShangPuTableViewCell.m */,
+			);
+			path = groupListCell;
 			sourceTree = "<group>";
 		};
 		4CC5BD941BFAB5CC009AF412 /* THProgressView */ = {
@@ -5303,6 +5323,7 @@
 				4CC5BED71BFAC26E009AF412 /* EMVoiceConverter.mm in Sources */,
 				E234F6441BD9D85A001964DA /* MyTopViewController.m in Sources */,
 				4CC5BDEE1BFABAF7009AF412 /* DXMessageToolBar.m in Sources */,
+				4C5BCCFB1C01DA150068BA5A /* ShangPuTableViewCell.m in Sources */,
 				049FC5081BE9CBF5002558A8 /* AFSecurityPolicy.m in Sources */,
 				E224C4191BD795D9005A572F /* ArderPortViewController.m in Sources */,
 				049FCB521BECB7F0002558A8 /* NextViewController.m in Sources */,
@@ -5427,6 +5448,7 @@
 				049FCCC81BF31B2A002558A8 /* UIImage+RoundedCorner.m in Sources */,
 				049FC50B1BE9CBF5002558A8 /* AFURLResponseSerialization.m in Sources */,
 				1B7ECC141BE47B7E002960F4 /* CooseTableViewCell.m in Sources */,
+				4C5BCCFA1C01DA150068BA5A /* ShangPuFrame.m in Sources */,
 				1B9E9F771BE4FCD1001EF61A /* FigureMainViewController.m in Sources */,
 				E234F63B1BD9D7B2001964DA /* RootViewController.m in Sources */,
 				4CC5BE661BFABB3C009AF412 /* PSTCollectionView.m in Sources */,

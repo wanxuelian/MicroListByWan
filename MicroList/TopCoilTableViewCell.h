@@ -10,7 +10,7 @@
 #import "GroupListModel.h"
 @interface TopCoilTableViewCell : UITableViewCell
 
-@property(nonatomic,copy)GroupListModel *groupListModel;
+@property(nonatomic,strong)GroupListModel *groupListModel;
 
 
 

@@ -17,7 +17,8 @@
 #import "SelectViewViewController.h"
 #import "AFNetworking.h"
 
-
+#import "EaseMob.h"
+#import "AppDef.h"
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
@@ -40,7 +41,7 @@
     
     //获取UserDefault
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *key = [userDefault objectForKey:@"key"];
+    NSString *key = [userDefault objectForKey:KEY];
     if (key != nil) {
         
 //        LoginViewController *login = [[LoginViewController alloc]init];
@@ -58,10 +59,6 @@
         
         UINavigationController *selectedController = [[UINavigationController alloc] initWithRootViewController:login];
         [self presentViewController:selectedController animated:YES completion:nil];
-        
-        
-        
-    
     
     }
 
@@ -91,7 +88,7 @@
     */
     
     
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+   
     NSString *headPath = [userDefault objectForKey:@"headPath"];
     NSString *image = [NSString stringWithFormat:@"http://%@/%@",kLoginServer,headPath];
     NSLog(@"头像：%@",image);
@@ -103,7 +100,12 @@
     [cell.userPhoto sd_setImageWithURL:url];
     
     
- 
+
+    NSString *uid = [userDefault objectForKey:HXKey];
+    
+    //自动登录，需要同时登录环信和服务器
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword];
+    
     
     
 }

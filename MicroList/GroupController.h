@@ -10,4 +10,6 @@
 
 @interface GroupController : UIViewController
 
+
+@property (nonatomic, strong) UITableView *tableGroup;
 @end

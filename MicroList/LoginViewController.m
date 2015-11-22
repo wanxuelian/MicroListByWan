@@ -16,6 +16,8 @@
 #import "NSString+Hash.h"
 #import "AESData.h"
 #import "AESCrypt.h"
+
+#import "AppDef.h"
 @interface LoginViewController ()
 {
 
@@ -198,8 +200,19 @@
     //注册的网络请求
     NSString * usernameStr = _userName.text;
     NSString * passwordStr = _passWord.text;
+#warning 这里可以在本地判断是否为手机号
+    //判断格式等最好先在本地判断，然后再发送网络请求
+    if (usernameStr == nil || [usernameStr isEqualToString:@""]) {
+        [self AlertView:@"请输入账号！"];
+        return;
+    }
+    if (passwordStr == nil || [passwordStr isEqualToString:@""]) {
+        [self AlertView:@"请输入密码！"];
+        return;
+    }
     
-//    NSString * safeString = [self saltMD5:passwordStr];
+    
+    
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
@@ -223,20 +236,29 @@
         
         if ([code isEqualToString:@"1" ]) {
             
-            [self AlertView:@"注册成功"];
-            /*
-//            NSString *uid = responseObject[@"data"][@"uid"];
-//            NSString *username = _userName.text;
-//            
-//            NSDictionary *dic = @{
-//                                  
-//                                  @"username":username,
-//                                  @"uid":uid
-//                                  };
-//            
-//            [[NSNotificationCenter defaultCenter]postNotificationName:@"notification" object:nil userInfo:dic];
+            NSDictionary *da = responseObject[@"data"];
             
-         */
+            uid = [[da objectForKey:@"uid"]description];
+
+            //判断uid，如果uid存在则去注册环信
+#warning  这里有个问题需要处理，假如服务器注册成功，而环信注册不成功
+            if (uid != nil && ![uid isEqualToString:@""]) {
+                //环信注册
+                [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uid password:UserPassword withCompletion:^(NSString *username, NSString *password, EMError *error) {
+                    if (!error) {
+                        [self AlertView:@"注册成功"];
+                    }
+                    
+                    
+                    NSLog(@"error %@",error);
+                    
+                } onQueue:nil];
+                
+            }
+           
+
+
+            
         }else if ([code isEqualToString:@"2" ]){
             
             [self AlertView:@"手机号码格式错误，请重新输入"];
@@ -249,27 +271,8 @@
             
         }
         
-        NSDictionary *da = responseObject[@"data"];
-        
-        uid = [[da objectForKey:@"uid"]description];
-        
-        
-        
-        
-        NSLog(@"uid***********%@",uid);
-        
-        //环信注册
-        [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uid password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
-            if (!error) {
-                NSLog(@"注册成功");
-            }
-            
-            
-            NSLog(@"error %@",error);
-            
-        } onQueue:nil];
-        
-        
+        else
+            [self AlertView:@"未知错误!"];
         
         
         
@@ -278,6 +281,7 @@
         
         
         NSLog(@"请求失败  error : %@", error);
+        [self AlertView:@"网络异常！请检查网络设置！"];
         
     }];
     
@@ -308,68 +312,41 @@
 
 
 //登录
+/**
+ *  登录方法，
+ *
+ *
+ *  @param sender 按钮事件
+ */
 - (IBAction)loginIn:(UIButton *)sender {
     
-    //环信登录
-    /*
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:_userName.text password:_passWord.text completion:^(NSDictionary *loginInfo, EMError *error) {
-  
-        if (!error) {
-     
-     
-            NSLog(@"登录成功");
-     
-//            MyTopViewController *top = [[MyTopViewController alloc]init];
-            NSLog(@"%@",self.userName.text);
-            
-//            self.block(self.userName.text);
-            
-            
-            
-            // 设置自动登录
-//            [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    } onQueue:nil];
-     
-    
-    */
     
     NSString * usernameStr = _userName.text;
     NSString * passwordStr = _passWord.text;
-    
-//    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
-//    // 设置自动登录
-//    [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
-    
-    
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
-        if (!error) {
-            // 设置自动登录
-            [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
-        }
-    } onQueue:nil];
 
-    
-    
-//    NSString * safeString = [self saltMD5:passwordStr];
-    
+#warning 这里可以在本地判断是否为手机号
+    //判断格式等最好先在本地判断，然后再发送网络请求
+    if (usernameStr == nil || [usernameStr isEqualToString:@""]) {
+        [self AlertView:@"请输入账号！"];
+        return;
+    }
+    if (passwordStr == nil || [passwordStr isEqualToString:@""]) {
+        [self AlertView:@"请输入密码！"];
+        return;
+    }
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     
     NSString * string = [NSString stringWithFormat:@"http://%@/user/login",kLoginServer];
-//    NSLog(@"返回的登录数据： %@",string);
     
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    params[@"mobile"] = usernameStr;
+    
+    params[@"mobile"]   = usernameStr;
     params[@"password"] = passwordStr;
-    
-    
     
     [manager POST:string parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-//       NSLog(@"返回的登录数据： %@",responseObject);
+        NSLog(@"返回的登录数据： %@",responseObject);
         
         NSString * code = responseObject[@"code"];
         
@@ -380,18 +357,28 @@
             [self AlertView:@"登录成功"];
             
             NSString * key = responseObject[@"data"][@"key"];
+            //获取返回的id用来作为登录环信的账号
+            uid            = responseObject[@"data"][@"uid"];
             
             //获取userDefault单例
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             //登陆成功后把用户名和密码存储到UserDefault
-            [userDefaults setObject:usernameStr forKey:@"username"];
-            [userDefaults setObject:passwordStr forKey:@"password"];
-            [userDefaults setObject:key forKey:@"key"];
+            [userDefaults setObject:usernameStr forKey:UserNameKey];
+            [userDefaults setObject:passwordStr forKey:PassWordKey];
+            [userDefaults setObject:uid forKey:HXKey];
+            [userDefaults setObject:key forKey:KEY];
             
-            NSLog(@"************************************%@,***%@",usernameStr,key);
             //及时刷新
             [userDefaults synchronize];
             
+            
+            //登录成功，则登录环信，也可以不登陆，等需要聊天时候再登录
+            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword completion:^(NSDictionary *loginInfo, EMError *error) {
+                if (!error) {
+                    // 设置自动登录
+                    [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+                }
+            } onQueue:nil];
             
             
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -415,6 +402,7 @@
         
         
         NSLog(@"请求失败  error : %@", error);
+        [self AlertView:@"网络异常！请检查网络设置！"];
         
     }];
     
@@ -427,7 +415,7 @@
 
 - (void)AlertView:(NSString *)text{
 
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                     message:text
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"

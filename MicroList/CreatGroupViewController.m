@@ -7,6 +7,7 @@
 //
 
 #import "CreatGroupViewController.h"
+#import "AFHTTPRequestOperation.h"
 
 @interface CreatGroupViewController ()<UIImagePickerControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
@@ -18,6 +19,7 @@
 @end
 
 @implementation CreatGroupViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,7 +95,9 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
         if(!error){
              NSLog(@"创建成功 -- %@",group);
             
-            [self.navigationController popViewControllerAnimated:YES];
+            [self createSelfGroupWithHXid:group.groupId];
+            
+//
             
             
         }
@@ -102,11 +106,20 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
 
 
 }
+/**
+ * 1: key		     时间轴|手机号码|uid
+ * 2: groupName      群名
+ * 3: groupNote		 群说明
+ * 4: gType			 群分类
+ * 5: file			 上传属性
+ * 6: hid            环信ID
+ *
+ *  @param string hid
+ */
+- (void)createSelfGroupWithHXid:(NSString *) hid{
 
-- (void)createSelfGroup{
+     NSString *url = [NSString stringWithFormat:@"http://%@/group/create",kLoginServer];
 
-    BaseJsonData * data = [[BaseJsonData alloc]init];
-    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
@@ -116,28 +129,62 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     param[@"groupName"] = groupName.text;
     param[@"groupNote"] = groupNote.text;
     param[@"gType"] = @"1";
+    param[@"hid"] = hid;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
     
-    [data POSTData:url and:param and:^(id dic) {
-        
-        NSLog(@"群组创建：%@",dic);
-        
-        NSString *code = dic[@"code"];
-        if ([code isEqualToString:@"1"]) {
-            
-            
-            NSLog(@"群组创建成功");
-           
-            
-        }else if ([code isEqualToString:@"2"]){
-            
-            [BaseAlertView AlertView:@"网络错误，群组创建失败"];
-            
-        }
-        
-        
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//这个有时必须设置
+    AFHTTPRequestOperation *operation = [manager POST:url parameters:param
+                            constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                
+                                NSData *data=UIImagePNGRepresentation(_image);
+                                [formData appendPartWithFileData:data name:@"file" fileName:@"qunzuIcon" mimeType:@"image/png"];
+                                
+                            } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                NSLog(@"创建成功！");
+                                NSLog(@"--------%@",responseObject );
+                            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                NSLog(@"创建失败！");
+                            }];
+                                
+    
+    
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"upload++++++success");
+        NSLog(@"%@",responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"upload++++++failed");
     }];
+    
+
+   
+    
+    
+    
+//    [data POSTData:url and:param and:^(id dic) {
+//        
+//        
+//        NSString *code = dic[@"code"];
+//        if ([code isEqualToString:@"1"]) {
+//            
+//            
+//           [BaseAlertView AlertView:@"创建群组成功！"];
+//           [self.navigationController popViewControllerAnimated:YES];
+//            
+//        }else if ([code isEqualToString:@"2"]){
+//            
+//            [BaseAlertView AlertView:@"群名或群分类格式错误!"];
+//            
+//        }
+//        else
+//        {
+//            [BaseAlertView AlertView:@"网络错误，群组创建失败!"];
+//        }
+//        
+//        
+//    }];
     
 
 
@@ -154,7 +201,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     [self creatEaseGroup];
     
     //创建自己群组
-    [self createSelfGroup];
+//    [self createSelfGroup];
 }
 
 
@@ -189,7 +236,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     headPath.image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     NSLog(@"拿到的图片名字。。。。。。。。。 %@",[info objectForKey:UIImagePickerControllerEditedImage]);
-    
+    _image = [info objectForKey:UIImagePickerControllerEditedImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
     
 }

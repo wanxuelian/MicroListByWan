@@ -8,7 +8,17 @@
 
 #import "TopCoilTableViewCell.h"
 
+@interface TopCoilTableViewCell()
 
+@property(nonatomic,weak)UIImageView *coilImageView;
+
+@property(nonatomic,weak)UILabel *nameTopLabel;
+
+@property(nonatomic,weak)UILabel *depict;
+
+
+
+@end
 
 
 @implementation TopCoilTableViewCell
@@ -27,30 +37,48 @@
 }
 
 
+-(void)setGroupListModel:(GroupListModel *)groupListModel
+{
+    _groupListModel = groupListModel;
+    
+    NSString *url1 = _groupListModel.headPath;
+    NSURL *url = [NSURL URLWithString:url1];
+    
+    [self.coilImageView sd_setImageWithURL:url];
+    
+    self.nameTopLabel.text = _groupListModel.groupName;
+    _depict.text = _groupListModel.groupNote;
+    
+}
+
 
 - (void)_CreatsubView{
 
     CGRect rect = [[UIScreen mainScreen] bounds];
+    CGFloat padding = 5.0f;
     
-    UIImageView *coilImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, rect.size.width * 1 / 5 + 20, rect.size.width * 1 / 5 + 20)];
     
-    NSString *url1 = _groupListModel.headPath;
-    NSURL *url = [NSURL URLWithString:url1];
-    [coilImageView sd_setImageWithURL:url];
+     UIImageView *imageview= [[UIImageView alloc] initWithFrame:CGRectMake(padding, padding, 100,100)];
+    [self.contentView addSubview:imageview];
+    self.coilImageView = imageview;
+    
+    
+    
+    
     
 //    coilImageView.image = [UIImage imageNamed:@"1"];
-    [self addSubview:coilImageView];
     
     
-    UILabel *nameTopLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(coilImageView.frame), 5, rect.size.width * 1 / 4, 35)];
-    nameTopLabel.text = _groupListModel.groupName;
-    [self addSubview:nameTopLabel];
+    UILabel *nameTopLabelTemp = [[UILabel alloc] initWithFrame:CGRectMake(padding * 2 + imageview.frame.size.width, 5, rect.size.width * 1 / 4, 35)];
+    [self.contentView addSubview:nameTopLabelTemp];
+    self.nameTopLabel = nameTopLabelTemp;
     
-    UILabel *depict = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(coilImageView.frame), CGRectGetMaxY(nameTopLabel.frame) + 10, rect.size.width * 1 / 4, 35)];
-    depict.text = _groupListModel.groupName;
-//    [self addSubview:depict];
+    
+    UILabel *depictTemp = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_coilImageView.frame), CGRectGetMaxY(nameTopLabelTemp.frame) + 10, rect.size.width * 1 / 4, 35)];
+    [self.contentView addSubview:depictTemp];
 
 
+    _depict = depictTemp;
 
 }
 
