@@ -53,12 +53,12 @@
     {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
-    self.title = NSLocalizedString(@"创建群组", @"Create a group");
+    self.title = NSLocalizedString(@"title.createGroup", @"Create a group");
     self.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0];
     
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     addButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [addButton setTitle:NSLocalizedString(@"确认创建", @"add members") forState:UIControlStateNormal];
+    [addButton setTitle:NSLocalizedString(@"选择群员", @"add members") forState:UIControlStateNormal];
     [addButton setTitleColor:[UIColor colorWithRed:32 / 255.0 green:134 / 255.0 blue:158 / 255.0 alpha:1.0] forState:UIControlStateNormal];
     [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [addButton addTarget:self action:@selector(addContacts:) forControlEvents:UIControlEventTouchUpInside];
@@ -97,7 +97,7 @@
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.font = [UIFont systemFontOfSize:15.0];
         _textField.backgroundColor = [UIColor whiteColor];
-        _textField.placeholder = NSLocalizedString(@"请输入群组名称", @"please enter the group name");
+        _textField.placeholder = NSLocalizedString(@"请输入群组名", @"please enter the group name");
         _textField.returnKeyType = UIReturnKeyDone;
         _textField.delegate = self;
     }
@@ -114,13 +114,15 @@
         _textView.layer.cornerRadius = 3;
         _textView.font = [UIFont systemFontOfSize:14.0];
         _textView.backgroundColor = [UIColor whiteColor];
-        _textView.placeholder = NSLocalizedString(@"请输入群描述", @"please enter a group description");
+        _textView.placeholder = NSLocalizedString(@"请输入群组描述", @"please enter a group description");
         _textView.returnKeyType = UIReturnKeyDone;
         _textView.delegate = self;
     }
     
     return _textView;
 }
+
+
 /*
 - (UIView *)switchView
 {
@@ -239,7 +241,6 @@
     NSDictionary *loginInfo = [[[EaseMob sharedInstance] chatManager] loginInfo];
     NSString *username = [loginInfo objectForKey:kSDKUsername];
     NSString *messageStr = [NSString stringWithFormat:NSLocalizedString(@"group.somebodyInvite", @"%@ invite you to join groups \'%@\'"), username, self.textField.text];
-    
     [[EaseMob sharedInstance].chatManager asyncCreateGroupWithSubject:self.textField.text description:self.textView.text invitees:source initialWelcomeMessage:messageStr styleSetting:setting completion:^(EMGroup *group, EMError *error) {
         [weakSelf hideHud];
         if (group && !error) {
@@ -299,27 +300,24 @@
 */
 - (void)addContacts:(id)sender
 {
-    if (self.textField.text.length == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"请输入群组名称", @"please enter the group name") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
-        [alertView show];
-        return;
-    }
-    
-    [self.view endEditing:YES];
-    
-    
-    BOOL isPop = YES;
-    isPop =  [_delegate viewController:self didFinishSelectedSources:nil];
-    
-    
+//    if (self.textField.text.length == 0) {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"group.create.inputName", @"please enter the group name") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
+//        [alertView show];
+//        return;
+//    }
+//    
+//    [self.view endEditing:YES];
+//    
 //    ContactSelectionViewController *selectionController = [[ContactSelectionViewController alloc] init];
 //    selectionController.delegate = self;
 //    [self.navigationController pushViewController:selectionController animated:YES];
-    if (isPop) {
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }
+    
+    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+
+
 
 @end

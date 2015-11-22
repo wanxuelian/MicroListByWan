@@ -11,7 +11,7 @@
   */
 
 #import <UIKit/UIKit.h>
-#import "EMChooseViewController.h"
-@interface CreateGroupViewController : EMChooseViewController
+
+@interface CreateGroupViewController : UIViewController
 
 @end

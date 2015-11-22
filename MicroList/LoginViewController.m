@@ -20,6 +20,7 @@
 {
 
     BOOL isAutoLogin;
+    NSString *uid;
 }
 @end
 
@@ -160,7 +161,7 @@
          dispatch_async(dispatch_get_main_queue(), ^{
          
          
-         //刷新
+         //刷新   
          });
          */
         
@@ -262,10 +263,27 @@
             
         }
         
-        
-        
-        
 
+        NSDictionary *da = responseObject[@"data"];
+        
+        uid = [[da objectForKey:@"uid"]description];
+        
+        
+        
+        
+        NSLog(@"uid***********%@",uid);
+        
+        //环信注册
+        [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:uid password:@"123123" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+            if (!error) {
+                NSLog(@"注册成功");
+            }
+            
+            
+            NSLog(@"error %@",error);
+            
+        } onQueue:nil];
+      
         
         
         
@@ -275,11 +293,6 @@
         NSLog(@"请求失败  error : %@", error);
         
     }];
-    
-    
-    
-    
-    
     
     
 }
@@ -332,10 +345,21 @@
     
     NSString * usernameStr = _userName.text;
     NSString * passwordStr = _passWord.text;
+//    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:passwordStr];
+//    // 设置自动登录
+//    [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
     
+    
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:@"123123" completion:^(NSDictionary *loginInfo, EMError *error) {
+        if (!error) {
+            // 设置自动登录
+            [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+        }
+    } onQueue:nil];
+
+
 //    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:usernameStr password:@"123123"];
-    
-    
+   
 //    NSString * safeString = [self saltMD5:passwordStr];
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
@@ -352,7 +376,7 @@
     
     [manager POST:string parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-//       NSLog(@"返回的登录数据： %@",responseObject);
+       NSLog(@"返回的登录数据： %@",responseObject);
         
         NSString * code = responseObject[@"code"];
         
@@ -361,6 +385,8 @@
         if ([code isEqualToString:@"1" ]) {
             
             [self AlertView:@"登录成功"];
+            
+        
             
             NSString * key = responseObject[@"data"][@"key"];
             

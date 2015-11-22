@@ -38,12 +38,15 @@
     NSURL *url = [NSURL URLWithString:url1];
     [coilImageView sd_setImageWithURL:url];
     
+    coilImageView.backgroundColor = [UIColor yellowColor];
+    
 //    coilImageView.image = [UIImage imageNamed:@"1"];
     [self addSubview:coilImageView];
     
     
     UILabel *nameTopLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(coilImageView.frame), 5, rect.size.width * 1 / 4, 35)];
     nameTopLabel.text = _groupListModel.groupName;
+    nameTopLabel.backgroundColor = [UIColor redColor];
     [self addSubview:nameTopLabel];
     
     UILabel *depict = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(coilImageView.frame), CGRectGetMaxY(nameTopLabel.frame) + 10, rect.size.width * 1 / 4, 35)];

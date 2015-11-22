@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class NowShowModel;
+
+@class NowShowDataModel;
+
+@class APOpenTagView;
+
 @interface DymnaicCell : UITableViewCell
+
+
 
 @property (nonatomic, retain)UIButton *photoAvat;
 
@@ -16,7 +22,7 @@
 
 @property (nonatomic, retain)UIButton *topTabel;
 
-@property (nonatomic, retain)UIImageView *imageScenery;
+@property (nonatomic, strong)APOpenTagView *imageScenery;
 
 @property (nonatomic, retain)UILabel *zambia;
 
@@ -29,6 +35,8 @@
 @property (nonatomic, retain)UIButton *badB;
 
 
-@property(nonatomic,strong)NowShowModel *model;
+@property(nonatomic,strong)NowShowDataModel *modelNowShow;
+
+
 
 @end

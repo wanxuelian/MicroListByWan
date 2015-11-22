@@ -195,20 +195,20 @@
 
 
 - (void)buttonAction:(UIButton *)button{
-    /*
+    
     if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
         
         EMGroup *group = [[EMGroup alloc]init];
-        ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:group.groupId isGroup:YES];
-        chatController.title = group.groupSubject;
+        ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:@"111"isGroup:YES];
+        chatController.title = @"群组名称";
         [self.navigationController pushViewController:chatController animated:YES];
         
     }
- */
+ 
     
     
-    GroupViewController *group = [[GroupViewController alloc]init];
-    [self.navigationController pushViewController:group animated:YES];
+//    GroupViewController *group = [[GroupViewController alloc]init];
+//    [self.navigationController pushViewController:group animated:YES];
     
     
     

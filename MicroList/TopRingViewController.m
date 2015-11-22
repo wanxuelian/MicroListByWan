@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getData];
+//    [self getData];
     
     self.topArray = @[@"正在晒",@"群组",@"我的好友",@"聊天"];
     self.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"榜圈" image:nil tag:307];
@@ -41,7 +41,7 @@
     
     
 }
-
+/*
 //好友消息数返回
 - (void)getData{
 
@@ -84,7 +84,7 @@
 
 
 }
-
+*/
 
 
 

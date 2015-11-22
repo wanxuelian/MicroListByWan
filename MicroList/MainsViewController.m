@@ -148,7 +148,7 @@
         [cell.photoAvat setBackgroundImage:[UIImage imageNamed:@"picture7"] forState:UIControlStateNormal];
         cell.photoName.text = @"风铃";
         [cell.topTabel setBackgroundImage:[UIImage imageNamed:@"girlAvater"] forState:UIControlStateNormal];
-        cell.imageScenery.image = [UIImage imageNamed:@"picture12"];
+//        cell.imageScenery.image = [UIImage imageNamed:@"picture12"];
         cell.selectionStyle = NO;
         return cell;
     }
