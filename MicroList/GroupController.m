@@ -236,23 +236,43 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
         
         NSLog(@"加群的返回：%@",dic);
         
+        NSString *hid = dic[@"hid"];
         NSString *code = dic[@"code"];
+        
+        NSUserDefaults *user = [[NSUserDefaults alloc]init];
+        NSString *uid = [user objectForKey:HXKey];
+        
         if ([code isEqualToString:@"1"]) {
             
             
+            [BaseAlertView AlertView:@"请求入群成功"];
             NSLog(@"请求入群成功");
+            
+            
+            [[EaseMob sharedInstance].chatManager asyncAddOccupants:@[uid] toGroup:hid welcomeMessage:@"邀请信息"  completion:^(NSArray *occupants, EMGroup *group, NSString *welcomeMessage, EMError *error) {
+                if (!error) {
+                    NSLog(@"环信入群添加成功");
+                }
+            } onQueue:nil];
+            
+            
+            
+
             
             
         }else if ([code isEqualToString:@"2"]){
             
-            [BaseAlertView AlertView:@"网络错误，请求入群失败"];
+            [BaseAlertView AlertView:@"群组不存在"];
             
         }
         
         
     }];
-
-
+    
+    
+    
+    
+   
 }
 
 

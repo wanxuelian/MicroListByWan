@@ -40,4 +40,19 @@
 #import "EaseMob.h"
 
 
+
+
+
+#define UserId  @"18552123120"
+#define UserName  @"15271519188"
+#define UserPassword  @"123123"
+
+#define UserNameKey  @"username"
+#define PassWordKey @"password"
+#define KEY @"key"
+#define HXKey       @"huanXinId"
+
+
+
+
 #endif
