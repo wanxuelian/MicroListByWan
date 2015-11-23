@@ -129,7 +129,17 @@
 
      //4.设置配图的数据
 //     self.pictureView.image=[UIImage imageNamed:_shangPuFrame.shangPu.image];
+     
+     
 
+     
+
+     NSString *urlStr= [NSString stringWithFormat:@"http://%@%@",kLoginServer,_shangPuFrame.shangPu.headPath];
+     NSURL *url = [NSURL URLWithString:urlStr];
+     [self.pictureView sd_setImageWithURL:url];
+     
+//     self.pictureView.image = [UIImage imageNamed:@"icon01.jpg"];
+     
      //5.设置微博昵称数据
      self.nameLabel.text=_shangPuFrame.shangPu.groupName;
  }
@@ -176,7 +186,7 @@
      //5.设置配图的frame
      
      if (_shangPuFrame.shangPu.headPath) {
-//         self.pictureView.frame=_shangPuFrame.pictureF;
+         self.pictureView.frame=_shangPuFrame.pictureF;
      }
  }
 

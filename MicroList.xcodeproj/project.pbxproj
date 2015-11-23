@@ -1566,6 +1566,7 @@
 		4CC5BEDC1BFAC38C009AF412 /* EMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMAlertView.m; sourceTree = "<group>"; };
 		4CC5BEDF1BFAC3BD009AF412 /* TTGlobalUICommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGlobalUICommon.h; sourceTree = "<group>"; };
 		4CC5BEE01BFAC3BD009AF412 /* TTGlobalUICommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGlobalUICommon.m; sourceTree = "<group>"; };
+		4CCCEAFC1C0369C30000FE67 /* URLDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLDefine.h; sourceTree = "<group>"; };
 		4CE6B92C1BFACDBC00C2C2D2 /* EMRobotChatTextBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMRobotChatTextBubbleView.h; sourceTree = "<group>"; };
 		4CE6B92D1BFACDBC00C2C2D2 /* EMRobotChatTextBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMRobotChatTextBubbleView.m; sourceTree = "<group>"; };
 		4CE6B92E1BFACDBC00C2C2D2 /* EMRotbotChatViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMRotbotChatViewCell.h; sourceTree = "<group>"; };
@@ -2523,6 +2524,7 @@
 				E238B43F1BCF708600441BB5 /* AppDelegate.h */,
 				E238B4401BCF708600441BB5 /* AppDelegate.m */,
 				4C9CA0FF1C00295D00C61F60 /* AppDef.h */,
+				4CCCEAFC1C0369C30000FE67 /* URLDefine.h */,
 				049FCBB31BF086EA002558A8 /* BaseJsonData.h */,
 				049FCBB41BF086EA002558A8 /* BaseJsonData.m */,
 				E234F6391BD9D7B2001964DA /* RootViewController.h */,

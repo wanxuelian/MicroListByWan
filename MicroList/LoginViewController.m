@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _userName.delegate = self;
+    _passWord.delegate = self;
     //环信
     /*
     
@@ -216,10 +218,7 @@
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-    
-    NSString * string = [NSString stringWithFormat:@"http://%@/user/register",kLoginServer];
-    
-//    NSLog(@"%@",string);
+
     
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     params[@"mobile"] = usernameStr;
@@ -227,7 +226,7 @@
     
     
     
-    [manager POST:string parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:UserRegister_URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
 //        NSLog(@"%@",responseObject);
         
@@ -248,6 +247,7 @@
                     if (!error) {
                         [self AlertView:@"注册成功"];
                     }
+                    
                     
                     
                     NSLog(@"error %@",error);
@@ -337,14 +337,14 @@
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     
-    NSString * string = [NSString stringWithFormat:@"http://%@/user/login",kLoginServer];
+
     
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     
     params[@"mobile"]   = usernameStr;
     params[@"password"] = passwordStr;
     
-    [manager POST:string parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:UserLogin_URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"返回的登录数据： %@",responseObject);
         
@@ -358,7 +358,7 @@
             
             NSString * key = responseObject[@"data"][@"key"];
             //获取返回的id用来作为登录环信的账号
-            uid            = responseObject[@"data"][@"uid"];
+            uid            = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"uid"]];
             
             //获取userDefault单例
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -409,6 +409,14 @@
     
    
     
+}
+
+-(BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    if (textField.tag == 1001) {
+        _passWord.text = @"";
+    }
+    return YES;
 }
 
 

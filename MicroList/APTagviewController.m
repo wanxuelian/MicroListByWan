@@ -45,7 +45,6 @@
     
     if (self.textTagModelArray.count > 0 || self.audioTagModelArray.count > 0 || self.locationTagModelArray.count ) {
         //获得key
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSString *showStr = [self creatModelLabel];
         NSString *key = @"LkLA4m9NH0ukVOErmVWOeswv05V9bevfgpDIyWnJPB0=";
         NSLog(@"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%@",showStr);

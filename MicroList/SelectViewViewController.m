@@ -31,10 +31,7 @@
     
     [self getData];
     
-    
-    
-    
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+
     NSString *headPath = [userDefault objectForKey:@"headPath"];
     
     if (_headPath != nil) {
@@ -82,18 +79,15 @@
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/user/dataEdit/",kLoginServer];
-    
     //    NSLog(@"请求的地址了： %@",url);
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"key"] = key;
     params[@"type"] = @"2";
     
-    [data POSTData:url and:params and:^(id dict) {
+    [data POSTData:UserProfile_URL and:params and:^(id dict) {
         
         //        NSLog(@"好友资料： %@",dict);
         
@@ -143,12 +137,11 @@
      NSString *timeString = [NSString stringWithFormat:@"%f", a]; //转为字符型
      */
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/user/dataEdit/",kLoginServer];
     
     //    NSLog(@"请求的地址了： %@",url);
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *key = [userDefault objectForKey:@"key"];
+
+    NSString *key = LocationKey;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"key"] = key;
@@ -166,7 +159,7 @@
     params[@"area"] = _area.text;
     params[@"signature"] = _signature.text;
     
-    [data POSTData:url and:params and:^(id dict) {
+    [data POSTData:UserProfile_URL and:params and:^(id dict) {
         
         //        NSLog(@"提交返回： %@",dict);
         
@@ -176,6 +169,7 @@
             
             [userDefault setObject:_nickName.text forKey:@"nickName"];
             [userDefault synchronize];
+            
             [BaseAlertView AlertView:@"提交成功"];
             
             
@@ -190,11 +184,10 @@
 //上传图片
 - (void)getPhotoData{
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *key = [userDefaults objectForKey:@"key"];
     
     
-    NSString *urlstaring = [NSString stringWithFormat:@"http://%@/user/headUp?key=%@",kLoginServer,key];
+    NSString *key = LocationKey;
+    NSString *urlstaring = [UserModify_URL stringByAppendingString:key];
     
     UIImage *asset = self.headPath.image;
     NSData *data1 = UIImageJPEGRepresentation(asset, 0.2);
@@ -210,7 +203,7 @@
     AFHTTPRequestOperation *operation = [manager POST:urlstaring parameters:parame constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         //        NSLog(@"***********正在请求  请求地址：%@*******************",urlstaring);
-        [formData appendPartWithFileData:data1 name:@"file" fileName:@"ddd.png" mimeType:@"image/jpeg"];
+        [formData appendPartWithFileData:data1 name:@"file" fileName:@"ddd.png" mimeType:@"image/png"];
         
         
         
@@ -223,7 +216,7 @@
         for (NSDictionary *dic in data) {
             
             NSString *str = dic[@"headPath"];
-            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             [userDefaults setObject:str forKey:@"headPath"];
             
             //及时刷新

@@ -39,7 +39,6 @@
 
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
     
@@ -47,9 +46,8 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"key"] = key;
     param[@"cid"] = _cid;
-    NSString *url = [NSString stringWithFormat:@"http://%@/userRelation/friendData",kLoginServer];
     
-    [data POSTData:url and:param and:^(id dic) {
+    [data POSTData:FriendDetails_URL and:param and:^(id dic) {
         
         NSString *code = dic[@"code"];
         if ([code isEqualToString:@"1"]) {

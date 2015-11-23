@@ -10,7 +10,23 @@
 #define MicroList_AppDef_h
 
 
-
+typedef NS_ENUM(NSInteger, Sex) {
+    Male = 1,
+    Femal
+};
+/**
+ *  显示群资料
+ */
+typedef NS_ENUM(NSInteger, GroupDetailType){
+    /**
+     *  根据搜索的群资料显示
+     */
+    GroupDetailBySearch = 1,
+    /**
+     *  根据我的群列表显示
+     */
+    GroupDetailByMyList
+};
 #define UserId  @"18552123120"
 #define UserName  @"15271519188"
 #define UserPassword  @"123123"
@@ -19,5 +35,12 @@
 #define PassWordKey @"password"
 #define KEY @"key"
 #define HXKey       @"huanXinId"
+
+#define LocationKey [[NSUserDefaults standardUserDefaults] objectForKey:@"key"];
+
+#define URL_HEAD [NSString stringWithFormat:@"http://%@",kLoginServer]
+
+#define userDefault [NSUserDefaults standardUserDefaults]
+
 
 #endif

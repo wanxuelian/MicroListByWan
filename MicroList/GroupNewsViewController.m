@@ -14,9 +14,14 @@
 #import "GroupChatTableCell.h"
 #import "GroupViewController.h"
 #import "ChatViewController.h"
+#import "AppDef.h"
 @interface GroupNewsViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
+
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic ) GroupDetailType groupDetailType;
 
 @end
 
@@ -27,10 +32,23 @@
     self = [super init];
     if (self != nil) {
         _group = group;
+        _groupDetailType = GroupDetailByMyList;
     }
     return self;
 }
 
+-(GroupNewsViewController *)initWithGroupId:(NSString *)groupId
+{
+    self = [super init];
+    if (self != nil) {
+
+        [self getGroupDetailById:groupId];
+        _groupDetailType = GroupDetailBySearch;
+    }
+    return self;
+
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,33 +58,32 @@
     
     _dataSource = [NSMutableArray array];
     
-    UITableView *messageTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height) style:UITableViewStylePlain];
     
-    messageTable.delegate = self;
-    messageTable.dataSource = self;
-    [self.view addSubview:messageTable];
-    
-//    [self getData];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+
     
  }
 
 
+
 //群资料查看
-- (void)getData{
+- (void)getGroupDetailById:(NSString *) groupId{
     
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
     
     //请求好友列表
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"key"] = key;
+    param[KEY] = key;
+    param[@"gid"] = groupId;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
     
-    [data POSTData:url and:param and:^(id dic) {
+    [data POSTData:GroupDetails_URL and:param and:^(id dic) {
         
         NSLog(@"群组列表：%@",dic);
         
@@ -82,16 +99,18 @@
             _group = [[GroupListModel alloc]init];
             
             for (NSDictionary *di in dict) {
-                _group.nickName = di[@"nickName"];
+                _group.nickName = di[@"uName"];
                 _group.headPath = di[@"headPath"];
-                _group.gid = di[@"gid"];
+                _group.gid = groupId;
                 _group.groupName = di[@"groupName"];
                 _group.gType = di[@"gType"];
                 _group.groupNote = di[@"groupNote"];
+                
 
             }
             
          
+            [_tableView reloadData];
         }else if ([code isEqualToString:@"2"]){
             
             [BaseAlertView AlertView:@"网络错误，好友列表请求失败"];
@@ -126,9 +145,9 @@
         cell.selectionStyle = NO;
         
         
-//        NSURL *url = [NSURL URLWithString:_group.headPath];
-//        
-//        [cell.headPath sd_setImageWithURL:url];
+        NSString *urlStr = [NSString stringWithFormat:@"http://%@/%@",kLoginServer,_group.headPath];
+        NSURL *url = [NSURL URLWithString:urlStr];
+        [cell.headPath sd_setImageWithURL:url];
         
         return cell;
         
@@ -146,7 +165,7 @@
         GroupMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupMemberTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = NO;
         
-        cell.nickName.text = _group.groupName;
+        cell.nickName.text = _group.nickName;
         
         return cell;
     }
@@ -197,8 +216,17 @@
     UIButton *chatButton = [UIButton buttonWithType:UIButtonTypeSystem];
     chatButton.frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
     chatButton.backgroundColor = [UIColor colorWithRed:0.874 green:0.857 blue:0.876 alpha:1.000];
-    [chatButton setTitle:@"发送消息" forState:UIControlStateNormal];
-    [chatButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    //如果是通过搜索显示的群资料，则底部按钮为申请入群
+    if (_groupDetailType == GroupDetailBySearch) {
+        [chatButton setTitle:@"确定加入" forState:UIControlStateNormal];
+        [chatButton addTarget:self action:@selector(applyForAdmission) forControlEvents:UIControlEventTouchUpInside];
+    }
+    //如果是通过我的列表进入群资料，则底部为发送群消息
+    if (_groupDetailType == GroupDetailByMyList) {
+        [chatButton setTitle:@"发送消息" forState:UIControlStateNormal];
+        [chatButton addTarget:self action:@selector(goToGroupChat:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     
     [View addSubview:chatButton];
     
@@ -206,8 +234,48 @@
 
 }
 
+-(void) applyForAdmission
+{
+    BaseJsonData * data = [[BaseJsonData alloc]init];
+    
+    NSString *key = [userDefault objectForKey:@"key"];
+    
+    
+    //请求好友列表
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"key"] = key;
+    param[@"gid"] = _group.gid;
 
-- (void)buttonAction:(UIButton *)button{
+    
+    [data POSTData:JoinGroup_URL and:param and:^(id dic) {
+        
+        NSLog(@"加群的返回：%@",dic);
+        
+        NSString *code = dic[@"code"];
+        if ([code isEqualToString:@"1"]) {
+            
+            
+            NSLog(@"请求入群成功");
+            [BaseAlertView AlertView:@"发送入群请求成功！"];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }else if ([code isEqualToString:@"2"]){
+            
+            [BaseAlertView AlertView:@"网络错误，请求入群失败"];
+            
+        }
+        
+        
+    }];
+}
+
+
+/**
+ *  点击发送消息聊天方法
+ *
+ *  @param button
+ */
+- (void)goToGroupChat:(UIButton *)button{
     
     if ([[EaseMob sharedInstance].chatManager isLoggedIn]) {
         

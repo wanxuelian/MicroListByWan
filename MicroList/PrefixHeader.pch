@@ -38,6 +38,7 @@
 #import "NSString+Valid.h"
 #import "AFNetworking.h"
 #import "EaseMob.h"
-
+#import "URLDefine.h"
+#import "AppDef.h"
 
 #endif

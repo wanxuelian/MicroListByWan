@@ -76,7 +76,7 @@
     button.frame = CGRectMake(50, 500,300 , 40);
     button.backgroundColor = [UIColor lightGrayColor];
     [button setTitle:@"确认创建" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(createGroup:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 
 }
@@ -99,6 +99,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
             
 //
             
+            [self.navigationController popViewControllerAnimated:YES];
             
         }
     
@@ -118,14 +119,11 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
  */
 - (void)createSelfGroupWithHXid:(NSString *) hid{
 
-     NSString *url = [NSString stringWithFormat:@"http://%@/group/create",kLoginServer];
 
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *key = [userDefault objectForKey:@"key"];
     
     //请求好友列表
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"key"] = key;
+    param[@"key"] = LocationKey;
     param[@"groupName"] = groupName.text;
     param[@"groupNote"] = groupNote.text;
     param[@"gType"] = @"1";
@@ -135,7 +133,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//这个有时必须设置
-    AFHTTPRequestOperation *operation = [manager POST:url parameters:param
+    AFHTTPRequestOperation *operation = [manager POST:GroupDetails_URL parameters:param
                             constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                 
                                 NSData *data=UIImagePNGRepresentation(_image);
@@ -144,6 +142,8 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
                             } success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 NSLog(@"创建成功！");
                                 NSLog(@"--------%@",responseObject );
+                                
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshGroupList" object:nil];
                             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                 NSLog(@"创建失败！");
                             }];
@@ -195,7 +195,7 @@ description:groupNote.text invitees:nil initialWelcomeMessage:@"邀请您加入�
 
 
 #pragma mark -- buttonAction
-- (void)buttonAction:(UIButton *)button{
+- (void)createGroup:(UIButton *)button{
     
     //创建环信群组
     [self creatEaseGroup];

@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AppDef.h"
 @interface SelectModel : NSObject
 
 @property(nonatomic,copy)NSString *myPhoto;
-@property(nonatomic,copy)NSString *username;
-@property(nonatomic,copy)NSString *sex;
+@property(nonatomic,copy)NSString *name;
+@property(nonatomic)Sex sex;
+@property(nonatomic,copy) NSString *nickName;
 @property(nonatomic,copy)NSString *area;//地区
 @property(nonatomic,copy)NSString *signature;//个性签名
 

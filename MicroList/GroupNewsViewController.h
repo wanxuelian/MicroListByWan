@@ -15,4 +15,5 @@
 
 -(GroupNewsViewController *) initWithGroupModel:(GroupListModel *) group;
 
+-(GroupNewsViewController *) initWithGroupId:(NSString *) groupId;
 @end

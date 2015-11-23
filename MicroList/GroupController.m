@@ -30,6 +30,21 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
 
 @implementation GroupController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getData2];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"refreshGroupList" object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshGroupList" object:nil];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"群组");
@@ -46,7 +61,7 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     UIButton *rightBut = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBut setTitle:@"加入群组" forState:UIControlStateNormal];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"添加群组" style:UIBarButtonItemStyleDone target:self action:@selector(rightButtonAction:)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"添加群组" style:UIBarButtonItemStyleDone target:self action:@selector(creatAlert:)];
     
     self.navigationItem.rightBarButtonItem = rightItem;
     
@@ -66,13 +81,18 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
     
     
-    [self getData2];
+//    [self getData2];
     
     
     
 }
 
-- (void)rightButtonAction:(UIButton *)button{
+-(void) refreshData
+{
+    [self getData2];
+}
+
+- (void)creatAlert:(UIButton *)button{
     //创建弹出框
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"群组选择" message:nil delegate:self cancelButtonTitle:@"加入群组" otherButtonTitles:@"新建群组" ,nil];
     
@@ -114,9 +134,9 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
             case 102:
                 
             {
-                //申请入群的网络请求
-                [self getData3];
+                GroupNewsViewController *groupNewContr = [[GroupNewsViewController alloc] initWithGroupId:_file.text];
                 
+                [self.navigationController pushViewController:groupNewContr animated:YES];
                 
                 break;
             }
@@ -165,7 +185,6 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
     
@@ -173,9 +192,8 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"key"] = key;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/group/list",kLoginServer];
     
-    [data POSTData:url and:param and:^(id dic) {
+    [data POSTData:GroupList_URL and:param and:^(id dic) {
         
 
         
@@ -192,12 +210,12 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
                 
                 for (NSDictionary *di in dict) {
                     GroupListModel *model = [[GroupListModel alloc]init];
-                    model.nickName = di[@"nickName"];
+                    model.nickName = di[@"uName"];
                     model.headPath = di[@"headPath"];
                     model.gid = di[@"gid"];
                     model.groupName = di[@"groupName"];
                     model.hid = di[@"hid"];
-                    
+
                     [_data addObject:model];
                 }
                 
@@ -216,44 +234,6 @@ static NSString *cellIdentifier = @"groupCellIdentifier";
     
 }
 
-//申请入群的网络请求
-- (void)getData3{
-
-    BaseJsonData * data = [[BaseJsonData alloc]init];
-    
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *key = [userDefault objectForKey:@"key"];
-    
-    
-    //请求好友列表
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"key"] = key;
-    param[@"gid"] = _file.text;
-    
-    NSString *url = [NSString stringWithFormat:@"http://%@/group/addVerify",kLoginServer];
-    
-    [data POSTData:url and:param and:^(id dic) {
-        
-        NSLog(@"加群的返回：%@",dic);
-        
-        NSString *code = dic[@"code"];
-        if ([code isEqualToString:@"1"]) {
-            
-            
-            NSLog(@"请求入群成功");
-            
-            
-        }else if ([code isEqualToString:@"2"]){
-            
-            [BaseAlertView AlertView:@"网络错误，请求入群失败"];
-            
-        }
-        
-        
-    }];
-
-
-}
 
 
 //创建群组

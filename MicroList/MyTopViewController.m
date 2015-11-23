@@ -19,6 +19,7 @@
 
 #import "EaseMob.h"
 #import "AppDef.h"
+
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
@@ -30,6 +31,7 @@
 
 @property(nonatomic,copy) NSString *nickName;
 @property(nonatomic,copy)NSMutableArray * array;
+@property (nonatomic, strong) SelectModel *model;
 @end
 
 @implementation MyTopViewController
@@ -40,7 +42,6 @@
    
     
     //获取UserDefault
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:KEY];
     if (key != nil) {
         
@@ -97,14 +98,14 @@
 //    [self.headPath sd_setImageWithURL:url];
     
     FirstCell *cell = [[FirstCell alloc]init];
-    [cell.userPhoto sd_setImageWithURL:url];
+//    [cell.userPhoto sd_setImageWithURL:url];
     
     
 
-    NSString *uid = [userDefault objectForKey:HXKey];
+//    NSString *uid = [userDefault objectForKey:HXKey];
     
     //自动登录，需要同时登录环信和服务器
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword];
+//    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword];
     
     
     
@@ -130,37 +131,41 @@
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
  
-    //获取UserDefault
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+
 //    NSString *name = [userDefault objectForKey:@"username"];
     NSString *key = [userDefault objectForKey:@"key"];
     
     
-//    NSString *key = @"qcl901028";
+
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"key"] = key;
     params[@"type"] = @"2";
     
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/user/dataEdit/",kLoginServer];
+    
+
     
     
     //请求用户名
-    [data POSTData:url and:params and:^(id dict) {
+    [data POSTData:UserProfile_URL and:params and:^(id dict) {
         
         NSString *code = dict[@"code"];
         
+        _model = [[SelectModel alloc]init];
         if ([code isEqualToString:@"1"]) {
             
             NSArray *array = dict[@"data"];
             
             for (NSDictionary *data in array) {
                 
-                //            SelectModel *model = [[SelectModel alloc]init];
-                //            model.username = dic[@"data"][@"nickName"];
-                //            [_array addObject:model];
+
+                _model.area = data[@"area"];
                 
-                _nickName = data[@"nickName"];
+                _model.nickName = data[@"nickName"];
+
+                _model.sex = (int)data[@"sex"];
+                
+                _model.signature = data[@"signature"];
                 
                 
             }
@@ -323,12 +328,18 @@
 //        NSURL *url = [NSURL URLWithString:str];
 //    
 //        [cell.imageView sd_setImageWithURL:url];
-//        
+//
 //        
 //        cell.user.text = selectModel.username;
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSString *headPath = [userDefault objectForKey:@"headPath"];
         NSString *nickName = [userDefault objectForKey: @"nickName"];
+        if (headPath != nickName || ![headPath isEqualToString:@""]) {
+
+            NSString *urlStr = [NSString stringWithFormat:@"http://%@/%@",kLoginServer,headPath];
+            NSURL *url = [NSURL URLWithString:urlStr];
+            [cell.imageView sd_setImageWithURL:url];
+            
+        }
         
         NSLog(@"nickName:%@",nickName);
         

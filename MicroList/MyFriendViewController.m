@@ -100,8 +100,7 @@
     
     
     BaseJsonData * data = [[BaseJsonData alloc]init];
-       
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
     NSString *key = [userDefault objectForKey:@"key"];
     
     //请求添加好友
@@ -109,10 +108,10 @@
     params[@"key"] = key;
     params[@"mobile"] = _file.text;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/userRelation/requestFriends",kLoginServer];
+
     
     //请求用户名
-    [data POSTData:url and:params and:^(id dict) {
+    [data POSTData:UserAddFriend_URL and:params and:^(id dict) {
             
             NSString *code = dict[@"code"];
             if ([code isEqualToString:@"1" ]) {
@@ -143,7 +142,6 @@
 - (void)getData2{
     BaseJsonData * data = [[BaseJsonData alloc]init];
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
     
@@ -151,9 +149,9 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"key"] = key;
     
-     NSString *url = [NSString stringWithFormat:@"http://%@/userRelation/friendList",kLoginServer];
+
     
-    [data POSTData:url and:param and:^(id dic) {
+    [data POSTData:UserFriendList_URL and:param and:^(id dic) {
         
         NSString *code = dic[@"code"];
         if ([code isEqualToString:@"1"]) {
@@ -198,7 +196,6 @@
 //接受好友的实时网络请求
 - (void)getData3{
  
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *key = [userDefault objectForKey:@"key"];
     
     
@@ -206,14 +203,14 @@
     params[@"key"] = key;
 //    params[@"cid"] = _file.text;
     
-    NSString *url = [NSString stringWithFormat:@"http://%@/message/messageList",kLoginServer];
     
-    NSLog(@"请求接口********%@",url);
+    
+    NSLog(@"请求接口********%@",UserFriendAddRequest_URL);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];//这个有时必须设置
    
-    [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:UserFriendAddRequest_URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
         NSLog(@"******************************请求成功************************** ：%@",responseObject);

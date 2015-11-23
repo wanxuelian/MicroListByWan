@@ -20,7 +20,7 @@
         
         _model = model;
         
-        _user.text = _model.username;
+        _user.text = _model.nickName;
         
         NSString *img = _model.myPhoto;
         NSURL *url = [NSURL URLWithString:img];
