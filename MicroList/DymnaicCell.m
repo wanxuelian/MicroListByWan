@@ -21,6 +21,7 @@
 #import "APAudioTagModel.h"
 
 #import "APLocationModel.h"
+
 #import "PrintObject.h"
 
 @interface DymnaicCell ()<APOpenTagViewDelegate>
@@ -95,14 +96,19 @@
     }
     
     
-    self.zamB = [[UIButton alloc] initWithFrame:CGRectMake(10, imageSceneryView.frame.size.height + 70 , 40, 28)];
+    self.zamB = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.zamB.frame = CGRectMake(10, imageSceneryView.frame.size.height + 70 , 40, 28);
+    [self.zamB setTitle:@"赞" forState:UIControlStateNormal];
     [self.zamB setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    self.zamB.backgroundColor = [UIColor redColor];
+    self.zamB.backgroundColor = [UIColor colorWithRed:0.737 green:1.000 blue:0.971 alpha:1.000];
     [self addSubview:self.zamB];
     
     
-    self.badB = [[UIButton alloc] initWithFrame:CGRectMake(self.zamB.frame.size.width + 15, imageSceneryView.frame.size.height + 70 , 40, 28)];
-    self.badB.backgroundColor = [UIColor blackColor];
+    self.badB = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.badB.frame = CGRectMake(self.zamB.frame.size.width + 15, imageSceneryView.frame.size.height + 70 , 40, 28);
+    [self.badB setTitle:@"踩" forState:UIControlStateNormal];
+
+    self.badB.backgroundColor = [UIColor colorWithRed:0.737 green:1.000 blue:0.971 alpha:1.000];
     [self addSubview:self.badB];
     
     

@@ -34,7 +34,8 @@
     UIView *viewTop = [[UIView alloc] initWithFrame:CGRectMake(0, 64, rect.size.width, 1)];
     [self.view addSubview:viewTop];
     
-    UITableView *topRing = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(viewTop.frame), rect.size.width, rect.size.height) style:UITableViewStyleGrouped];
+    UITableView *topRing = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(viewTop.frame), rect.size.width, rect.size.height) style:UITableViewStylePlain];
+    self.automaticallyAdjustsScrollViewInsets=NO;
     topRing.delegate = self;
     topRing.dataSource = self;
     [self.view addSubview:topRing];

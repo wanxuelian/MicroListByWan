@@ -104,7 +104,7 @@
     NSString *uid = [userDefault objectForKey:HXKey];
     
     //自动登录，需要同时登录环信和服务器
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword];
+//    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword];
     
     
     

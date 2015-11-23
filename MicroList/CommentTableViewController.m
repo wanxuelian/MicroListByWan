@@ -7,11 +7,19 @@
 //
 
 #import "CommentTableViewController.h"
+
 #import "CommentTransCell.h"
+
 #import "CommentModel.h"
+
 #import "CommentSingTon.h"
+
 #import "CommentHeaderView.h"
-#import "NowShowModel.h"
+
+#import "NowShowDataModel.h"
+
+#import "AFNetworking.h"
+
 
 static NSString *cellIdentifier = @"DymnaicCellCom";
 
@@ -32,6 +40,8 @@ static NSString *cellIdentcom = @"commentCell";
 
 @property (nonatomic, retain)UIButton *comSendButton;
 
+@property (nonatomic, strong)NSString *sidCom;
+
 @end
 
 @implementation CommentTableViewController
@@ -43,10 +53,21 @@ static NSString *cellIdentcom = @"commentCell";
 
     [comAssTon addObserver:self forKeyPath:@"comArrayTon" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
-    CommentHeaderView *view = [[CommentHeaderView alloc] initWithFrame:CGRectMake(0, 0, 375, 400)];
-    [view.commentB addTarget:self action:@selector(commentTextFieldMoview) forControlEvents:UIControlEventTouchUpInside];
+    CommentHeaderView *viewHeadCom = [[CommentHeaderView alloc] initWithFrame:CGRectMake(0, 0, 375, 500)];
+    viewHeadCom.modelNowShow = self.commentNowData;
+    [viewHeadCom.commentB addTarget:self action:@selector(commentTextFieldMoview) forControlEvents:UIControlEventTouchUpInside];
    
-    self.tableView.tableHeaderView = view;
+    self.tableView.tableHeaderView = viewHeadCom;
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    NowShowDataModel *sidModel = self.commentNowData;
+    self.sidCom = sidModel.sidOdd;
+    NSLog(@"晒单id%@",self.sidCom);
+    
+    
+    
+    
+    
     
     
 }
@@ -195,12 +216,17 @@ static NSString *cellIdentcom = @"commentCell";
     //评论
 
         CGRect rect = [[UIScreen mainScreen] bounds];
+    
+//    UIView *viewComment = [[UIView alloc] initWithFrame:CGRectMake(0, rect.size.height * 17 / 18, rect.size.width, 35)];
+//    [self.view addSubview:viewComment];
         self.comMainField = [[UITextField alloc] initWithFrame:CGRectMake(0,  rect.size.height *17 / 18  - 64, rect.size.width * 3 / 4 , 35)];
 
         self.comMainField.backgroundColor = [UIColor whiteColor];
         self.comMainField.delegate = self;
         self.comMainField.layer.cornerRadius = 5.0;
-//        self.comMainField.backgroundColor = [UIColor colorWithRed:0.674 green:1.000 blue:0.642 alpha:1.000];
+    self.comMainField.layer.borderWidth = 1;
+    self.comMainField.layer.borderColor = [[UIColor colorWithRed:0.953 green:0.482 blue:0.000 alpha:1.000] CGColor];
+        self.comMainField.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:self.comMainField];
     [self.comMainField becomeFirstResponder];
         [self.view reloadInputViews];
@@ -214,7 +240,7 @@ static NSString *cellIdentcom = @"commentCell";
         self.comSendButton.layer.cornerRadius = 5.0;
         [self.comSendButton setTitle:@" 发送" forState:UIControlStateNormal];
         [self.comSendButton addTarget:self action:@selector(sendNewsOne) forControlEvents:UIControlEventTouchUpInside];
-//        self.comSendButton.backgroundColor = [UIColor colorWithRed:1.000 green:0.540 blue:0.113 alpha:1.000];
+        self.comSendButton.backgroundColor = [UIColor colorWithRed:1.000 green:0.540 blue:0.113 alpha:1.000];
         [self.view addSubview:self.comSendButton];
         [self.view reloadInputViews];
 }
@@ -244,13 +270,67 @@ static NSString *cellIdentcom = @"commentCell";
 #pragma mark - UITextFieldDelegate
 -(void) textFieldDidEndEditing:(UITextField *)textField
 {
- 
+    
     //获取输入的内容
     self.comString = [textField text];
     NSLog(@"输入的内容%@",self.comString);
+
+    //获取key
+    
+    
+   
+    
+    NSString *urlText = [NSString stringWithFormat:@"http://%@/friendShow/ShowComment",kLoginServer];
+    
+    [self sendPhoto:urlText prams:nil];
+    
+    
+    
+    
+    
+    
+    
     [self insertObject:self.comString inStudentArrayAtIndex:0];
 }
 
+
+- (void)sendPhoto:(NSString *)url prams:(NSMutableDictionary *) param {
+    //获取key
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *key = [userDefault objectForKey:@"key"];
+    
+    //封装上传数据
+    NSMutableDictionary *dicparms = [NSMutableDictionary dictionary];
+    dicparms[@"key"] = key;
+    dicparms[@"comment"] = self.comString;
+    dicparms[@"sid"] = self.sidCom;
+    NSLog(@"comString******%@", self.comString);
+    NSLog(@"sidCom******%@", self.sidCom);
+
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    
+    
+    BaseJsonData * data = [[BaseJsonData alloc]init];
+
+    [data POSTData:url and:dicparms and:^(id dict) {
+        NSLog(@"%@",dict);
+    }];
+    
+//    AFHTTPRequestOperation *operation = [manager POST:url parameters:dicparms success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"成功");
+//        NSLog(@"%@",operation);
+//        NSLog(@"%@",responseObject);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"请求失败的原因%@",error);
+//    }];
+    
+    
+}
 
 
 //    dispatch_queue_t customQueue = dispatch_queue_create("com.keyboard.24", DISPATCH_QUEUE_CONCURRENT);

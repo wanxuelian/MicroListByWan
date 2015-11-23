@@ -53,8 +53,8 @@ static NSString *collCellIdentifer = @"ArderPortPhotoAvatCell";
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMainController)];
     self.navigationItem.leftBarButtonItem = backItem;
     
-    UIBarButtonItem *seekItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(seekController)];
-    self.navigationItem.rightBarButtonItem = seekItem;
+//    UIBarButtonItem *seekItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(seekController)];
+//    self.navigationItem.rightBarButtonItem = seekItem;
     
     
     [self creatLeftModel];

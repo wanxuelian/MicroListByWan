@@ -55,7 +55,9 @@ static NSString *cellIdentife = @"sunDymnaicCell";
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(leftButtonAction:)];
     
     self.navigationItem.leftBarButtonItem = barItem;
-
+    
+    
+   
     
     [self headerTopMy];
     self.tableSun.dataSource = self;
@@ -65,9 +67,21 @@ static NSString *cellIdentife = @"sunDymnaicCell";
 
 }
 
+-(void)viewDidAppear:(BOOL)animated {//来触发视图完全显示在屏幕上之后的行为
+ 
+    if (self.arrayData.count == 0) {
+        self.tableSun.tableFooterView = [[UIView alloc] init];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有添加好友" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        
+        [alert show];
+    }
+    
+}
+
 - (void)serverData{
     
     NSLog(@"获得数据");
+    
     
     BaseJsonData *data = [[BaseJsonData alloc]init];
     
@@ -86,11 +100,13 @@ static NSString *cellIdentife = @"sunDymnaicCell";
 
         
         NSString *code = dict[@"code"];
-        
+        NSArray *dataArray = dict[@"data"];
+        //1.创建存储数据的model
+       
         if ([code isEqualToString:@"1"]) {
             
-            NSArray *dataArray = dict[@"data"];
-            //1.创建存储数据的model
+           
+            
             
             for (NSDictionary *dicArr in dataArray) {
                 NSLog(@"dicArr%@", dicArr);
@@ -103,6 +119,10 @@ static NSString *cellIdentife = @"sunDymnaicCell";
                 
                 NSString *str = dicArr[@"showNote"];
                 NSLog(@"str******%@",str);
+                
+                //获得晒单id
+                NSString *strSids = dicArr[@"sid"];
+                showModel.sidOdd = strSids;
                 
                 //1.获得图片数据model
                 NSString *str1 = [NSString stringWithFormat:@"http://%@%@",kLoginServer, dicArr[@"ImgPath"]];
@@ -120,14 +140,17 @@ static NSString *cellIdentife = @"sunDymnaicCell";
                 NSData *datastr = [strJson dataUsingEncoding:NSUTF8StringEncoding];
                 
                 NSArray *dicdataModel = [NSJSONSerialization JSONObjectWithData:datastr options:NSJSONReadingMutableLeaves error:&err];
+                NSMutableArray *arreee = [NSMutableArray arrayWithObject:dicdataModel];
                 NSLog(@"dicdataModel%ld",dicdataModel.count);
+                NSLog(@"dicdataModelssssss%@",dicdataModel);
 //                NSMutableArray *dicMutable = [NSMutableArray arrayWithObjects:0, nil];
                 
                 static int b = 0;
-                for (NSDictionary *dic in dicdataModel) {
+                for (NSDictionary *dic in arreee) {
+                    NSLog(@"dicsssssssssssss%@",dic);
                     NSLog(@"sssssssssssssssssssssssssss%d",b);
                     //2.获得文本标签数据模型
-                    NSLog(@"dic**%@",dic[@"textTag"]);
+//                    NSLog(@"dic**%@",dic[@"textTag"]);
                     NSArray *arrTextTag = [NSArray arrayWithObject:dic[@"textTag"]];//转化为数组类型的数据
                     NSLog(@"arrTextTag***%@",arrTextTag);
                     showModel.textNowModelArray = arrTextTag;//存储文本数据model
@@ -163,7 +186,8 @@ static NSString *cellIdentife = @"sunDymnaicCell";
         
             [BaseAlertView AlertView:@"服务器请求错误"];
         }
-        
+        [self.tableSun reloadData];
+
         
        
         
@@ -190,7 +214,7 @@ static NSString *cellIdentife = @"sunDymnaicCell";
 
 - (void)headerTopMy {
     CGRect rect = [[UIScreen mainScreen] bounds];
-    self.tableSun = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height) style:UITableViewStylePlain];
+    self.tableSun = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped];
     self.sunHEader = [[SunViewShow alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, 150)];
     self.sunHEader.imageSun.image = [UIImage imageNamed:@"picture12"];
     [self.sunHEader.buttonAvatat setBackgroundImage:[UIImage imageNamed:@"picture7"] forState:UIControlStateNormal];
@@ -200,6 +224,9 @@ static NSString *cellIdentife = @"sunDymnaicCell";
     UITapGestureRecognizer *tapImageView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSunHeaderController)];
     self.sunHEader.imageSun.userInteractionEnabled = YES;//触摸手势
     [self.sunHEader.imageSun addGestureRecognizer:tapImageView];
+    
+    
+    
     
     
     
@@ -260,7 +287,9 @@ static NSString *cellIdentife = @"sunDymnaicCell";
 
 #pragma mark -UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return self.arrayData.count;
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"放置数据");
@@ -273,11 +302,18 @@ static NSString *cellIdentife = @"sunDymnaicCell";
     cell.photoName.text = @"风铃";
     [cell.topTabel setBackgroundImage:[UIImage imageNamed:@"girlAvater"] forState:UIControlStateNormal];
     cell.selectionStyle = NO;
-    [cell.zamB addTarget:self action:@selector(actionZamb) forControlEvents:UIControlEventTouchUpInside];
-    [cell.badB addTarget:self action:@selector(actionBadB) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    NowShowDataModel *model = self.arrayData[indexPath.row];
+    cell.zamB.tag = 400 + [model.sidOdd intValue];
+    cell.badB.tag = 401 + [model.sidOdd intValue];
+    
+    [cell.zamB addTarget:self action:@selector(actionZamb:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.badB addTarget:self action:@selector(actionBadB:
+                                               ) forControlEvents:UIControlEventTouchUpInside];
     NSLog(@"%ld",self.arrayData.count);
     NSLog(@"%@",self.arrayData);
-//    NowShowDataModel *model = self.arrayData[0];
+   
 //    NSLog(@"textNowModelArray0%@", model.textNowModelArray);
 //    NSLog(@"image%@",model.imgModel);
 //    NSLog(@"model.audioNowModelArray0%@",model.audioNowModelArray);
@@ -293,13 +329,65 @@ static NSString *cellIdentife = @"sunDymnaicCell";
 }
 
 #pragma mark - zemB badB
-- (void)actionZamb {
+- (void)actionZamb:(UIButton *)button {
+    NSInteger zidB = button.tag - 400;//晒单ID
+    NSLog(@"赞%ld",button.tag - 400);
     //点击之后发送点击者的用户名(key);和头像,返回点击者的头像赞的数字和踩的
+    BaseJsonData *data = [[BaseJsonData alloc]init];//创建请求类
+    NSString *strUrl = [NSString stringWithFormat:@"http://%@/friendShow/ShowOpinion", kLoginServer];
     
+    //获得key
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *key = [user objectForKey:@"key"];
+    
+    NSMutableDictionary *dicparms = [NSMutableDictionary dictionary];
+    dicparms[@"key"] = key;
+    dicparms[@"sid"] = [NSString stringWithFormat:@"%ld", zidB];
+    NSString *strtype = @"1";
+    dicparms[@"type"] = strtype;
+    
+
+    
+    
+    [data POSTData:strUrl and:dicparms and:^(id dic) {
+        NSLog(@"%@", dic);
+    }];
     
 }
 
-- (void)actionBadB {
+- (void)actionBadB:(UIButton *)button {
+    
+    BaseJsonData *data = [[BaseJsonData alloc]init];//创建请求类
+
+    
+    NSInteger bidB = button.tag - 401;
+    NSLog(@"踩%ld",button.tag - 401);
+    //点击之后发送点击者的用户名(key);和头像,返回点击者的头像赞的数字和踩的
+    NSString *strUrl = [NSString stringWithFormat:@"http://%@/friendShow/ShowOpinion", kLoginServer];
+    
+    //获得key
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *key = [user objectForKey:@"key"];
+    
+    //创建请求体
+    NSMutableDictionary *dicparms = [NSMutableDictionary dictionary];
+    dicparms[@"key"] = key;
+    dicparms[@"sid"] = [NSString stringWithFormat:@"%ld", bidB];
+    NSString *strtype = @"1";
+    dicparms[@"type"] = strtype;
+    
+    
+    
+    
+    [data POSTData:strUrl and:dicparms and:^(id dic) {
+        NSLog(@"%@", dic);
+    }];
+    
+    
+    
+    
+    //    data POSTData:strUrl and:<#(NSDictionary *)#> and:<#^(id)block#>
+    
     
 }
 #pragma mark - UITableViewDelegate
@@ -308,13 +396,16 @@ static NSString *cellIdentife = @"sunDymnaicCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//        NowShowModel *model = [[NowShowModel alloc]init];
+    NowShowDataModel *modelPhoto = self.arrayData[indexPath.row];
+    NSLog(@"modelPhoto是%@",modelPhoto);
     
-//        CommentTableViewController *foodTrans = [[CommentTableViewController alloc] init];
     
-//    foodTrans.sid = model.sid;
     
-//        [self.navigationController pushViewController:foodTrans animated:YES];
+    
+        CommentTableViewController *foodTrans = [[CommentTableViewController alloc] init];
+        foodTrans.commentNowData = modelPhoto;
+    
+        [self.navigationController pushViewController:foodTrans animated:YES];
     
     
 }

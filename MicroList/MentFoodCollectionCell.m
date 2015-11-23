@@ -18,10 +18,10 @@
     //食品分类
         
 //        CGRect rect = [[UIScreen mainScreen] bounds];
-        self.foodB = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.foodB = [UIButton buttonWithType:UIButtonTypeCustom];
 
         self.foodB.frame = CGRectMake(0, 0, 60, 25);
-        self.foodB.backgroundColor = [UIColor colorWithRed:0.579 green:0.997 blue:1.000 alpha:1.000];
+        self.foodB.backgroundColor = [UIColor colorWithRed:0.980 green:0.506 blue:0.027 alpha:1.000];
         [self addSubview:self.foodB];
         
 

@@ -13,12 +13,23 @@
 #import "ShopTableViewController.h"
 #import "FoodTranslateCon.h"
 
+#import "FoodViewCell.h"
+
+#import "FoodScrollView.h"//设置代理需要引入这个类,也可不引用
+
+#import "ClassFoodModel.h"
+
 static NSString *cellIdentfier = @"ment";
 
 
-@interface FoodViewControll ()<UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
+@interface FoodViewControll ()<UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, TermCellDelegate>
 
-@property (nonatomic, retain)NSArray *foodClassArray;
+@property (nonatomic, strong)NSArray *foodClassArray;
+
+
+@property (nonatomic, strong)ClassFoodModel *food; //美食榜数据模型
+
+@property (nonatomic, strong)NSArray *arrFoodModel; //存储模型数据的数组
 
 
 
@@ -34,8 +45,8 @@ static NSString *cellIdentfier = @"ment";
     
     self.foodClassArray = @[@"火锅",@"自助餐",@"面包甜点", @"烧烤",@"快餐简餐",@"江浙菜",@"咖啡厅", @"西餐",@"日本料理",@"韩国料理",@"酒吧", @"小吃面食",@"海鲜",@"川菜",@"粤菜", @"小吃面食",@"海鲜",@"川菜",@"粤菜",  @"东南亚菜",@"湘菜",@"东北菜",@"茶馆", @"清真菜",@"新疆菜"];
    
-    
-    
+   
+    self.arrFoodModel  = @[@"火锅",@"自助餐",@"面包甜点", @"烧烤",@"快餐简餐"];
     
     //    [self collViewFlowLayout];
     [self creatModel];
@@ -137,14 +148,6 @@ static NSString *cellIdentfier = @"ment";
     }];
 }
 
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    ShopTableViewController *shopContr = [[ShopTableViewController alloc] init];
-//    [self presentViewController:shopContr animated:YES completion:^{
-//        
-//    }];
-    
-}
 
 
 #pragma mark - UITableViewDataSource
@@ -154,14 +157,30 @@ static NSString *cellIdentfier = @"ment";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.foodDetail registerNib:[UINib nibWithNibName:@"FoodClassCell" bundle:nil] forCellReuseIdentifier:@"FoodClassCell"];
-    FoodClassCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodClassCell" forIndexPath:indexPath];
+//    [self.foodDetail registerNib:[UINib nibWithNibName:@"FoodClassCell" bundle:nil] forCellReuseIdentifier:@"FoodClassCell"];
+//    FoodClassCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodClassCell" forIndexPath:indexPath];
+//    
+//    [cell.foodClassB addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
+//    [cell.foodClassSecond addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
+//    [cell.foodClassC addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
+//    [cell.foodClassD addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
     
-    [cell.foodClassB addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
-    [cell.foodClassSecond addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
-    [cell.foodClassC addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
-    [cell.foodClassD addTarget:self action:@selector(pushTransDetail) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    static NSString *cellIdentifier = @"foodViewCell";
+    
+    FoodViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[FoodViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+    }
+    NSArray *aar = @[@"火锅",@"自助餐",@"面包甜点", @"烧烤",@"快餐简餐"];
+
+    cell.scView.classLabel.text = aar[indexPath.row];
+    cell.scView.delegate = self;
+//    cell.scView.array = aarray;
+    cell.classModelFood = self.food;
     return cell;
+    
 }
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,7 +204,18 @@ static NSString *cellIdentfier = @"ment";
     [self.navigationController pushViewController:transDetail animated:YES];
         
 }
-
+#pragma mark - TermCellDelegate
+- (void)choseTerm:(UIButton *)button
+{
+    NSLog(@"%ld",button.tag);
+    
+    FoodTranslateCon *transDetail = [[FoodTranslateCon alloc] init];
+    [self.navigationController pushViewController:transDetail animated:YES];
+ 
+    
+    
+    
+}
 
 
 

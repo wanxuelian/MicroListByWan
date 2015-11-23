@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"购物商场";
+    self.navigationItem.title = @"家具";
     
     
     self.rect = [[UIScreen mainScreen] bounds];
@@ -58,7 +58,7 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        return 220;
+        return 270;
         
     }else if (indexPath.row == 1) {
         return 160;

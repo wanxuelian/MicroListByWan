@@ -358,7 +358,7 @@
             
             NSString * key = responseObject[@"data"][@"key"];
             //获取返回的id用来作为登录环信的账号
-            uid            = responseObject[@"data"][@"uid"];
+            uid            = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"uid"]];
             
             //获取userDefault单例
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

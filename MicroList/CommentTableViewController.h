@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class NowShowDataModel;
+
 @interface CommentTableViewController : UITableViewController
 
 @property(nonatomic,copy)NSString *sid;
+
+@property (nonatomic, strong)NowShowDataModel *commentNowData;
+
 
 @end

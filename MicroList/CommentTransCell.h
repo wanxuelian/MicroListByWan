@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class NowShowDataModel;
+
 @interface CommentTransCell : UITableViewCell
 
 @property (nonatomic, retain)UIButton *photoAvat;
@@ -30,5 +32,6 @@
 
 @property (nonatomic, retain)UIButton *commentB;
 
+@property (nonatomic, strong)NowShowDataModel *modelNowShow;
 
 @end

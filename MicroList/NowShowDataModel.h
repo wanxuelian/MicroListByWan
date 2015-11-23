@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong)NSMutableArray *locationModelArray;
 
-
+@property (nonatomic, strong)NSString *sidOdd;
 
 
 

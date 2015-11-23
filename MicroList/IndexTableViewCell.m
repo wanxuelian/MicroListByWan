@@ -34,11 +34,11 @@
         CGRect rect = [[UIScreen mainScreen] bounds];
         
         UILabel *micrIndex = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, rect.size.width * 1 / 4 - 15, 20)];
-        micrIndex.backgroundColor = [UIColor yellowColor];
+//        micrIndex.backgroundColor = [UIColor yellowColor];
         micrIndex.text = @"微榜指数:";
         [self addSubview:micrIndex];
         
-        UILabel *blackLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(micrIndex.frame) + 15, 10, rect.size.width * 3 / 5, 20)];
+        UILabel *blackLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(micrIndex.frame) , 10, rect.size.width * 3 / 5, 20)];
 //        blackLabel.backgroundColor = [UIColor colorWithRed:1.000 green:0.452 blue:0.150 alpha:1.000];
         blackLabel.backgroundColor  = [UIColor yellowColor];
         [self addSubview:blackLabel];
@@ -49,19 +49,20 @@
         greenLabel.backgroundColor = [UIColor yellowColor];
         [self addSubview:greenLabel];
         
-        UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(blackLabel.frame) + 20, 10, rect.size.width * 1 / 9, 20) ];
+        UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(blackLabel.frame) + 20, 10, rect.size.width * 1 / 9 - 10, 20) ];
             numberLabel.text = [NSString stringWithFormat:@"%.2f",c * 100];
         numberLabel.backgroundColor = [UIColor yellowColor];
         [self addSubview:numberLabel];
         
-        UIImageView *liftImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(micrIndex.frame) + 5, (rect.size.width - 25) / 2, 120)];
+        UIImageView *liftImage = [[UIImageView alloc] initWithFrame:CGRectMake(rect.size.width * 1 / 5, CGRectGetMaxY(micrIndex.frame) + 5, rect.size.width * 3 / 5, 170)];
         liftImage.image = [UIImage imageNamed:@"1"];
         [self addSubview:liftImage];
         
+        /*改为添加一张图片,在ArderTransViewController的第一个cell处
         UIImageView *rightImage = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(liftImage.frame) + 5, CGRectGetMaxY(micrIndex.frame) + 5, (rect.size.width - 25) / 2, 120)];
         rightImage.image = [UIImage imageNamed:@"1"];
         [self addSubview:rightImage];
-        
+        */
         
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(liftImage.frame) + 5, rect.size.width, 40) ];
         nameLabel.font = [UIFont boldSystemFontOfSize:22];

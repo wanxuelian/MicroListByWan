@@ -128,6 +128,13 @@
      self.textLab.attributedText=[self getAttributeString:_shangPuFrame.shangPu.groupName font:ShangPuTextFont];
 
      //4.设置配图的数据
+     
+     NSString *str = [NSString stringWithFormat:@"http://%@%@",kLoginServer,_shangPuFrame.shangPu.headPath];
+     NSLog(@"图片地址： %@",str);
+     NSURL *url = [NSURL URLWithString:str];
+    
+     [self.pictureView sd_setImageWithURL:url];
+     
 //     self.pictureView.image=[UIImage imageNamed:_shangPuFrame.shangPu.image];
 
      //5.设置微博昵称数据
@@ -176,7 +183,7 @@
      //5.设置配图的frame
      
      if (_shangPuFrame.shangPu.headPath) {
-//         self.pictureView.frame=_shangPuFrame.pictureF;
+         self.pictureView.frame=_shangPuFrame.pictureF;
      }
  }
 
