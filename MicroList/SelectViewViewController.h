@@ -8,11 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SelectViewDelegate <NSObject>
+
+
+- (void)nameValue:(NSString *)userName;
+- (void)photoValue:(NSString *)headPath;
+
+
+@end
+
+
 @interface SelectViewViewController : UIViewController
+
+@property(strong,nonatomic)id <SelectViewDelegate> delegate;
+
 @property (weak, nonatomic) IBOutlet UILabel *nickName;
 @property (weak, nonatomic) IBOutlet UILabel *sex;
 @property (weak, nonatomic) IBOutlet UILabel *area;
 @property (weak, nonatomic) IBOutlet UILabel *signature;
+
+
 - (IBAction)submitButton:(UIButton *)sender;
 
 

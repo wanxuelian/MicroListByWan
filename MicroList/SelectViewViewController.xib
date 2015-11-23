@@ -104,7 +104,7 @@
                         <action selector="sexButton:" destination="-1" eventType="touchUpInside" id="biz-fl-hW8"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpf-C6-rqY">
+                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpf-C6-rqY">
                     <rect key="frame" x="290" y="208" width="52" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="52" id="NnI-cF-CPo"/>

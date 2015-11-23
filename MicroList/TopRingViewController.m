@@ -157,13 +157,12 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
 
 
+    return 1;
+}
 
-//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    //设置区头
-//    return  d;
-//}
 
 
 @end

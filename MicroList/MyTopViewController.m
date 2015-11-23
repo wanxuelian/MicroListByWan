@@ -23,12 +23,13 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 
-@interface MyTopViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MyTopViewController ()<UITableViewDataSource,UITableViewDelegate,SelectViewDelegate>
 
 @property(nonatomic, strong) NSDictionary * setDic;
 @property(nonatomic, strong) NSDictionary * diction;
 
 @property(nonatomic,copy) NSString *nickName;
+@property(nonatomic,copy)NSString *headPath;
 @property(nonatomic,copy)NSMutableArray * array;
 @end
 
@@ -44,15 +45,9 @@
     NSString *key = [userDefault objectForKey:KEY];
     if (key != nil) {
         
-//        LoginViewController *login = [[LoginViewController alloc]init];
-//        
-//        UINavigationController *selectedController = [[UINavigationController alloc] initWithRootViewController:login];
-//        [self presentViewController:selectedController animated:YES completion:nil];
-        
         //请求网络数据
         [self getData];
 
-        
     }else {
     
         LoginViewController *login = [[LoginViewController alloc]init];
@@ -62,8 +57,6 @@
     
     }
 
-    
-    
     
     self.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"个人中心" image:nil tag:406];
  
@@ -80,26 +73,7 @@
     
     [self _creatTableView];
     
-    
-   /*
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    
-    [center addObserver:self selector:@selector(notificationAction:) name:@"notification" object:nil];
-    */
-    
-    
-   
-    NSString *headPath = [userDefault objectForKey:@"headPath"];
-    NSString *image = [NSString stringWithFormat:@"http://%@/%@",kLoginServer,headPath];
-    NSLog(@"头像：%@",image);
-    
-    NSURL *url = [NSURL URLWithString:image];
-//    [self.headPath sd_setImageWithURL:url];
-    
-    FirstCell *cell = [[FirstCell alloc]init];
-    [cell.userPhoto sd_setImageWithURL:url];
-    
-    
+
 
     NSString *uid = [userDefault objectForKey:HXKey];
     
@@ -107,22 +81,37 @@
 //    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:uid password:UserPassword];
     
     
+    //代理传值
+    SelectViewViewController *select = [[SelectViewViewController alloc]init];
+    select.delegate = self;
+    
+
     
 }
-/*
-//- (void)notificationAction:(NSNotification *)notification{
-//
-//    NSLog(@"notification: %@",notification);
-//    
-//    NSDictionary *dic = [notification userInfo];
-//    NSString *str = [dic valueForKey:@"uid"];
-//    NSString *userphone = [dic valueForKey:@"username"];
-//
-//    self.uid = str;
-//    self.userphone = userphone;
-//}
 
-*/
+
+- (void)nameValue:(NSString *)userName{
+
+    _nickName = userName;
+    
+    
+}
+
+- (void)photoValue:(NSString *)headPath{
+
+    
+    _headPath = headPath;
+    
+//    NSString *image = [NSString stringWithFormat:@"http://%@/%@",kLoginServer,headPath];
+//    NSLog(@"头像：%@",image);
+//    
+//    NSURL *url = [NSURL URLWithString:image];
+//    //    [self.headPath sd_setImageWithURL:url];
+//    
+//    FirstCell *cell = [[FirstCell alloc]init];
+//    [cell.userPhoto sd_setImageWithURL:url];
+//    
+}
 
 //请求网络数据
 - (void)getData{
@@ -319,28 +308,17 @@
         
         }
         
-//        NSString * str = selectModel.myPhoto;
-//        NSURL *url = [NSURL URLWithString:str];
-//    
-//        [cell.imageView sd_setImageWithURL:url];
-//        
-//        
-//        cell.user.text = selectModel.username;
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        NSString *headPath = [userDefault objectForKey:@"headPath"];
-        NSString *nickName = [userDefault objectForKey: @"nickName"];
-        
-        NSLog(@"nickName:%@",nickName);
+
         
         if (cell.userPhoto != nil) {
             
-            NSString *image = [NSString stringWithFormat:@"http://%@%@",kLoginServer,headPath];
+            NSString *image = [NSString stringWithFormat:@"http://%@%@",kLoginServer,_headPath];
             NSLog(@"image:%@",image);
             NSURL *url = [NSURL URLWithString:image];
             [cell.userPhoto sd_setImageWithURL:url];
             
         }
-        cell.user.text = nickName;
+        cell.user.text = _nickName;
         
 
         
@@ -348,7 +326,7 @@
 //        cell.user.text = _nickName;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor yellowColor];
+//        cell.backgroundColor = [UIColor yellowColor];
         cell.selectionStyle = NO;
         return cell;
     }

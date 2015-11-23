@@ -106,6 +106,7 @@
             self.area.text = data[@"area"];
             self.signature.text = data[@"signature"];
             
+            [_delegate nameValue:_nickName.text];
             
             NSString *number = [NSString stringWithFormat:@"%@", data[@"sex"]];
             
@@ -228,7 +229,9 @@
             
             //及时刷新
             [userDefaults synchronize];
+            [_delegate photoValue:str];
             
+                      
         }
         
         NSString *code = responseObject[@"code"];

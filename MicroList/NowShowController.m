@@ -291,6 +291,7 @@ static NSString *cellIdentife = @"sunDymnaicCell";
     return self.arrayData.count;
     
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"放置数据");
     DymnaicCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentife];
